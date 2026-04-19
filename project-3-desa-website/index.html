@@ -2,131 +2,304 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desa Caringin Cisaat - Profil Desa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Desa Caringin Cisaat | Profil Resmi Desa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background: #fefaf5;
+            color: #2c2c2c;
+            line-height: 1.5;
+            scroll-behavior: smooth;
         }
-        header {
-            background: linear-gradient(135deg, #2e7d32, #1b5e20);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
+        ::-webkit-scrollbar-track {
+            background: #e8e0d5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9c7e5c;
+            border-radius: 10px;
+        }
+
+        /* Navigation */
         nav {
-            background: #1b5e20;
-            padding: 10px 0;
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(156, 126, 92, 0.15);
         }
-        nav ul {
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #5a3e2b;
+            letter-spacing: -0.3px;
+        }
+
+        .logo span {
+            color: #c79a2e;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
             list-style: none;
             flex-wrap: wrap;
         }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
+
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
+            color: #4a3724;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 0.95rem;
         }
-        nav ul li a:hover {
-            text-decoration: underline;
+
+        .nav-links a:hover {
+            color: #c79a2e;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        h2 {
-            color: #2e7d32;
-            border-bottom: 2px solid #2e7d32;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
+
+        /* Hero Section */
         .hero {
-            background: url('https://placehold.co/1200x400/2e7d32/white?text=Desa+Caringin+Cisaat') no-repeat center;
-            background-size: cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #f1ebe3 0%, #e5d9cc 100%);
+            padding: 4rem 2rem;
             text-align: center;
-            color: white;
-            border-radius: 10px;
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            margin-bottom: 2rem;
         }
+
         .hero h1 {
-            font-size: 48px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 3rem;
+            color: #3a2a1e;
+            margin-bottom: 0.5rem;
         }
-        .grid {
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #6b4c2c;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem 3rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #3a2a1e;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #c79a2e;
+            border-radius: 2px;
+        }
+
+        /* Cards Grid */
+        .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 2rem;
+            margin-top: 1rem;
         }
+
         .card {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease;
+            border: 1px solid #f0e4d6;
         }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+            border-color: #e2cfbc;
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: #c79a2e;
+            margin-bottom: 1rem;
+        }
+
         .card h3 {
-            color: #2e7d32;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: #4a3724;
         }
+
+        .card p, .card ul {
+            color: #5a4a3a;
+            line-height: 1.5;
+        }
+
+        /* Struktur */
+        .struktur-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .struktur-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .struktur-item {
+            background: #fefaf5;
+            padding: 0.8rem 1rem;
+            border-radius: 16px;
+            border-left: 4px solid #c79a2e;
+        }
+
+        /* Galeri */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
+
         .gallery-item {
-            background: #e0e0e0;
-            height: 200px;
-            border-radius: 8px;
+            background: #e9dfd3;
+            border-radius: 20px;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
+            font-size: 2rem;
+            color: #7a5a3a;
+            transition: 0.2s;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.1);
         }
-        footer {
-            background: #1b5e20;
-            color: white;
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        /* Layanan */
+        .layanan-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .layanan-item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            background: #fefaf5;
+            padding: 0.75rem 1rem;
+            border-radius: 16px;
+        }
+
+        /* Kontak */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
         }
+
+        .contact-card i {
+            font-size: 2rem;
+            color: #c79a2e;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2a241e;
+            color: #cdc2b6;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top-left-radius: 2rem;
+            border-top-right-radius: 2rem;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 28px;
+                font-size: 2rem;
             }
-            nav ul li {
-                margin: 0 8px;
+            .nav-container {
+                flex-direction: column;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1rem;
+            }
+            .container {
+                padding: 1rem 1.2rem 2rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Desa Caringin Cisaat</h1>
-        <p>Kecamatan Cisaat, Kabupaten Sukabumi, Jawa Barat</p>
-    </header>
-    
-    <nav>
-        <ul>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">Desa <span>Caringin Cisaat</span></div>
+        <ul class="nav-links">
             <li><a href="#home">Beranda</a></li>
             <li><a href="#profil">Profil</a></li>
             <li><a href="#struktur">Struktur</a></li>
@@ -134,96 +307,166 @@
             <li><a href="#galeri">Galeri</a></li>
             <li><a href="#kontak">Kontak</a></li>
         </ul>
-    </nav>
-    
-    <div class="container">
-        <section id="home">
-            <div class="hero">
-                <h1>Selamat Datang di Website Resmi<br>Desa Caringin Cisaat</h1>
-            </div>
-        </section>
-        
-        <section id="profil">
-            <h2>Profil Desa</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Sejarah</h3>
-                    <p>Desa Caringin Cisaat berdiri sejak tahun 1982. Nama "Caringin" berasal dari pohon beringin yang tumbuh di tengah desa sebagai simbol persatuan masyarakat.</p>
-                </div>
-                <div class="card">
-                    <h3>Visi</h3>
-                    <p>Terwujudnya Desa Caringin Cisaat yang maju, mandiri, dan sejahtera berdasarkan gotong royong dan nilai-nilai keagamaan.</p>
-                </div>
-                <div class="card">
-                    <h3>Misi</h3>
-                    <p>1. Meningkatkan kualitas pelayanan publik<br>2. Mengembangkan potensi desa<br>3. Membangun infrastruktur yang memadai</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="struktur">
-            <h2>Struktur Pemerintahan Desa</h2>
-            <div class="card">
-                <p><strong>Kepala Desa:</strong> Bapak [Nama Kepala Desa]</p>
-                <p><strong>Sekretaris Desa:</strong> Ibu [Nama Sekdes]</p>
-                <p><strong>Kaur Pemerintahan:</strong> [Nama]</p>
-                <p><strong>Kaur Pelayanan:</strong> [Nama]</p>
-                <p><strong>Kaur Kesra:</strong> [Nama]</p>
-                <p><strong>Kadus I:</strong> [Nama]</p>
-                <p><strong>Kadus II:</strong> [Nama]</p>
-                <p><strong>Kadus III:</strong> [Nama]</p>
-            </div>
-        </section>
-        
-        <section id="layanan">
-            <h2>Layanan Administrasi</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Surat Keterangan Domisili</h3>
-                    <p>Persyaratan: KK, KTP, pengantar RT/RW</p>
-                </div>
-                <div class="card">
-                    <h3>Surat Pengantar KTP/KK</h3>
-                    <p>Persyaratan: Fotokopi KK lama, akta kelahiran</p>
-                </div>
-                <div class="card">
-                    <h3>Surat Keterangan Usaha</h3>
-                    <p>Persyaratan: KK, KTP, surat pengantar RT/RW</p>
-                </div>
-            </div>
-        </section>
-        
-        <section id="galeri">
-            <h2>Galeri Kegiatan</h2>
-            <div class="gallery">
-                <div class="gallery-item">📸 Kegiatan Gotong Royong</div>
-                <div class="gallery-item">📸 Acara 17 Agustus</div>
-                <div class="gallery-item">📸 Pengajian Rutin</div>
-                <div class="gallery-item">📸 Posyandu</div>
-            </div>
-        </section>
-        
-        <section id="kontak">
-            <h2>Kontak dan Lokasi</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Alamat Kantor Desa</h3>
-                    <p>Jl. Desa Caringin No. 1<br>Kecamatan Cisaat, Kabupaten Sukabumi<br>Jawa Barat - 43152</p>
-                </div>
-                <div class="card">
-                    <h3>Kontak</h3>
-                    <p>📞 Telp: (0266) xxxxxx<br>📧 Email: desacaringin@gmail.com<br>📱 WA: 08xx-xxxx-xxxx</p>
-                </div>
-                <div class="card">
-                    <h3>Jam Operasional</h3>
-                    <p>Senin - Kamis: 08.00 - 14.00<br>Jumat: 08.00 - 11.00<br>Sabtu - Minggu: Libur</p>
-                </div>
-            </div>
-        </section>
     </div>
-    
-    <footer>
-        <p>&copy; 2024 Website Profil Desa Caringin Cisaat. Developed by Salman Alhidamkara.</p>
-    </footer>
+</nav>
+
+<section class="hero" id="home">
+    <h1>Selamat Datang di Website Resmi</h1>
+    <p>Desa Caringin Cisaat | Kecamatan Cisaat, Kabupaten Sukabumi, Jawa Barat</p>
+</section>
+
+<div class="container">
+    <!-- Profil Desa -->
+    <section id="profil">
+        <h2 class="section-title">Profil Desa</h2>
+        <div class="grid-3">
+            <div class="card">
+                <i class="fas fa-tree"></i>
+                <h3>Sejarah</h3>
+                <p>Desa Caringin Cisaat berdiri sejak tahun 1982. Nama "Caringin" berasal dari pohon beringin yang tumbuh di tengah desa sebagai simbol persatuan dan kerukunan masyarakat.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-eye"></i>
+                <h3>Visi</h3>
+                <p>Terwujudnya Desa Caringin Cisaat yang maju, mandiri, dan sejahtera berdasarkan gotong royong serta nilai-nilai keagamaan.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Misi</h3>
+                <p>1. Meningkatkan kualitas pelayanan publik.<br>2. Mengembangkan potensi desa.<br>3. Membangun infrastruktur yang memadai.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistik Singkat -->
+    <div class="grid-3" style="margin: 2rem 0;">
+        <div class="card" style="text-align: center;">
+            <i class="fas fa-users" style="font-size: 2.5rem;"></i>
+            <h3>8.200+</h3>
+            <p>Jiwa Penduduk</p>
+        </div>
+        <div class="card" style="text-align: center;">
+            <i class="fas fa-mosque"></i>
+            <h3>12</h3>
+            <p>Dusun & RW</p>
+        </div>
+        <div class="card" style="text-align: center;">
+            <i class="fas fa-hand-sparkles"></i>
+            <h3>25+</h3>
+            <p>Kegiatan Tahunan</p>
+        </div>
+    </div>
+
+    <!-- Struktur Pemerintahan -->
+    <section id="struktur">
+        <h2 class="section-title">Struktur Pemerintahan Desa</h2>
+        <div class="struktur-card">
+            <div class="struktur-grid">
+                <div class="struktur-item"><strong>Kepala Desa</strong><br>Bapak Asep Saepullah</div>
+                <div class="struktur-item"><strong>Sekretaris Desa</strong><br>Ibu Dewi Mulyani</div>
+                <div class="struktur-item"><strong>Kaur Pemerintahan</strong><br>Bapak Rohmat Hidayat</div>
+                <div class="struktur-item"><strong>Kaur Pelayanan</strong><br>Ibu Siti Nurjanah</div>
+                <div class="struktur-item"><strong>Kaur Kesra</strong><br>Bapak Eka Yuliana</div>
+                <div class="struktur-item"><strong>Kadus I</strong><br>Bapak Dadang Kosasih</div>
+                <div class="struktur-item"><strong>Kadus II</strong><br>Bapak Ujang Hermawan</div>
+                <div class="struktur-item"><strong>Kadus III</strong><br>Ibu Elis Rohayati</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Administrasi -->
+    <section id="layanan">
+        <h2 class="section-title">Layanan Administrasi</h2>
+        <div class="grid-3">
+            <div class="card">
+                <i class="fas fa-file-signature"></i>
+                <h3>Surat Keterangan Domisili</h3>
+                <div class="layanan-list">
+                    <div class="layanan-item">📄 KK & KTP</div>
+                    <div class="layanan-item">📄 Pengantar RT/RW</div>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-id-card"></i>
+                <h3>Surat Pengantar KTP/KK</h3>
+                <div class="layanan-list">
+                    <div class="layanan-item">📄 Fotokopi KK lama</div>
+                    <div class="layanan-item">📄 Akta kelahiran</div>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-store"></i>
+                <h3>Surat Keterangan Usaha</h3>
+                <div class="layanan-list">
+                    <div class="layanan-item">📄 KK & KTP</div>
+                    <div class="layanan-item">📄 Surat pengantar RT/RW</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Kegiatan -->
+    <section id="galeri">
+        <h2 class="section-title">Galeri Kegiatan</h2>
+        <div class="gallery">
+            <div class="gallery-item" style="background-image: linear-gradient(145deg, #e0cfbf, #f3e9df); display: flex;">
+                🌾 Gotong Royong
+            </div>
+            <div class="gallery-item" style="background-image: linear-gradient(145deg, #e0cfbf, #f3e9df); display: flex;">
+                🇮🇩 17 Agustusan
+            </div>
+            <div class="gallery-item" style="background-image: linear-gradient(145deg, #e0cfbf, #f3e9df); display: flex;">
+                📖 Pengajian Rutin
+            </div>
+            <div class="gallery-item" style="background-image: linear-gradient(145deg, #e0cfbf, #f3e9df); display: flex;">
+                🩺 Posyandu & KB
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak & Lokasi -->
+    <section id="kontak">
+        <h2 class="section-title">Kontak & Lokasi</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Alamat Kantor Desa</h3>
+                <p>Jl. Desa Caringin No. 1<br>Kecamatan Cisaat, Kabupaten Sukabumi<br>Jawa Barat - 43152</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Kontak Resmi</h3>
+                <p>📞 (0266) 123456<br>✉️ desacaringin@cisaat.go.id<br>📱 WA: 0812-3456-7890</p>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-clock"></i>
+                <h3>Jam Operasional</h3>
+                <p>Senin - Kamis: 08.00 - 14.00<br>Jumat: 08.00 - 11.00<br>Sabtu/Minggu: Libur</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Website Resmi Desa Caringin Cisaat. Dikembangkan oleh Salman Alhidamkara.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;">Melayani dengan hati, membangun desa bersama</p>
+</footer>
+
+<script>
+    // Smooth scroll untuk navigasi
+    document.querySelectorAll('.nav-links a, .logo a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const hash = this.getAttribute('href');
+            if (hash && hash.startsWith('#')) {
+                e.preventDefault();
+                const targetId = hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>
 </body>
-</html>
+                </html>
