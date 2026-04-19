@@ -273,9 +273,8 @@ Status     : Dalam pengembangan (2024)
 
 ## Hubungi Saya
 
-Email    : salmanalhidamkara008@gmail.com
+Email    : ellsavadore2025@gmail.com.com
 Telepon  : +62-855-3660-1150
-LinkedIn : linkedin.com/in/salman-alhidamkara (buat jika belum)
-GitHub   : github.com/username-anda (ganti dengan username GitHub Anda)
+GitHub   : https://github.com/ellsavadore/Salman-Alhidamkara
 
 -----------------------------------------------------------------
