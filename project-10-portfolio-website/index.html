@@ -3,305 +3,624 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salman Alhidamkara - Portfolio</title>
+    <title>Salman Alhidamkara | Cyber Security Portfolio</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #e8e8e8;
             line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
+            scroll-behavior: smooth;
         }
+
+        /* Animated Gradient Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 30% 10%, #0f0f0f 0%, #050505 60%, #000000 100%);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 200, 50, 0.02) 0px,
+                    rgba(255, 200, 50, 0.02) 2px,
+                    transparent 2px,
+                    transparent 50px
+                );
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+
+        /* Typography */
+        .gold {
+            color: #d4af37;
+        }
+
+        /* Header */
         header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px 50px;
+            position: relative;
         }
-        .profile-img {
+
+        .profile-container {
             width: 150px;
             height: 150px;
+            margin: 0 auto 25px;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            background: white;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
+            object-fit: cover;
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
         }
+
+        .profile-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 45px rgba(212, 175, 55, 0.35);
+        }
+
         h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 44px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
         }
-        .tagline {
+
+        .title {
             font-size: 18px;
-            opacity: 0.9;
+            color: #b0b0b0;
+            margin-bottom: 8px;
         }
+
+        .location {
+            font-size: 14px;
+            color: #777;
+            letter-spacing: 0.5px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #d4af37;
+            margin: 25px auto 0;
+            opacity: 0.5;
+        }
+
+        /* Navigation */
         nav {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
-            top: 0;
+            top: 20px;
+            margin: 0 20px 30px;
+            background: rgba(15, 15, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
             z-index: 100;
+            padding: 6px 0;
         }
+
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 15px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
-        nav ul li {
-            margin: 0 20px;
-        }
+
         nav ul li a {
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
+            color: #ccc;
+            font-weight: 500;
+            transition: all 0.25s;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-size: 14px;
+            letter-spacing: 0.3px;
         }
+
         nav ul li a:hover {
-            color: #3498db;
+            color: #0a0a0a;
+            background: #d4af37;
         }
+
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px 24px 60px;
         }
+
+        /* Glassmorphism Section */
         section {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            background: rgba(12, 12, 16, 0.65);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 36px 32px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            transition: all 0.3s ease;
         }
+
+        section:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+
         h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            color: #d4af37;
+            font-size: 26px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            display: inline-block;
         }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.55);
+            text-align: center;
+            padding: 24px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            transition: all 0.25s;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 600;
+            color: #d4af37;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #999;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
-        .skill-category {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
+
+        .skill-card {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 22px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.25s;
         }
-        .skill-category h3 {
-            color: #3498db;
-            margin-bottom: 10px;
+
+        .skill-card:hover {
+            border-color: rgba(212, 175, 55, 0.35);
+            transform: translateY(-3px);
         }
-        .skill-category ul {
-            list-style: none;
-            padding-left: 0;
+
+        .skill-card h3 {
+            color: #d4af37;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            letter-spacing: 0.3px;
         }
-        .skill-category li {
-            padding: 5px 0;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .project-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        .project-card h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        .project-card p {
-            color: #666;
-            font-size: 14px;
-        }
-        .cert-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
         }
-        .cert-item {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 14px;
+
+        .skill-tag {
+            background: rgba(212, 175, 55, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #ccc;
+            border: 0.5px solid rgba(212, 175, 55, 0.2);
         }
-        .contact-info {
+
+        /* Projects Grid */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card h3 {
+            color: #d4af37;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #bbbbbb;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 12px;
+        }
+
+        .cert-item {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 14px 18px;
+            border-radius: 14px;
+            border-left: 3px solid #d4af37;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .cert-item:hover {
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateX(4px);
+        }
+
+        .cert-name {
+            color: #ddd;
+        }
+
+        .cert-year {
+            color: #d4af37;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
+        }
+
+        .contact-card {
+            background: rgba(0, 0, 0, 0.45);
+            padding: 22px;
+            border-radius: 20px;
             text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            transition: all 0.25s;
         }
-        .contact-item {
-            padding: 15px;
+
+        .contact-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
         }
-        .contact-item a {
-            color: #3498db;
+
+        .contact-card h3 {
+            color: #d4af37;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-card a, .contact-card p {
+            color: #bbbbbb;
             text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
         }
+
+        .contact-card a:hover {
+            color: #d4af37;
+        }
+
+        /* Footer */
         footer {
-            background: #2c3e50;
-            color: white;
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            background: rgba(5, 5, 5, 0.85);
+            color: #666;
+            font-size: 12px;
+            letter-spacing: 0.5px;
         }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                flex-wrap: wrap;
-            }
-            nav ul li {
-                margin: 5px 10px;
-            }
             h1 {
-                font-size: 28px;
+                font-size: 32px;
+            }
+            nav {
+                margin: 0 12px 20px;
+                border-radius: 30px;
+            }
+            nav ul li a {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+            section {
+                padding: 24px 20px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            .stat-number {
+                font-size: 32px;
+            }
+            .profile-container {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 16px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
+
     <header>
-        <div class="profile-img">👨‍💻</div>
+        <div class="profile-container">
+            <img class="profile-img" src="foto-saya.jpg" alt="Salman Alhidamkara" onerror="this.src='https://placehold.co/400x400/1a1a2e/d4af37?text=SA'">
+        </div>
         <h1>Salman Alhidamkara</h1>
-        <p class="tagline">Fresh Graduate Teknik Informatika | Keamanan Siber | Data Science | AI</p>
-        <p class="tagline">🇮🇩 Indonesia | 🇬🇧 English (TOEFL 470) | 🇯🇵 日本語 (A2)</p>
+        <p class="title">Cyber Security | Data Science | Artificial Intelligence</p>
+        <p class="location">Sukabumi, Jawa Barat, Indonesia</p>
+        <div class="divider"></div>
     </header>
-    
+
     <nav>
         <ul>
             <li><a href="#about">Tentang</a></li>
-            <li><a href="#skills">Skills</a></li>
+            <li><a href="#skills">Keahlian</a></li>
             <li><a href="#projects">Proyek</a></li>
             <li><a href="#certifications">Sertifikasi</a></li>
             <li><a href="#contact">Kontak</a></li>
         </ul>
     </nav>
-    
+
     <div class="container">
+        
         <section id="about">
             <h2>Tentang Saya</h2>
-            <p>Sarjana Teknik Informatika (IPK 3,22) dari Universitas Nusa Putra dengan spesialisasi di Keamanan Siber, Data Science, dan Artificial Intelligence. Memiliki 9 sertifikasi kompetensi termasuk MikroTik MTCNA, Python, AI, CompTIA Security+, serta sertifikasi bahasa Jepang level A2.</p>
-            <br>
-            <p>Berhasil menemukan celah keamanan pada Android 13 dalam penelitian skripsi. Berpengalaman membimbing skripsi mahasiswa dan mengembangkan sistem otomatisasi. Mencari posisi di bidang IT Security, Data Analyst, atau IT Support.</p>
+            <p style="font-size: 16px; line-height: 1.75; margin-bottom: 16px;">Sarjana Teknik Informatika <span class="gold">(IPK 3,22)</span> dari Universitas Nusa Putra dengan spesialisasi di <strong class="gold">Keamanan Siber, Data Science, dan Artificial Intelligence</strong>. Memiliki 9 sertifikasi kompetensi termasuk MikroTik MTCNA, Python, AI, CompTIA Security+, serta sertifikasi bahasa Jepang level A2.</p>
+            <p style="font-size: 16px; line-height: 1.75;">Berhasil <strong class="gold">menemukan celah keamanan pada Android 13</strong> dalam penelitian skripsi menggunakan Metasploit. Berpengalaman membimbing skripsi mahasiswa dan mengembangkan sistem otomatisasi. Saat ini mencari peluang di bidang <strong class="gold">IT Security, Data Analyst, atau IT Support</strong>.</p>
         </section>
-        
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Sertifikasi</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">16+</div>
+                <div class="stat-label">Proyek</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3+</div>
+                <div class="stat-label">Mentoring</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Organisasi</div>
+            </div>
+        </div>
+
+        <!-- Skills -->
         <section id="skills">
-            <h2>Keterampilan</h2>
+            <h2>Keahlian Teknis</h2>
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-card">
                     <h3>Keamanan Siber</h3>
-                    <ul>
-                        <li>Metasploit</li>
-                        <li>Nmap / Wireshark</li>
-                        <li>Ethical Hacking</li>
-                        <li>CompTIA Security+</li>
-                    </ul>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Metasploit</span>
+                        <span class="skill-tag">Nmap</span>
+                        <span class="skill-tag">Wireshark</span>
+                        <span class="skill-tag">Ethical Hacking</span>
+                        <span class="skill-tag">CompTIA Security+</span>
+                    </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-card">
                     <h3>Data Science & AI</h3>
-                    <ul>
-                        <li>Python (pandas, numpy)</li>
-                        <li>Machine Learning (scikit-learn)</li>
-                        <li>Data Visualization</li>
-                        <li>Basic AI Concepts</li>
-                    </ul>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Pandas / NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Machine Learning</span>
+                    </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-card">
                     <h3>Jaringan</h3>
-                    <ul>
-                        <li>MikroTik (MTCNA)</li>
-                        <li>DHCP / NAT / Firewall</li>
-                        <li>Network Monitoring</li>
-                    </ul>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MikroTik MTCNA</span>
+                        <span class="skill-tag">DHCP / NAT</span>
+                        <span class="skill-tag">Firewall</span>
+                        <span class="skill-tag">Network Monitoring</span>
+                    </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Tools</h3>
-                    <ul>
-                        <li>Microsoft Office</li>
-                        <li>Google Workspace</li>
-                        <li>Git & GitHub</li>
-                        <li>VS Code</li>
-                    </ul>
+                <div class="skill-card">
+                    <h3>Tools & Lainnya</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Microsoft Office</span>
+                        <span class="skill-tag">Google Workspace</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">Kali Linux</span>
+                    </div>
                 </div>
             </div>
         </section>
-        
+
+        <!-- Projects -->
         <section id="projects">
             <h2>Proyek Unggulan</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>🛡️ Eksploitasi Android 13</h3>
-                    <p>Penelitian skripsi menemukan celah keamanan Android 13 menggunakan Metasploit.</p>
+                    <h3>Eksploitasi Keamanan Android 13</h3>
+                    <p>Penelitian skripsi yang berhasil mengidentifikasi dan mengeksploitasi celah keamanan pada Android 13 menggunakan Metasploit Framework.</p>
                 </div>
                 <div class="project-card">
-                    <h3>📱 QR Code Absensi</h3>
-                    <p>Sistem absensi otomatis berbasis QR Code terintegrasi Google Sheet.</p>
+                    <h3>Sistem Absensi QR Code</h3>
+                    <p>Sistem absensi otomatis berbasis QR Code terintegrasi Google Sheet. Pencatatan real-time dan akses cloud.</p>
                 </div>
                 <div class="project-card">
-                    <h3>🌐 Website Desa</h3>
-                    <p>Website profil Desa Caringin Cisaat untuk informasi publik.</p>
+                    <h3>Website Profil Desa</h3>
+                    <p>Website profil Desa Caringin Cisaat untuk informasi publik, struktur pemerintahan, dan layanan administrasi.</p>
                 </div>
                 <div class="project-card">
-                    <h3>📊 Sales Analysis</h3>
-                    <p>Analisis data penjualan dengan Python untuk identifikasi tren.</p>
+                    <h3>Analisis Data Penjualan</h3>
+                    <p>Analisis data penjualan dengan Python (pandas, matplotlib) untuk mengidentifikasi tren bisnis dan memberikan rekomendasi.</p>
                 </div>
                 <div class="project-card">
-                    <h3>📋 To-Do List App</h3>
-                    <p>Aplikasi web sederhana dengan CRUD dan local storage.</p>
+                    <h3>Aplikasi To-Do List</h3>
+                    <p>Aplikasi web sederhana dengan fitur CRUD, local storage, dan filter tugas. Desain responsif.</p>
                 </div>
                 <div class="project-card">
-                    <h3>🔧 MikroTik Config</h3>
-                    <p>Konfigurasi router MikroTik untuk kantor/warnet.</p>
+                    <h3>Konfigurasi MikroTik</h3>
+                    <p>Konfigurasi router MikroTik untuk kebutuhan kantor atau warnet meliputi DHCP, NAT, firewall, dan manajemen bandwidth.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Otomatisasi Email Massal</h3>
+                    <p>Script Python untuk mengirim email massal dengan personalisasi, attachment, dan penjadwalan otomatis.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Network Vulnerability Scanner</h3>
+                    <p>Tool scanning jaringan untuk mendeteksi host aktif, port terbuka, dan kerentanan dasar menggunakan Python dan Nmap.</p>
                 </div>
             </div>
         </section>
-        
+
+        <!-- Certifications -->
         <section id="certifications">
             <h2>Sertifikasi</h2>
-            <div class="cert-list">
-                <div class="cert-item">✓ MikroTik MTCNA (2023)</div>
-                <div class="cert-item">✓ IT Specialist - Python (2023)</div>
-                <div class="cert-item">✓ IT Specialist - Cloud Computing (2023)</div>
-                <div class="cert-item">✓ IT Specialist - AI (2023)</div>
-                <div class="cert-item">✓ CompTIA Security+ Course (2024)</div>
-                <div class="cert-item">✓ CEH Practical Prep (2024)</div>
-                <div class="cert-item">✓ Data Science Bootcamp (2024)</div>
-                <div class="cert-item">✓ Japanese A2 (Japan Foundation, 2024)</div>
-                <div class="cert-item">✓ TOEFL 470 - B2 (2023)</div>
+            <div class="cert-grid">
+                <div class="cert-item"><span class="cert-name">MikroTik MTCNA</span><span class="cert-year">2023</span></div>
+                <div class="cert-item"><span class="cert-name">IT Specialist - Python</span><span class="cert-year">2023</span></div>
+                <div class="cert-item"><span class="cert-name">IT Specialist - Cloud Computing</span><span class="cert-year">2023</span></div>
+                <div class="cert-item"><span class="cert-name">IT Specialist - Artificial Intelligence</span><span class="cert-year">2023</span></div>
+                <div class="cert-item"><span class="cert-name">CompTIA Security+ Course</span><span class="cert-year">2024</span></div>
+                <div class="cert-item"><span class="cert-name">Certified Ethical Hacking Prep</span><span class="cert-year">2024</span></div>
+                <div class="cert-item"><span class="cert-name">Data Science Bootcamp</span><span class="cert-year">2024</span></div>
+                <div class="cert-item"><span class="cert-name">Japanese A2 (Japan Foundation)</span><span class="cert-year">2024</span></div>
+                <div class="cert-item"><span class="cert-name">TOEFL Prediction 470 (B2)</span><span class="cert-year">2023</span></div>
             </div>
         </section>
-        
+
+        <!-- Contact -->
         <section id="contact">
             <h2>Kontak</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <h3>📧 Email</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Email</h3>
                     <a href="mailto:ellsavadore2025@gmail.com">ellsavadore2025@gmail.com</a>
                 </div>
-                <div class="contact-item">
-                    <h3>📞 Telepon</h3>
+                <div class="contact-card">
+                    <h3>Telepon</h3>
                     <p>+62-855-3660-1150</p>
                 </div>
-                <div class="contact-item">
-                    <h3>💻 GitHub</h3>
+                <div class="contact-card">
+                    <h3>GitHub</h3>
                     <a href="https://github.com/ellsavadore" target="_blank">github.com/ellsavadore</a>
                 </div>
             </div>
         </section>
     </div>
-    
+
     <footer>
-        <p>&copy; 2024 Salman Alhidamkara. All rights reserved.</p>
+        <p>© 2024 Salman Alhidamkara | Cyber Security & Artificial Intelligence</p>
+        <p style="margin-top: 6px; font-size: 11px;">Keep Learning · Stay Curious · Secure The World</p>
     </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
-  </html>
+    </html>
