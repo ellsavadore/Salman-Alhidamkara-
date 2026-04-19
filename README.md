@@ -275,6 +275,6 @@ Status     : Dalam pengembangan (2024)
 
 Email    : ellsavadore2025@gmail.com.com
 Telepon  : +62-855-3660-1150
-GitHub   : https://github.com/ellsavadore/Salman-Alhidamkara
+GitHub   : https://github.com/ellsavadore/Salman-Alhidamkara-
 
 -----------------------------------------------------------------
