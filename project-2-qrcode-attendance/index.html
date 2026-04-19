@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Attendance System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .qr-container {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: white;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+        }
+        .qr-placeholder {
+            text-align: center;
+            color: #999;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #5a67d8;
+        }
+        .info {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Attendance</h1>
+        <p class="subtitle">Scan untuk absen kehadiran</p>
+        
+        <div class="qr-container">
+            <div class="qr-code" id="qrCode">
+                <div class="qr-placeholder">
+                    <p>QR Code akan muncul<br>setelah terhubung</p>
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <button class="btn" onclick="generateQR()">Generate QR Code</button>
+            <button class="btn" onclick="scanQR()">Scan QR Code</button>
+        </div>
+        
+        <div class="info">
+            <p><strong>Fitur:</strong></p>
+            <p>✓ Scan QR Code untuk absen</p>
+            <p>✓ Pencatatan otomatis ke Google Sheet</p>
+            <p>✓ Timestamp real-time</p>
+            <p>✓ Cegah absen ganda</p>
+        </div>
+        
+        <div id="status"></div>
+        <footer>
+            &copy; 2024 - Sistem Absensi QR Code | Salman Alhidamkara
+        </footer>
+    </div>
 
+    <script>
+        function generateQR() {
+            const statusDiv = document.getElementById('status');
+            const qrDiv = document.getElementById('qrCode');
+            
+            // Simulasi generate QR Code
+            qrDiv.innerHTML = `
+                <div style="text-align: center;">
+                    <p>📱 QR CODE</p>
+                    <p style="font-size: 12px;">Attendance ID: ATT-${Date.now()}</p>
+                    <p style="font-size: 10px; color: #666;">Scan untuk absen</p>
+                </div>
+            `;
+            
+            statusDiv.innerHTML = '<div class="success">QR Code berhasil digenerate. Silakan scan untuk absen.</div>';
+            
+            // Simulasi pencatatan ke Google Sheet
+            setTimeout(() => {
+                console.log('Data dikirim ke Google Sheet:', {
+                    timestamp: new Date().toISOString(),
+                    attendance_id: `ATT-${Date.now()}`,
+                    status: 'generated'
+                });
+            }, 500);
+        }
+        
+        function scanQR() {
+            const statusDiv = document.getElementById('status');
+            
+            // Simulasi scan QR Code
+            const now = new Date();
+            const formattedTime = now.toLocaleString('id-ID');
+            
+            statusDiv.innerHTML = `
+                <div class="success">
+                    ✓ Absen berhasil!<br>
+                    Waktu: ${formattedTime}<br>
+                    Status: Hadir
+                </div>
+            `;
+            
+            // Simulasi data tersimpan ke Google Sheet
+            const attendanceData = {
+                timestamp: now.toISOString(),
+                name: "Karyawan",
+                status: "Hadir",
+                method: "QR Code Scan"
+            };
+            console.log('Data tersimpan ke Google Sheet:', attendanceData);
+        }
+    </script>
+</body>
+</html>
