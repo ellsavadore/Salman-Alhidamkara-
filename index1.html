@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXURY SCENT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0b0b0b;
+    color: white;
+}
+
+/* NAV */
+nav {
+    display:flex;
+    justify-content:space-between;
+    padding:20px 40px;
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+}
+
+nav h1 {
+    font-family: 'Playfair Display';
+    color: gold;
+}
+
+nav a {
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+/* HERO */
+.hero {
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+                url('https://images.unsplash.com/photo-1594035910387-fea47794261f');
+    background-size:cover;
+}
+
+.hero h1 {
+    font-size:50px;
+    font-family:'Playfair Display';
+}
+
+.hero p {
+    margin:20px 0;
+    color:#ccc;
+}
+
+.btn {
+    padding:12px 30px;
+    margin:10px;
+    background:gold;
+    color:black;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    border-radius:5px;
+}
+
+.btn-outline {
+    background:transparent;
+    border:1px solid gold;
+    color:gold;
+}
+
+/* SECTION */
+.section {
+    padding:80px 20px;
+    text-align:center;
+}
+
+.section h2 {
+    font-family:'Playfair Display';
+    margin-bottom:20px;
+}
+
+.cards {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card {
+    background:#141414;
+    padding:25px;
+    width:300px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:translateY(-10px);
+    box-shadow:0 10px 30px rgba(255,215,0,0.2);
+}
+
+/* TESTI */
+.testi {
+    font-style:italic;
+    color:#bbb;
+}
+
+/* CTA */
+.cta {
+    background:gold;
+    color:black;
+    padding:60px 20px;
+}
+
+.cta h2 {
+    margin-bottom:20px;
+}
+
+/* FOOTER */
+footer {
+    text-align:center;
+    padding:30px;
+    color:#666;
+}
+
+/* WA FLOAT */
+.wa {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px 18px;
+    border-radius:50%;
+    font-size:20px;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <h1>LUXURY SCENT</h1>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">Produk</a>
+        <a href="#">Testimoni</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div>
+        <h1>Tinggalkan Kesan Lewat Wangimu</h1>
+        <p>Parfum premium tahan lama untuk meningkatkan percaya diri & daya tarikmu</p>
+        <button class="btn" onclick="orderNow()">Beli Sekarang</button>
+        <button class="btn btn-outline">Coba Sample</button>
+    </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="section">
+    <h2>Masalah yang Sering Terjadi</h2>
+    <p>Parfum cepat hilang, kurang percaya diri, dan tidak meninggalkan kesan.</p>
+</div>
+
+<!-- GUIDE -->
+<div class="section" style="background:#111;">
+    <h2>Kami Solusinya</h2>
+    <p>Kami menghadirkan parfum dengan kualitas premium dan daya tahan tinggi.</p>
+    <p>✔ Tahan hingga 12 jam</p>
+    <p>✔ Aroma elegan & eksklusif</p>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section">
+    <h2>Koleksi Premium</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Fresh Elegant</h3>
+            <p>Segar, ringan, cocok untuk aktivitas harian</p>
+        </div>
+
+        <div class="card">
+            <h3>Dark Masculine</h3>
+            <p>Maskulin, kuat, penuh karakter</p>
+        </div>
+
+        <div class="card">
+            <h3>Sweet Luxury</h3>
+            <p>Manis & mewah untuk momen spesial</p>
+        </div>
+    </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="section" style="background:#111;">
+    <h2>Transformasi Kamu</h2>
+    <p>✔ Lebih percaya diri</p>
+    <p>✔ Lebih menarik</p>
+    <p>✔ Dikenang oleh orang lain</p>
+</div>
+
+<!-- TESTIMONI -->
+<div class="section">
+    <h2>Apa Kata Mereka</h2>
+    <p class="testi">"Wanginya tahan lama, sekarang saya jauh lebih percaya diri!"</p>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+    <h2>Saatnya Kamu Naik Level</h2>
+    <button class="btn" onclick="orderNow()">Order Sekarang</button>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Luxury Scent
+</footer>
+
+<!-- WHATSAPP -->
+<a class="wa" href="https://wa.me/628XXXXXXXXXX" target="_blank">💬</a>
+
+<script>
+function orderNow() {
+    window.location.href = "https://wa.me/628XXXXXXXXXX?text=Halo%20saya%20ingin%20order%20parfum";
+}
+</script>
+
+</body>
+</html>
