@@ -158,33 +158,86 @@
     </section>
 
     <!-- PAIN SECTION -->
-    <section class="py-20 lg:py-28 section bg-black border-t border-slate-800">
-        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
-            <div class="text-center mb-16">
-                <p class="uppercase text-purple-400 text-sm tracking-widest font-medium">Common Problems I Solve</p>
-                <h2 class="heading text-4xl lg:text-5xl font-semibold mt-4 leading-tight">Systems that look secure.<br>Data that doesn't speak.<br>Risks hiding in plain sight.</h2>
+
+<!-- HERO SECTION - SUDAH DENGAN FOTO ASLI -->
+<section id="hero" class="hero-bg min-h-screen flex items-center pt-20 section">
+    <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center min-h-[calc(100vh-80px)]">
+            
+            <!-- Left Content -->
+            <div class="lg:col-span-7 space-y-8">
+                <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/70 border border-slate-700 rounded-full text-xs tracking-widest">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                    OPEN TO OPPORTUNITIES • 2026
+                </div>
+
+                <h1 class="heading text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tighter">
+                    I find the cracks<br>before attackers do.
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-400 max-w-2xl">
+                    Sarjana Teknik Informatika dengan spesialisasi 
+                    <span class="text-cyan-400">Cyber Security</span>, 
+                    <span class="text-purple-400">Data Science</span>, dan 
+                    <span class="text-cyan-400">AI</span>.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <div class="glass px-7 py-5 rounded-3xl neon-glow border border-cyan-400/30">
+                        <div class="text-cyan-400 font-medium text-sm">Prestasi Utama</div>
+                        <div class="text-lg font-semibold leading-tight">Berhasil mengeksploitasi celah keamanan Android 13 menggunakan Metasploit</div>
+                    </div>
+                    <div class="glass px-7 py-5 rounded-3xl">
+                        <div class="text-purple-400 font-medium text-sm">Kombinasi Langka</div>
+                        <div class="text-lg font-semibold">Security + Data + AI</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                    <a href="#projects" 
+                       class="px-10 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-3xl font-semibold text-lg transition-all flex items-center justify-center gap-3 group">
+                        Lihat Proyek Saya
+                        <i class="fas fa-arrow-right group-active:translate-x-1 transition"></i>
+                    </a>
+                    <a href="#contact" 
+                       class="px-10 py-5 border border-slate-600 hover:border-slate-400 rounded-3xl font-medium text-lg transition-all flex items-center justify-center">
+                        Hubungi Saya
+                    </a>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-red-500/60 hover:border-red-500 transition-all">
-                    <span class="text-5xl mb-6 block">🔓</span>
-                    <h3 class="text-2xl font-semibold mb-4">Hidden vulnerabilities in "secure" systems</h3>
-                    <p class="text-slate-400">Most applications appear safe until tested with real attack techniques.</p>
-                </div>
-                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-amber-500/60 hover:border-amber-500 transition-all">
-                    <span class="text-5xl mb-6 block">📊</span>
-                    <h3 class="text-2xl font-semibold mb-4">Data that remains raw and unused</h3>
-                    <p class="text-slate-400">Huge amounts of data, but no meaningful insight for decision making.</p>
-                </div>
-                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-cyan-500/60 hover:border-cyan-500 transition-all">
-                    <span class="text-5xl mb-6 block">🛠️</span>
-                    <h3 class="text-2xl font-semibold mb-4">Solutions built without security thinking</h3>
-                    <p class="text-slate-400">Fast development that creates dangerous technical debt.</p>
+            <!-- RIGHT SIDE - FOTO PROFIL (TEMPAT TERBAIK) -->
+            <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+                <div class="relative w-full max-w-[380px] lg:max-w-md">
+                    <!-- Glass Container + Neon Glow -->
+                    <div class="aspect-[4/4.2] bg-gradient-to-br from-zinc-900 to-black rounded-[2.75rem] p-5 neon-glow border border-slate-700 shadow-2xl">
+                        <div class="w-full h-full rounded-3xl overflow-hidden border-4 border-slate-800 relative">
+                            <!-- GANTI DENGAN LINK FOTO ASLI KAMU DI SINI -->
+                            <img src="https://imgur.com/a/Hw7t0vz" 
+                                 alt="Salman Alhidamkara - Cyber Security Specialist"
+                                 class="w-full h-full object-cover grayscale-[0.15] hover:grayscale-0 transition-all duration-500">
+                            
+                            <!-- Overlay gradient -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            
+                            <!-- Nama di bawah foto -->
+                            <div class="absolute bottom-6 left-6 right-6">
+                                <div class="font-mono text-xs tracking-[2px] text-cyan-400">SALMAN ALHIDAMKARA</div>
+                                <div class="text-sm mt-1 text-white/90">Cyber Security • Data Science • AI</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge -->
+                    <div class="absolute -top-5 -right-5 glass px-6 py-4 rounded-3xl text-center neon-glow border border-emerald-400/30">
+                        <div class="text-emerald-400 text-4xl font-bold leading-none">2024</div>
+                        <div class="text-xs font-medium text-emerald-300 mt-1">Android 13 Research</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- MECHANISM -->
     <section class="py-20 lg:py-28 section bg-zinc-950">
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
