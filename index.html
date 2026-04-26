@@ -5,39 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salman Alhidamkara | Cyber Security • Data Science • AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --neon-cyan: #00f5ff;
             --neon-purple: #c026d3;
         }
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading { font-family: 'Space Grotesk', sans-serif; }
         
-        body {
-            font-family: 'Inter', system_ui, sans-serif;
-        }
-        
-        .heading {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
         .glass {
             background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(148, 163, 184, 0.15);
         }
-
-        .neon-glow {
-            box-shadow: 0 0 30px -10px var(--neon-cyan);
+        .neon-glow { 
+            box-shadow: 0 0 30px -10px var(--neon-cyan); 
         }
-
         .hero-bg {
             background: radial-gradient(circle at 40% 20%, rgba(0, 245, 255, 0.12) 0%, transparent 60%);
         }
-
-        .section {
-            scroll-margin-top: 80px;
-        }
+        .section { scroll-margin-top: 80px; }
     </style>
 </head>
 <body class="bg-zinc-950 text-slate-200 overflow-x-hidden">
@@ -50,7 +39,6 @@
                 <span class="heading text-2xl font-semibold tracking-tighter">Salman Alhidamkara</span>
             </div>
 
-            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8 text-sm font-medium">
                 <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
                 <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
@@ -62,7 +50,6 @@
                 Let's Connect
             </a>
 
-            <!-- Mobile Hamburger -->
             <button id="mobile-menu-btn" class="md:hidden text-2xl">
                 <i class="fas fa-bars"></i>
             </button>
@@ -73,6 +60,7 @@
     <section id="hero" class="hero-bg min-h-screen flex items-center pt-20 section">
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center min-h-[calc(100vh-80px)]">
+                
                 <!-- Left Content -->
                 <div class="lg:col-span-7 space-y-8">
                     <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/70 border border-slate-700 rounded-full text-xs tracking-widest">
@@ -85,19 +73,19 @@
                     </h1>
 
                     <p class="text-lg md:text-xl text-slate-400 max-w-2xl">
-                        Sarjana Teknik Informatika with proven expertise in 
+                        Sarjana Teknik Informatika dengan spesialisasi 
                         <span class="text-cyan-400">Cyber Security</span>, 
-                        <span class="text-purple-400">Data Science</span>, and 
+                        <span class="text-purple-400">Data Science</span>, dan 
                         <span class="text-cyan-400">AI</span>.
                     </p>
 
                     <div class="flex flex-wrap gap-4">
-                        <div class="glass px-7 py-5 rounded-3xl neon-glow">
-                            <div class="text-cyan-400 font-medium text-sm">Key Achievement</div>
-                            <div class="text-lg font-semibold">Successfully exploited Android 13 vulnerabilities using Metasploit</div>
+                        <div class="glass px-7 py-5 rounded-3xl neon-glow border border-cyan-400/30">
+                            <div class="text-cyan-400 font-medium text-sm">Prestasi Utama</div>
+                            <div class="text-lg font-semibold leading-tight">Berhasil mengeksploitasi celah keamanan Android 13 menggunakan Metasploit</div>
                         </div>
                         <div class="glass px-7 py-5 rounded-3xl">
-                            <div class="text-purple-400 font-medium text-sm">Rare Combination</div>
+                            <div class="text-purple-400 font-medium text-sm">Kombinasi Langka</div>
                             <div class="text-lg font-semibold">Security + Data + AI</div>
                         </div>
                     </div>
@@ -105,51 +93,36 @@
                     <div class="flex flex-col sm:flex-row gap-4 pt-6">
                         <a href="#projects" 
                            class="px-10 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-3xl font-semibold text-lg transition-all flex items-center justify-center gap-3 group">
-                            View My Work
+                            Lihat Proyek Saya
                             <i class="fas fa-arrow-right group-active:translate-x-1 transition"></i>
                         </a>
                         <a href="#contact" 
                            class="px-10 py-5 border border-slate-600 hover:border-slate-400 rounded-3xl font-medium text-lg transition-all flex items-center justify-center">
-                            Get In Touch
+                            Hubungi Saya
                         </a>
-                    </div>
-
-                    <div class="pt-8 flex flex-wrap gap-x-10 gap-y-6 text-sm">
-                        <div>
-                            <span class="block text-xs text-slate-500">CERTIFICATIONS</span>
-                            <span class="font-semibold text-cyan-400">9 Professional</span>
-                        </div>
-                        <div>
-                            <span class="block text-xs text-slate-500">LANGUAGES</span>
-                            <span class="font-medium">ID • EN (B2) • JP (A2)</span>
-                        </div>
-                        <div>
-                            <span class="block text-xs text-slate-500">GITHUB</span>
-                            <a href="https://github.com/ellsavore/Salman-Alhidamkara" target="_blank" class="text-cyan-400 hover:underline">github.com/ellsavore</a>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Right Visual -->
+                <!-- Foto Profil dari GitHub -->
                 <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
-                    <div class="relative w-full max-w-md">
-                        <div class="aspect-[4/4.5] bg-gradient-to-br from-zinc-900 to-black rounded-[3rem] p-6 neon-glow border border-slate-700">
-                            <div class="w-full h-full bg-zinc-950 rounded-3xl overflow-hidden relative">
-                                <img src="https://via.placeholder.com/600x720/111827/67e8f9?text=Salman+Alhidamkara" 
-                                     alt="Salman Alhidamkara" 
-                                     class="w-full h-full object-cover">
-                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent h-2/5"></div>
-                                <div class="absolute bottom-8 left-8 right-8">
-                                    <div class="font-mono text-xs tracking-widest text-cyan-400">SALMAN ALHIDAMKARA</div>
-                                    <div class="text-sm mt-1">Cyber Security • Data Science • AI</div>
+                    <div class="relative w-full max-w-[380px] lg:max-w-md">
+                        <div class="aspect-[4/4.2] bg-gradient-to-br from-zinc-900 to-black rounded-[2.75rem] p-5 neon-glow border border-slate-700 shadow-2xl">
+                            <div class="w-full h-full rounded-3xl overflow-hidden border-4 border-slate-800 relative">
+                                <img src="https://raw.githubusercontent.com/ellsavadore/Salman-Alhidamkara-/main/Salman.jpg" 
+                                     alt="Salman Alhidamkara - Cyber Security, Data Science & AI"
+                                     class="w-full h-full object-cover grayscale-[0.1] hover:grayscale-0 transition-all duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-6">
+                                    <div class="font-mono text-xs tracking-[2px] text-cyan-400">SALMAN ALHIDAMKARA</div>
+                                    <div class="text-sm mt-1 text-white/90">Cyber Security • Data Science • AI</div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Floating Badge -->
-                        <div class="absolute -top-6 -right-6 glass px-6 py-4 rounded-3xl text-center neon-glow">
-                            <div class="text-emerald-400 text-4xl font-bold">2024</div>
-                            <div class="text-xs font-medium">Android 13 Research</div>
+                        <div class="absolute -top-5 -right-5 glass px-6 py-4 rounded-3xl text-center neon-glow border border-emerald-400/30">
+                            <div class="text-emerald-400 text-4xl font-bold leading-none">2024</div>
+                            <div class="text-xs font-medium text-emerald-300 mt-1">Android 13 Research</div>
                         </div>
                     </div>
                 </div>
@@ -158,86 +131,33 @@
     </section>
 
     <!-- PAIN SECTION -->
-
-<!-- HERO SECTION - SUDAH DENGAN FOTO ASLI -->
-<section id="hero" class="hero-bg min-h-screen flex items-center pt-20 section">
-    <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center min-h-[calc(100vh-80px)]">
-            
-            <!-- Left Content -->
-            <div class="lg:col-span-7 space-y-8">
-                <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/70 border border-slate-700 rounded-full text-xs tracking-widest">
-                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                    OPEN TO OPPORTUNITIES • 2026
-                </div>
-
-                <h1 class="heading text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tighter">
-                    I find the cracks<br>before attackers do.
-                </h1>
-
-                <p class="text-lg md:text-xl text-slate-400 max-w-2xl">
-                    Sarjana Teknik Informatika dengan spesialisasi 
-                    <span class="text-cyan-400">Cyber Security</span>, 
-                    <span class="text-purple-400">Data Science</span>, dan 
-                    <span class="text-cyan-400">AI</span>.
-                </p>
-
-                <div class="flex flex-wrap gap-4">
-                    <div class="glass px-7 py-5 rounded-3xl neon-glow border border-cyan-400/30">
-                        <div class="text-cyan-400 font-medium text-sm">Prestasi Utama</div>
-                        <div class="text-lg font-semibold leading-tight">Berhasil mengeksploitasi celah keamanan Android 13 menggunakan Metasploit</div>
-                    </div>
-                    <div class="glass px-7 py-5 rounded-3xl">
-                        <div class="text-purple-400 font-medium text-sm">Kombinasi Langka</div>
-                        <div class="text-lg font-semibold">Security + Data + AI</div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4 pt-6">
-                    <a href="#projects" 
-                       class="px-10 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-3xl font-semibold text-lg transition-all flex items-center justify-center gap-3 group">
-                        Lihat Proyek Saya
-                        <i class="fas fa-arrow-right group-active:translate-x-1 transition"></i>
-                    </a>
-                    <a href="#contact" 
-                       class="px-10 py-5 border border-slate-600 hover:border-slate-400 rounded-3xl font-medium text-lg transition-all flex items-center justify-center">
-                        Hubungi Saya
-                    </a>
-                </div>
+    <section class="py-20 lg:py-28 section bg-black border-t border-slate-800">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-16">
+                <p class="uppercase text-purple-400 text-sm tracking-widest font-medium">Common Problems I Solve</p>
+                <h2 class="heading text-4xl lg:text-5xl font-semibold mt-4 leading-tight">Systems that look secure.<br>Data that doesn't speak.<br>Risks hiding in plain sight.</h2>
             </div>
 
-            <!-- RIGHT SIDE - FOTO PROFIL (TEMPAT TERBAIK) -->
-            <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
-                <div class="relative w-full max-w-[380px] lg:max-w-md">
-                    <!-- Glass Container + Neon Glow -->
-                    <div class="aspect-[4/4.2] bg-gradient-to-br from-zinc-900 to-black rounded-[2.75rem] p-5 neon-glow border border-slate-700 shadow-2xl">
-                        <div class="w-full h-full rounded-3xl overflow-hidden border-4 border-slate-800 relative">
-                            <!-- GANTI DENGAN LINK FOTO ASLI KAMU DI SINI -->
-                            <img src="https://imgur.com/a/Hw7t0vz" 
-                                 alt="Salman Alhidamkara - Cyber Security Specialist"
-                                 class="w-full h-full object-cover grayscale-[0.15] hover:grayscale-0 transition-all duration-500">
-                            
-                            <!-- Overlay gradient -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                            
-                            <!-- Nama di bawah foto -->
-                            <div class="absolute bottom-6 left-6 right-6">
-                                <div class="font-mono text-xs tracking-[2px] text-cyan-400">SALMAN ALHIDAMKARA</div>
-                                <div class="text-sm mt-1 text-white/90">Cyber Security • Data Science • AI</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Floating Badge -->
-                    <div class="absolute -top-5 -right-5 glass px-6 py-4 rounded-3xl text-center neon-glow border border-emerald-400/30">
-                        <div class="text-emerald-400 text-4xl font-bold leading-none">2024</div>
-                        <div class="text-xs font-medium text-emerald-300 mt-1">Android 13 Research</div>
-                    </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-red-500/60 hover:border-red-500 transition-all">
+                    <span class="text-5xl mb-6 block">🔓</span>
+                    <h3 class="text-2xl font-semibold mb-4">Hidden vulnerabilities in "secure" systems</h3>
+                    <p class="text-slate-400">Most applications appear safe until tested with real attack techniques.</p>
+                </div>
+                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-amber-500/60 hover:border-amber-500 transition-all">
+                    <span class="text-5xl mb-6 block">📊</span>
+                    <h3 class="text-2xl font-semibold mb-4">Data that remains raw and unused</h3>
+                    <p class="text-slate-400">Huge amounts of data, but no meaningful insight for decision making.</p>
+                </div>
+                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-cyan-500/60 hover:border-cyan-500 transition-all">
+                    <span class="text-5xl mb-6 block">🛠️</span>
+                    <h3 class="text-2xl font-semibold mb-4">Solutions built without security thinking</h3>
+                    <p class="text-slate-400">Fast development that creates dangerous technical debt.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
     <!-- MECHANISM -->
     <section class="py-20 lg:py-28 section bg-zinc-950">
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
@@ -282,14 +202,13 @@
                     <p class="uppercase text-purple-400 text-sm font-medium">Proof of Work</p>
                     <h2 class="heading text-4xl lg:text-5xl font-semibold">Selected Projects</h2>
                 </div>
-                <a href="https://github.com/ellsavore/Salman-Alhidamkara" target="_blank" 
+                <a href="https://github.com/ellsavadore/Salman-Alhidamkara-" target="_blank" 
                    class="mt-6 lg:mt-0 text-cyan-400 hover:text-white flex items-center gap-2 text-sm font-medium">
                     ALL PROJECTS ON GITHUB <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
 
             <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-                <!-- Android Research -->
                 <div class="glass rounded-3xl overflow-hidden group">
                     <div class="h-64 bg-gradient-to-br from-red-950 to-black flex items-center justify-center">
                         <span class="text-8xl">📱</span>
@@ -302,43 +221,39 @@
                     </div>
                 </div>
 
-                <!-- QR Attendance -->
                 <div class="glass rounded-3xl overflow-hidden group">
                     <div class="h-64 bg-gradient-to-br from-emerald-900 to-black flex items-center justify-center text-8xl">📲</div>
                     <div class="p-8">
                         <div class="text-emerald-400 text-xs font-medium">2024</div>
                         <h3 class="text-2xl font-semibold mt-4">QR Code Attendance System</h3>
-                        <p class="mt-5 text-slate-400 text-[15px]">Automated attendance with real-time Google Sheets integration. Scan, record, access from anywhere.</p>
+                        <p class="mt-5 text-slate-400 text-[15px]">Automated attendance with real-time Google Sheets integration.</p>
                     </div>
                 </div>
 
-                <!-- Cloud Backup -->
                 <div class="glass rounded-3xl overflow-hidden group">
                     <div class="h-64 bg-gradient-to-br from-blue-900 to-black flex items-center justify-center text-8xl">☁️</div>
                     <div class="p-8">
                         <div class="text-sky-400 text-xs font-medium">2024</div>
                         <h3 class="text-2xl font-semibold mt-4">Automated Cloud Backup</h3>
-                        <p class="mt-5 text-slate-400 text-[15px]">Python script for scheduled backups to Google Drive/Dropbox with compression and notifications.</p>
+                        <p class="mt-5 text-slate-400 text-[15px]">Python script for scheduled backups to Google Drive/Dropbox.</p>
                     </div>
                 </div>
 
-                <!-- Sales Data Analysis -->
                 <div class="glass rounded-3xl overflow-hidden group xl:col-span-2 md:col-span-1">
                     <div class="h-64 bg-gradient-to-br from-violet-900 to-black flex items-center justify-center text-8xl">📈</div>
                     <div class="p-8">
                         <div class="text-violet-400 text-xs font-medium">2024</div>
                         <h3 class="text-2xl font-semibold mt-4">Sales Data Analysis &amp; ML Classification</h3>
-                        <p class="mt-5 text-slate-400 text-[15px]">Trend analysis, visualization, and machine learning models (Decision Tree, Random Forest, KNN) with 80%+ accuracy.</p>
+                        <p class="mt-5 text-slate-400 text-[15px]">Trend analysis, visualization, and machine learning models with 80%+ accuracy.</p>
                     </div>
                 </div>
 
-                <!-- Village Website -->
                 <div class="glass rounded-3xl overflow-hidden group">
                     <div class="h-64 bg-gradient-to-br from-amber-900 to-black flex items-center justify-center text-8xl">🌐</div>
                     <div class="p-8">
                         <div class="text-amber-400 text-xs font-medium">2024</div>
                         <h3 class="text-2xl font-semibold mt-4">Desa Caringin Cisaat Profile Website</h3>
-                        <p class="mt-5 text-slate-400 text-[15px]">Live public website built from scratch to promote village information and potential.</p>
+                        <p class="mt-5 text-slate-400 text-[15px]">Live public website built from scratch for the village.</p>
                     </div>
                 </div>
             </div>
@@ -356,14 +271,14 @@
                     <span class="text-5xl text-cyan-400">01</span>
                     <div>
                         <h4 class="font-semibold text-xl">Secure systems by design</h4>
-                        <p class="text-slate-400 mt-3">Security mindset integrated from the beginning, not patched later.</p>
+                        <p class="text-slate-400 mt-3">Security mindset integrated from the beginning.</p>
                     </div>
                 </div>
                 <div class="flex gap-6">
                     <span class="text-5xl text-purple-400">02</span>
                     <div>
                         <h4 class="font-semibold text-xl">Early risk identification</h4>
-                        <p class="text-slate-400 mt-3">Proven ability to find vulnerabilities before they become incidents.</p>
+                        <p class="text-slate-400 mt-3">Proven ability to find vulnerabilities before incidents occur.</p>
                     </div>
                 </div>
                 <div class="flex gap-6">
@@ -377,7 +292,7 @@
                     <span class="text-5xl text-amber-400">04</span>
                     <div>
                         <h4 class="font-semibold text-xl">Rapid adaptation</h4>
-                        <p class="text-slate-400 mt-3">9 certifications and proven self-learning ability across new technologies.</p>
+                        <p class="text-slate-400 mt-3">9 certifications and strong self-learning ability.</p>
                     </div>
                 </div>
             </div>
@@ -388,13 +303,13 @@
     <section class="py-20 lg:py-28 section bg-black border-t border-slate-800">
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 text-center">
             <h2 class="heading text-4xl lg:text-5xl font-semibold mb-4">Trusted Results</h2>
-            <p class="text-slate-400 max-w-md mx-auto">Real impact delivered, not just promised.</p>
+            <p class="text-slate-400 max-w-md mx-auto">Real impact delivered.</p>
 
             <div class="grid md:grid-cols-3 gap-8 mt-16">
                 <div class="glass p-10 rounded-3xl">
                     <div class="text-6xl mb-6">🎓</div>
                     <div class="text-5xl font-bold text-emerald-400">3+</div>
-                    <p class="mt-4 font-medium">Students successfully mentored through cybersecurity thesis defense</p>
+                    <p class="mt-4 font-medium">Students successfully mentored through cybersecurity thesis</p>
                 </div>
                 <div class="glass p-10 rounded-3xl">
                     <div class="text-6xl mb-6">🌍</div>
@@ -404,7 +319,7 @@
                 <div class="glass p-10 rounded-3xl">
                     <div class="text-6xl mb-6">🔬</div>
                     <div class="text-5xl font-bold text-purple-400">1</div>
-                    <p class="mt-4 font-medium">Published Android 13 security research with successful exploitation</p>
+                    <p class="mt-4 font-medium">Published Android 13 security research</p>
                 </div>
             </div>
         </div>
@@ -417,9 +332,9 @@
             <h2 class="heading text-4xl lg:text-5xl font-semibold mt-6">Quietly competent.<br>Technically sharp.</h2>
             
             <div class="mt-12 space-y-8 text-lg text-slate-300">
-                <p>I’m a fresh Informatics Engineering graduate who has already demonstrated real capability through hands-on security research, system development, and mentoring.</p>
-                <p>My thesis proved I can find and exploit actual vulnerabilities on Android 13. I build practical tools and websites that are used in the real world, and I help others complete complex technical work.</p>
-                <p>Ready for onsite, hybrid, or remote work. Comfortable with Japanese-speaking environments (A2 level) and technical English (B2).</p>
+                <p>I’m an Informatics Engineering graduate who has already demonstrated real capability through hands-on security research, system development, and mentoring.</p>
+                <p>My thesis proved I can find and exploit actual vulnerabilities on Android 13. I build practical tools and websites that are used in the real world.</p>
+                <p>Ready for onsite, hybrid, or remote work. Comfortable with Japanese (A2) and technical English (B2).</p>
             </div>
         </div>
     </section>
@@ -432,15 +347,15 @@
             <div class="space-y-8">
                 <div class="glass p-8 lg:p-10 rounded-3xl">
                     <h4 class="font-semibold text-xl">Fresh graduate — why choose me?</h4>
-                    <p class="mt-4 text-slate-400">Because I already have tangible proof: successful Android 13 exploitation, deployed real-world systems, and mentoring experience. I deliver results, not just theory.</p>
+                    <p class="mt-4 text-slate-400">Because I already have tangible proof: successful Android 13 exploitation, deployed systems, and mentoring experience.</p>
                 </div>
                 <div class="glass p-8 lg:p-10 rounded-3xl">
                     <h4 class="font-semibold text-xl">Can you actually build production systems?</h4>
-                    <p class="mt-4 text-slate-400">Yes. QR attendance systems, automated cloud backups, data analysis pipelines, network monitoring, and live websites — all completed and delivered.</p>
+                    <p class="mt-4 text-slate-400">Yes. QR attendance systems, automated cloud backups, data analysis, and live websites — all completed and delivered.</p>
                 </div>
                 <div class="glass p-8 lg:p-10 rounded-3xl">
                     <h4 class="font-semibold text-xl">Work style and availability?</h4>
-                    <p class="mt-4 text-slate-400">Fully flexible: onsite, hybrid, or remote. Fast learner, comfortable with KPIs and target-driven environments.</p>
+                    <p class="mt-4 text-slate-400">Fully flexible: onsite, hybrid, or remote. Fast learner and comfortable with KPIs.</p>
                 </div>
             </div>
         </div>
@@ -450,7 +365,7 @@
     <section id="contact" class="py-28 lg:py-36 bg-gradient-to-b from-black to-zinc-950 border-t border-slate-800">
         <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 text-center">
             <h2 class="heading text-5xl lg:text-6xl font-semibold max-w-3xl mx-auto">Ready to strengthen your systems with real technical depth?</h2>
-            <p class="mt-8 text-xl text-slate-400 max-w-xl mx-auto">Open to full-time roles, freelance projects, or meaningful collaborations in cybersecurity, data, and AI.</p>
+            <p class="mt-8 text-xl text-slate-400 max-w-xl mx-auto">Open to full-time roles, freelance projects, or meaningful collaborations.</p>
             
             <div class="mt-14 flex flex-col sm:flex-row gap-5 justify-center">
                 <a href="mailto:academicconsultant66@gmail.com" 
@@ -471,9 +386,9 @@
     </footer>
 
     <script>
-        // Mobile menu toggle (basic)
+        // Mobile menu alert
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            alert("Mobile menu would open here.\n\nIn production: implement full sidebar or dropdown.");
+            alert("Mobile menu akan ditambahkan di versi production.\n\nSaat ini hanya tampilan desktop yang dioptimalkan.");
         });
 
         // Smooth scrolling
@@ -481,9 +396,7 @@
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href') !== '#') {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
