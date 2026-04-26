@@ -5,237 +5,215 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salman Alhidamkara | Cyber Security • Data Science • AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
-        
         :root {
-            --neon-blue: #00f5ff;
-            --neon-purple: #a855f7;
+            --neon-cyan: #00f5ff;
+            --neon-purple: #c026d3;
         }
         
         body {
             font-family: 'Inter', system_ui, sans-serif;
         }
         
-        .heading-font {
+        .heading {
             font-family: 'Space Grotesk', sans-serif;
         }
 
         .glass {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(16px);
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(148, 163, 184, 0.15);
         }
 
-        .neon-text {
-            text-shadow: 0 0 20px rgb(0 245 255 / 0.6);
-        }
-
-        .neon-border {
-            box-shadow: 0 0 25px -5px rgb(0 245 255 / 0.5);
-        }
-
-        .section-bg {
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+        .neon-glow {
+            box-shadow: 0 0 30px -10px var(--neon-cyan);
         }
 
         .hero-bg {
-            background: radial-gradient(circle at 50% 30%, rgba(0, 245, 255, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle at 40% 20%, rgba(0, 245, 255, 0.12) 0%, transparent 60%);
+        }
+
+        .section {
+            scroll-margin-top: 80px;
         }
     </style>
 </head>
-<body class="bg-black text-slate-200 overflow-x-hidden">
+<body class="bg-zinc-950 text-slate-200 overflow-x-hidden">
 
-    <!-- NAV -->
+    <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-800">
-        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex justify-between items-center">
-            <div class="flex items-center gap-x-3">
-                <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-white font-bold text-xl">S</div>
-                <span class="heading-font text-2xl font-semibold tracking-tighter">Salman Alhidamkara</span>
+        <div class="max-w-screen-2xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center font-bold text-2xl text-white">SA</div>
+                <span class="heading text-2xl font-semibold tracking-tighter">Salman Alhidamkara</span>
             </div>
-            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
                 <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
                 <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
                 <a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a>
             </div>
+
             <a href="#contact" 
-               class="px-6 py-3 bg-white/5 hover:bg-white/10 border border-slate-700 hover:border-cyan-400 rounded-2xl text-sm font-medium transition-all flex items-center gap-x-2">
-                <i class="fas fa-paper-plane"></i>
-                Let's Talk
+               class="px-6 py-3 text-sm font-semibold border border-cyan-400/30 hover:border-cyan-400 rounded-2xl transition-all hover:bg-cyan-400/10">
+                Let's Connect
             </a>
+
+            <!-- Mobile Hamburger -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section id="hero" class="hero-bg min-h-screen flex items-center pt-20 section-bg">
-        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-12 items-center">
-            <div class="md:col-span-7 space-y-8">
-                <div class="inline-flex items-center gap-x-2 px-5 py-2 rounded-full border border-slate-700 bg-slate-900/50 text-xs tracking-widest">
-                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    AVAILABLE FOR OPPORTUNITIES • 2026
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center pt-20 section">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center min-h-[calc(100vh-80px)]">
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900/70 border border-slate-700 rounded-full text-xs tracking-widest">
+                        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                        OPEN TO OPPORTUNITIES • 2026
+                    </div>
+
+                    <h1 class="heading text-5xl md:text-6xl lg:text-7xl font-semibold leading-none tracking-tighter">
+                        I find the cracks<br>before attackers do.
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-slate-400 max-w-2xl">
+                        Sarjana Teknik Informatika with proven expertise in 
+                        <span class="text-cyan-400">Cyber Security</span>, 
+                        <span class="text-purple-400">Data Science</span>, and 
+                        <span class="text-cyan-400">AI</span>.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <div class="glass px-7 py-5 rounded-3xl neon-glow">
+                            <div class="text-cyan-400 font-medium text-sm">Key Achievement</div>
+                            <div class="text-lg font-semibold">Successfully exploited Android 13 vulnerabilities using Metasploit</div>
+                        </div>
+                        <div class="glass px-7 py-5 rounded-3xl">
+                            <div class="text-purple-400 font-medium text-sm">Rare Combination</div>
+                            <div class="text-lg font-semibold">Security + Data + AI</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                        <a href="#projects" 
+                           class="px-10 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-3xl font-semibold text-lg transition-all flex items-center justify-center gap-3 group">
+                            View My Work
+                            <i class="fas fa-arrow-right group-active:translate-x-1 transition"></i>
+                        </a>
+                        <a href="#contact" 
+                           class="px-10 py-5 border border-slate-600 hover:border-slate-400 rounded-3xl font-medium text-lg transition-all flex items-center justify-center">
+                            Get In Touch
+                        </a>
+                    </div>
+
+                    <div class="pt-8 flex flex-wrap gap-x-10 gap-y-6 text-sm">
+                        <div>
+                            <span class="block text-xs text-slate-500">CERTIFICATIONS</span>
+                            <span class="font-semibold text-cyan-400">9 Professional</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500">LANGUAGES</span>
+                            <span class="font-medium">ID • EN (B2) • JP (A2)</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500">GITHUB</span>
+                            <a href="https://github.com/ellsavore/Salman-Alhidamkara" target="_blank" class="text-cyan-400 hover:underline">github.com/ellsavore</a>
+                        </div>
+                    </div>
                 </div>
-                
-                <h1 class="heading-font text-6xl md:text-7xl font-semibold leading-none tracking-tighter">
-                    I break systems<br>
-                    <span class="bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300 bg-clip-text text-transparent">so you don't have to.</span>
-                </h1>
-                
-                <p class="text-xl md:text-2xl text-slate-400 max-w-2xl">
-                    Informatics Engineering graduate specialized in <span class="text-cyan-400 font-medium">Cyber Security</span>, 
-                    <span class="text-purple-400 font-medium">Data Science</span>, and <span class="text-cyan-400 font-medium">Artificial Intelligence</span>.
-                </p>
-                
-                <div class="flex flex-wrap gap-4">
-                    <div class="glass px-6 py-4 rounded-3xl border border-cyan-500/30 neon-border">
-                        <div class="text-cyan-400 text-sm font-medium">Proven Research</div>
-                        <div class="text-lg font-semibold">Android 13 Vulnerability Exploited with Metasploit</div>
-                    </div>
-                    <div class="glass px-6 py-4 rounded-3xl">
-                        <div class="text-purple-400 text-sm font-medium">Rare Skill Combo</div>
-                        <div class="text-lg font-semibold">Security + Data + AI</div>
-                    </div>
-                </div>
-                
-                <div class="flex items-center gap-x-6 pt-6">
-                    <a href="#projects" 
-                       class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 rounded-2xl font-semibold text-lg transition-all inline-flex items-center gap-x-3 group">
-                        See My Work
-                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                    <a href="#contact" 
-                       class="px-8 py-4 border border-slate-600 hover:border-slate-400 rounded-2xl font-medium text-lg transition-all">
-                        Get in Touch
-                    </a>
-                </div>
-                
-                <div class="flex items-center gap-x-8 text-sm pt-8 border-t border-slate-800">
-                    <div>
-                        <span class="block text-xs text-slate-500">CERTIFICATIONS</span>
-                        <span class="font-mono text-cyan-400">9</span>
-                    </div>
-                    <div>
-                        <span class="block text-xs text-slate-500">LANGUAGES</span>
-                        <span class="font-medium">Indonesia • English B2 • Japanese A2</span>
-                    </div>
-                    <div>
-                        <span class="block text-xs text-slate-500">GITHUB</span>
-                        <a href="https://github.com/ellsavore/Salman-Alhidamkara" target="_blank" class="text-cyan-400 hover:underline">github.com/ellsavore</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Visual -->
-            <div class="md:col-span-5 relative">
-                <div class="relative">
-                    <div class="aspect-square bg-gradient-to-br from-slate-900 to-black rounded-[3rem] p-8 neon-border border border-slate-700">
-                        <div class="w-full h-full bg-zinc-950 rounded-3xl overflow-hidden relative">
-                            <!-- Placeholder for profile image -->
-                            <div class="absolute inset-0 bg-[radial-gradient(#22d3ee_0.5px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="text-center">
-                                    <div class="w-48 h-48 mx-auto rounded-2xl overflow-hidden border-4 border-cyan-400/30 shadow-2xl">
-                                        <img src="https://via.placeholder.com/400x400/1f2937/67e8f9?text=Salman+Alhidamkara" 
-                                             alt="Salman Alhidamkara" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="mt-8 text-xs font-mono tracking-widest text-slate-500">SALMAN ALHIDAMKARA</div>
+
+                <!-- Right Visual -->
+                <div class="lg:col-span-5 relative flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-md">
+                        <div class="aspect-[4/4.5] bg-gradient-to-br from-zinc-900 to-black rounded-[3rem] p-6 neon-glow border border-slate-700">
+                            <div class="w-full h-full bg-zinc-950 rounded-3xl overflow-hidden relative">
+                                <img src="https://via.placeholder.com/600x720/111827/67e8f9?text=Salman+Alhidamkara" 
+                                     alt="Salman Alhidamkara" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent h-2/5"></div>
+                                <div class="absolute bottom-8 left-8 right-8">
+                                    <div class="font-mono text-xs tracking-widest text-cyan-400">SALMAN ALHIDAMKARA</div>
+                                    <div class="text-sm mt-1">Cyber Security • Data Science • AI</div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Floating badges -->
-                    <div class="absolute -top-6 -right-6 glass px-5 py-3 rounded-2xl text-sm flex items-center gap-x-2 neon-border">
-                        <i class="fas fa-shield-alt text-emerald-400"></i>
-                        <span>Android 13 Exploited</span>
-                    </div>
-                    
-                    <div class="absolute -bottom-8 -left-8 glass px-6 py-4 rounded-3xl text-center neon-border">
-                        <div class="text-3xl font-bold text-cyan-400">3.22</div>
-                        <div class="text-xs uppercase tracking-widest text-slate-500">GPA • S.Kom</div>
+
+                        <!-- Floating Badge -->
+                        <div class="absolute -top-6 -right-6 glass px-6 py-4 rounded-3xl text-center neon-glow">
+                            <div class="text-emerald-400 text-4xl font-bold">2024</div>
+                            <div class="text-xs font-medium">Android 13 Research</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-y-2 text-xs text-slate-500">
-            <div>SCROLL TO EXPLORE</div>
-            <i class="fas fa-chevron-down animate-bounce"></i>
         </div>
     </section>
 
     <!-- PAIN SECTION -->
-    <section class="py-24 section-bg border-t border-slate-800">
-        <div class="max-w-screen-2xl mx-auto px-8">
+    <section class="py-20 lg:py-28 section bg-black border-t border-slate-800">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16">
-                <div class="inline text-purple-400 text-sm font-medium tracking-widest">THE REALITY MOST COMPANIES FACE</div>
-                <h2 class="heading-font text-5xl font-semibold mt-4">Systems look secure.<br>Data sits idle.<br>Risks hide in plain sight.</h2>
+                <p class="uppercase text-purple-400 text-sm tracking-widest font-medium">Common Problems I Solve</p>
+                <h2 class="heading text-4xl lg:text-5xl font-semibold mt-4 leading-tight">Systems that look secure.<br>Data that doesn't speak.<br>Risks hiding in plain sight.</h2>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="glass p-10 rounded-3xl border-l-4 border-red-500/50 hover:border-red-500 transition-colors group">
-                    <div class="text-4xl mb-6">🔓</div>
-                    <h3 class="text-2xl font-semibold mb-3">Vulnerabilities disguised as features</h3>
-                    <p class="text-slate-400">Most systems appear secure until someone with the right tools proves otherwise.</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-red-500/60 hover:border-red-500 transition-all">
+                    <span class="text-5xl mb-6 block">🔓</span>
+                    <h3 class="text-2xl font-semibold mb-4">Hidden vulnerabilities in "secure" systems</h3>
+                    <p class="text-slate-400">Most applications appear safe until tested with real attack techniques.</p>
                 </div>
-                <div class="glass p-10 rounded-3xl border-l-4 border-amber-500/50 hover:border-amber-500 transition-colors group">
-                    <div class="text-4xl mb-6">📊</div>
-                    <h3 class="text-2xl font-semibold mb-3">Data that doesn't speak</h3>
-                    <p class="text-slate-400">Raw numbers everywhere, but no actionable insight to drive decisions.</p>
+                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-amber-500/60 hover:border-amber-500 transition-all">
+                    <span class="text-5xl mb-6 block">📊</span>
+                    <h3 class="text-2xl font-semibold mb-4">Data that remains raw and unused</h3>
+                    <p class="text-slate-400">Huge amounts of data, but no meaningful insight for decision making.</p>
                 </div>
-                <div class="glass p-10 rounded-3xl border-l-4 border-sky-500/50 hover:border-sky-500 transition-colors group">
-                    <div class="text-4xl mb-6">🛠️</div>
-                    <h3 class="text-2xl font-semibold mb-3">Solutions built without security in mind</h3>
-                    <p class="text-slate-400">Fast development that creates long-term technical debt and exposure.</p>
+                <div class="glass p-8 lg:p-10 rounded-3xl border-l-4 border-cyan-500/60 hover:border-cyan-500 transition-all">
+                    <span class="text-5xl mb-6 block">🛠️</span>
+                    <h3 class="text-2xl font-semibold mb-4">Solutions built without security thinking</h3>
+                    <p class="text-slate-400">Fast development that creates dangerous technical debt.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- MECHANISM -->
-    <section class="py-24 bg-black border-t border-b border-slate-800">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="grid md:grid-cols-12 gap-16 items-center">
-                <div class="md:col-span-5">
-                    <div class="sticky top-24">
-                        <div class="uppercase text-cyan-400 text-sm font-medium tracking-[3px]">MY APPROACH</div>
-                        <h2 class="heading-font text-5xl font-semibold leading-none mt-6">Security-first thinking.<br>Data-driven decisions.<br>Hands-on execution.</h2>
-                        <p class="mt-8 text-slate-400 text-lg">I don’t just learn frameworks — I break them, rebuild them, and extract insight from them.</p>
-                        
-                        <div class="mt-12 flex gap-8">
-                            <div>
-                                <div class="text-5xl font-bold text-cyan-400">Metasploit</div>
-                                <div class="text-slate-500">Android 13 Research</div>
-                            </div>
-                            <div>
-                                <div class="text-5xl font-bold text-purple-400">Python</div>
-                                <div class="text-slate-500">Automation &amp; Analysis</div>
-                            </div>
-                        </div>
-                    </div>
+    <section class="py-20 lg:py-28 section bg-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5">
+                    <p class="uppercase text-cyan-400 text-sm font-medium">My Method</p>
+                    <h2 class="heading text-4xl lg:text-5xl font-semibold leading-none mt-6">Security-first mindset.<br>Hands-on execution.<br>Data-driven insight.</h2>
+                    <p class="mt-8 text-slate-400 text-lg">I combine penetration testing skills, automation, and analytical thinking to deliver practical, secure solutions.</p>
                 </div>
-                
-                <div class="md:col-span-7 space-y-8">
+                <div class="lg:col-span-7 space-y-8">
                     <div class="glass p-8 rounded-3xl flex gap-6">
-                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-3xl flex-shrink-0">🔍</div>
+                        <div class="w-14 h-14 flex-shrink-0 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-4xl">🔍</div>
                         <div>
-                            <div class="font-semibold text-xl">Research &amp; Exploit</div>
-                            <p class="text-slate-400 mt-2">Identify real vulnerabilities in production-like environments (Android 13 via Metasploit + Kali Linux).</p>
+                            <h4 class="font-semibold text-xl">Research &amp; Exploit</h4>
+                            <p class="text-slate-400 mt-3">Real-world vulnerability research on Android 13 using Metasploit and Kali Linux.</p>
                         </div>
                     </div>
                     <div class="glass p-8 rounded-3xl flex gap-6">
-                        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-3xl flex-shrink-0">📈</div>
+                        <div class="w-14 h-14 flex-shrink-0 bg-purple-500/10 rounded-2xl flex items-center justify-center text-4xl">📈</div>
                         <div>
-                            <div class="font-semibold text-xl">Analyze &amp; Visualize</div>
-                            <p class="text-slate-400 mt-2">Transform raw data into clear insights using pandas, matplotlib, seaborn, and ML models.</p>
+                            <h4 class="font-semibold text-xl">Analyze &amp; Visualize</h4>
+                            <p class="text-slate-400 mt-3">Transform raw data into actionable insights with Python, pandas, and ML models.</p>
                         </div>
                     </div>
                     <div class="glass p-8 rounded-3xl flex gap-6">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-3xl flex-shrink-0">🚀</div>
+                        <div class="w-14 h-14 flex-shrink-0 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-4xl">🚀</div>
                         <div>
-                            <div class="font-semibold text-xl">Build &amp; Deploy</div>
-                            <p class="text-slate-400 mt-2">From QR attendance systems to automated cloud backups and live village websites.</p>
+                            <h4 class="font-semibold text-xl">Build &amp; Deliver</h4>
+                            <p class="text-slate-400 mt-3">Production-ready systems: QR attendance, automated backups, village website.</p>
                         </div>
                     </div>
                 </div>
@@ -244,135 +222,109 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="py-24 section-bg">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="flex justify-between items-end mb-16">
+    <section id="projects" class="py-20 lg:py-28 section bg-black border-t border-slate-800">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12">
                 <div>
-                    <div class="text-purple-400 uppercase tracking-widest text-sm">REAL WORK • REAL IMPACT</div>
-                    <h2 class="heading-font text-5xl font-semibold">Selected Projects</h2>
+                    <p class="uppercase text-purple-400 text-sm font-medium">Proof of Work</p>
+                    <h2 class="heading text-4xl lg:text-5xl font-semibold">Selected Projects</h2>
                 </div>
                 <a href="https://github.com/ellsavore/Salman-Alhidamkara" target="_blank" 
-                   class="flex items-center gap-x-2 text-cyan-400 hover:text-cyan-300 text-sm font-medium">
-                    VIEW ALL ON GITHUB <i class="fas fa-external-link-alt"></i>
+                   class="mt-6 lg:mt-0 text-cyan-400 hover:text-white flex items-center gap-2 text-sm font-medium">
+                    ALL PROJECTS ON GITHUB <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
+
+            <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
                 <!-- Android Research -->
                 <div class="glass rounded-3xl overflow-hidden group">
-                    <div class="h-64 bg-gradient-to-br from-red-900/50 to-black flex items-center justify-center border-b border-slate-700">
-                        <div class="text-center">
-                            <div class="text-6xl mb-4">📱</div>
-                            <div class="font-mono text-xs tracking-widest text-red-400">ANDROID 13</div>
-                        </div>
+                    <div class="h-64 bg-gradient-to-br from-red-950 to-black flex items-center justify-center">
+                        <span class="text-8xl">📱</span>
                     </div>
-                    <div class="p-10">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <div class="uppercase text-red-400 text-xs font-medium">Thesis Research • 2024</div>
-                                <h3 class="text-2xl font-semibold mt-2">Exploitation of Security Vulnerabilities on Android 13 using Metasploit</h3>
-                            </div>
-                            <span class="px-4 py-1 bg-red-500/10 text-red-400 text-xs rounded-full font-medium">LIVE RESEARCH</span>
-                        </div>
-                        <p class="mt-6 text-slate-400">Successfully identified and exploited real security flaws on Android 13 using Metasploit, Kali Linux, and Nmap. Demonstrated practical penetration testing capabilities.</p>
-                        <div class="mt-8 text-xs font-mono text-slate-500">Tools: Metasploit • Kali Linux • AVD • Nmap</div>
+                    <div class="p-8">
+                        <div class="text-red-400 text-xs font-medium">THESIS • 2024</div>
+                        <h3 class="text-2xl font-semibold mt-4">Android 13 Security Exploitation</h3>
+                        <p class="mt-5 text-slate-400 text-[15px]">Successfully identified and exploited real vulnerabilities on Android 13 using Metasploit, Kali Linux, and Nmap.</p>
+                        <div class="text-xs font-mono text-slate-500 mt-8">Metasploit • Kali Linux • AVD • Nmap</div>
                     </div>
                 </div>
-                
+
                 <!-- QR Attendance -->
                 <div class="glass rounded-3xl overflow-hidden group">
-                    <div class="h-64 bg-gradient-to-br from-emerald-900/40 to-black flex items-center justify-center">
-                        <div class="text-7xl">📲</div>
-                    </div>
-                    <div class="p-10">
-                        <div class="uppercase text-emerald-400 text-xs font-medium">2024</div>
-                        <h3 class="text-2xl font-semibold mt-2">QR Code Attendance System</h3>
-                        <p class="mt-6 text-slate-400">Automated attendance system with real-time cloud synchronization using Google Sheets and Apps Script. Accessible from anywhere.</p>
-                        <ul class="mt-6 text-sm space-y-2 text-slate-400">
-                            <li class="flex items-center gap-x-2"><span class="text-emerald-400">✔</span> QR scanning</li>
-                            <li class="flex items-center gap-x-2"><span class="text-emerald-400">✔</span> Real-time data</li>
-                            <li class="flex items-center gap-x-2"><span class="text-emerald-400">✔</span> Cloud backup</li>
-                        </ul>
+                    <div class="h-64 bg-gradient-to-br from-emerald-900 to-black flex items-center justify-center text-8xl">📲</div>
+                    <div class="p-8">
+                        <div class="text-emerald-400 text-xs font-medium">2024</div>
+                        <h3 class="text-2xl font-semibold mt-4">QR Code Attendance System</h3>
+                        <p class="mt-5 text-slate-400 text-[15px]">Automated attendance with real-time Google Sheets integration. Scan, record, access from anywhere.</p>
                     </div>
                 </div>
-                
+
                 <!-- Cloud Backup -->
                 <div class="glass rounded-3xl overflow-hidden group">
-                    <div class="h-64 bg-gradient-to-br from-blue-900/40 to-black flex items-center justify-center text-6xl">☁️</div>
-                    <div class="p-10">
-                        <div class="uppercase text-sky-400 text-xs font-medium">2024</div>
-                        <h3 class="text-2xl font-semibold mt-2">Automated Cloud Backup System</h3>
-                        <p class="mt-6 text-slate-400">Python script that automatically backs up files to Google Drive or Dropbox with scheduling, compression, and failure notifications.</p>
-                        <div class="mt-8 pt-6 border-t border-slate-700 text-xs flex gap-x-8">
-                            <div><span class="font-medium">Python</span> + Google Drive API</div>
-                        </div>
+                    <div class="h-64 bg-gradient-to-br from-blue-900 to-black flex items-center justify-center text-8xl">☁️</div>
+                    <div class="p-8">
+                        <div class="text-sky-400 text-xs font-medium">2024</div>
+                        <h3 class="text-2xl font-semibold mt-4">Automated Cloud Backup</h3>
+                        <p class="mt-5 text-slate-400 text-[15px]">Python script for scheduled backups to Google Drive/Dropbox with compression and notifications.</p>
                     </div>
                 </div>
-                
-                <!-- Sales Analysis -->
+
+                <!-- Sales Data Analysis -->
+                <div class="glass rounded-3xl overflow-hidden group xl:col-span-2 md:col-span-1">
+                    <div class="h-64 bg-gradient-to-br from-violet-900 to-black flex items-center justify-center text-8xl">📈</div>
+                    <div class="p-8">
+                        <div class="text-violet-400 text-xs font-medium">2024</div>
+                        <h3 class="text-2xl font-semibold mt-4">Sales Data Analysis &amp; ML Classification</h3>
+                        <p class="mt-5 text-slate-400 text-[15px]">Trend analysis, visualization, and machine learning models (Decision Tree, Random Forest, KNN) with 80%+ accuracy.</p>
+                    </div>
+                </div>
+
+                <!-- Village Website -->
                 <div class="glass rounded-3xl overflow-hidden group">
-                    <div class="h-64 bg-gradient-to-br from-violet-900/40 to-black flex items-center justify-center text-7xl">📈</div>
-                    <div class="p-10">
-                        <div class="uppercase text-violet-400 text-xs font-medium">2024</div>
-                        <h3 class="text-2xl font-semibold mt-2">Sales Data Analysis &amp; Visualization</h3>
-                        <p class="mt-6 text-slate-400">End-to-end analysis identifying sales trends, top products, and simple predictive modeling using Python (pandas, seaborn, scikit-learn).</p>
-                        <div class="mt-6 text-xs text-slate-500">Accuracy: 80%+ on test data</div>
+                    <div class="h-64 bg-gradient-to-br from-amber-900 to-black flex items-center justify-center text-8xl">🌐</div>
+                    <div class="p-8">
+                        <div class="text-amber-400 text-xs font-medium">2024</div>
+                        <h3 class="text-2xl font-semibold mt-4">Desa Caringin Cisaat Profile Website</h3>
+                        <p class="mt-5 text-slate-400 text-[15px]">Live public website built from scratch to promote village information and potential.</p>
                     </div>
                 </div>
-            </div>
-            
-            <div class="mt-12 text-center">
-                <a href="https://repository.nusaputra.ac.id/id/eprint/1320/" target="_blank" 
-                   class="inline-flex items-center gap-x-3 text-sm font-medium text-cyan-400 hover:text-white border border-cyan-400/30 hover:border-cyan-400 px-8 py-4 rounded-2xl transition-all">
-                    Read Full Android 13 Research Paper
-                    <i class="fas fa-external-link-alt"></i>
-                </a>
             </div>
         </div>
     </section>
 
     <!-- BENEFITS -->
-    <section class="py-24 bg-zinc-950">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="grid md:grid-cols-12 gap-16">
-                <div class="md:col-span-5">
-                    <h2 class="heading-font text-5xl font-semibold">What I bring to your team or project</h2>
+    <section class="py-20 lg:py-28 section bg-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12">
+            <div class="max-w-2xl">
+                <h2 class="heading text-4xl lg:text-5xl font-semibold">What you gain when I join your team</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-14 mt-16">
+                <div class="flex gap-6">
+                    <span class="text-5xl text-cyan-400">01</span>
+                    <div>
+                        <h4 class="font-semibold text-xl">Secure systems by design</h4>
+                        <p class="text-slate-400 mt-3">Security mindset integrated from the beginning, not patched later.</p>
+                    </div>
                 </div>
-                <div class="md:col-span-7 space-y-10">
-                    <div class="flex gap-8">
-                        <div class="text-5xl text-cyan-400">01</div>
-                        <div>
-                            <h4 class="text-xl font-semibold">More secure systems from day one</h4>
-                            <p class="text-slate-400">Security mindset baked into every solution — not added as an afterthought.</p>
-                        </div>
+                <div class="flex gap-6">
+                    <span class="text-5xl text-purple-400">02</span>
+                    <div>
+                        <h4 class="font-semibold text-xl">Early risk identification</h4>
+                        <p class="text-slate-400 mt-3">Proven ability to find vulnerabilities before they become incidents.</p>
                     </div>
-                    <div class="flex gap-8">
-                        <div class="text-5xl text-purple-400">02</div>
-                        <div>
-                            <h4 class="text-xl font-semibold">Early detection of hidden risks</h4>
-                            <p class="text-slate-400">Experience finding and exploiting vulnerabilities before attackers do.</p>
-                        </div>
+                </div>
+                <div class="flex gap-6">
+                    <span class="text-5xl text-emerald-400">03</span>
+                    <div>
+                        <h4 class="font-semibold text-xl">Actionable data insights</h4>
+                        <p class="text-slate-400 mt-3">Turn raw data into clear recommendations using Python and ML.</p>
                     </div>
-                    <div class="flex gap-8">
-                        <div class="text-5xl text-emerald-400">03</div>
-                        <div>
-                            <h4 class="text-xl font-semibold">Data that actually drives decisions</h4>
-                            <p class="text-slate-400">Transform raw data into clear insights and simple predictive models.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-8">
-                        <div class="text-5xl text-amber-400">04</div>
-                        <div>
-                            <h4 class="text-xl font-semibold">Fast learner with proven adaptability</h4>
-                            <p class="text-slate-400">9 professional certifications + rapid adoption of new tools and technologies.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-8">
-                        <div class="text-5xl text-rose-400">05</div>
-                        <div>
-                            <h4 class="text-xl font-semibold">Clear technical communication</h4>
-                            <p class="text-slate-400">Experience mentoring students and building public-facing systems (village website).</p>
-                        </div>
+                </div>
+                <div class="flex gap-6">
+                    <span class="text-5xl text-amber-400">04</span>
+                    <div>
+                        <h4 class="font-semibold text-xl">Rapid adaptation</h4>
+                        <p class="text-slate-400 mt-3">9 certifications and proven self-learning ability across new technologies.</p>
                     </div>
                 </div>
             </div>
@@ -380,134 +332,108 @@
     </section>
 
     <!-- SOCIAL PROOF -->
-    <section class="py-24 section-bg border-t border-slate-800">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="text-center">
-                <h2 class="heading-font text-5xl font-semibold mb-4">Trusted by real outcomes</h2>
-                <p class="text-slate-400 max-w-md mx-auto">Not just theory — delivered results for others.</p>
-            </div>
-            
+    <section class="py-20 lg:py-28 section bg-black border-t border-slate-800">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="heading text-4xl lg:text-5xl font-semibold mb-4">Trusted Results</h2>
+            <p class="text-slate-400 max-w-md mx-auto">Real impact delivered, not just promised.</p>
+
             <div class="grid md:grid-cols-3 gap-8 mt-16">
-                <div class="glass p-10 rounded-3xl text-center">
+                <div class="glass p-10 rounded-3xl">
                     <div class="text-6xl mb-6">🎓</div>
-                    <div class="text-4xl font-semibold text-emerald-400">3+</div>
-                    <div class="mt-2 font-medium">Students successfully mentored to thesis defense in cybersecurity &amp; programming</div>
+                    <div class="text-5xl font-bold text-emerald-400">3+</div>
+                    <p class="mt-4 font-medium">Students successfully mentored through cybersecurity thesis defense</p>
                 </div>
-                <div class="glass p-10 rounded-3xl text-center">
-                    <div class="text-6xl mb-6">🌐</div>
-                    <div class="text-4xl font-semibold text-cyan-400">1</div>
-                    <div class="mt-2 font-medium">Village website built from scratch and handed over to Desa Caringin Cisaat</div>
+                <div class="glass p-10 rounded-3xl">
+                    <div class="text-6xl mb-6">🌍</div>
+                    <div class="text-5xl font-bold text-cyan-400">1</div>
+                    <p class="mt-4 font-medium">Village website built and delivered live to Desa Caringin Cisaat</p>
                 </div>
-                <div class="glass p-10 rounded-3xl text-center">
+                <div class="glass p-10 rounded-3xl">
                     <div class="text-6xl mb-6">🔬</div>
-                    <div class="text-4xl font-semibold text-purple-400">1</div>
-                    <div class="mt-2 font-medium">Published research on Android 13 security vulnerabilities</div>
+                    <div class="text-5xl font-bold text-purple-400">1</div>
+                    <p class="mt-4 font-medium">Published Android 13 security research with successful exploitation</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-24 bg-black">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="max-w-3xl">
-                <div class="text-purple-400 uppercase text-sm font-medium">ABOUT ME</div>
-                <h2 class="heading-font text-5xl font-semibold mt-6 leading-none">Analytical. Curious.<br>Technically dangerous in the right way.</h2>
-                
-                <div class="prose prose-invert mt-12 text-lg text-slate-300">
-                    <p>I’m an Informatics Engineering graduate with a rare combination of skills in Cyber Security, Data Science, and AI. My thesis proved I can find and exploit real vulnerabilities on Android 13 using Metasploit.</p>
-                    <p>Beyond research, I build practical systems — QR attendance platforms, automated backups, data analysis pipelines, and public websites — while mentoring others to complete their own technical work.</p>
-                    <p>I speak Indonesian fluently, English at upper-intermediate level (CEFR B2), and Japanese at A2 level — ready for international or Japanese-linked environments.</p>
-                </div>
-                
-                <div class="mt-16 flex flex-wrap gap-6">
-                    <div class="px-7 py-3.5 border border-slate-700 rounded-2xl text-sm">MTCNA Certified</div>
-                    <div class="px-7 py-3.5 border border-slate-700 rounded-2xl text-sm">CompTIA Security+ Course</div>
-                    <div class="px-7 py-3.5 border border-slate-700 rounded-2xl text-sm">CEH Prep</div>
-                    <div class="px-7 py-3.5 border border-slate-700 rounded-2xl text-sm">Japanese A2 (JF Standard)</div>
-                </div>
+    <section id="about" class="py-20 lg:py-28 section bg-zinc-950">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 max-w-3xl">
+            <div class="text-purple-400 uppercase text-sm font-medium">About Me</div>
+            <h2 class="heading text-4xl lg:text-5xl font-semibold mt-6">Quietly competent.<br>Technically sharp.</h2>
+            
+            <div class="mt-12 space-y-8 text-lg text-slate-300">
+                <p>I’m a fresh Informatics Engineering graduate who has already demonstrated real capability through hands-on security research, system development, and mentoring.</p>
+                <p>My thesis proved I can find and exploit actual vulnerabilities on Android 13. I build practical tools and websites that are used in the real world, and I help others complete complex technical work.</p>
+                <p>Ready for onsite, hybrid, or remote work. Comfortable with Japanese-speaking environments (A2 level) and technical English (B2).</p>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-24 section-bg border-t border-slate-800">
-        <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="max-w-2xl mx-auto">
-                <h2 class="heading-font text-5xl font-semibold text-center mb-16">Frequently Asked Questions</h2>
-                
-                <div class="space-y-8">
-                    <div class="glass p-8 rounded-3xl">
-                        <div class="font-semibold text-xl">I'm a fresh graduate. Why should I trust you?</div>
-                        <div class="mt-4 text-slate-400">Because I already have hands-on proof: real vulnerability research on Android 13, multiple deployed systems, and successful mentoring experience. Theory alone doesn't cut it — I ship working solutions.</div>
-                    </div>
-                    <div class="glass p-8 rounded-3xl">
-                        <div class="font-semibold text-xl">Do you only do theory or can you actually build things?</div>
-                        <div class="mt-4 text-slate-400">I build. QR systems, cloud automation scripts, data dashboards, network monitoring with Zabbix, and production-ready village websites are already live or delivered.</div>
-                    </div>
-                    <div class="glass p-8 rounded-3xl">
-                        <div class="font-semibold text-xl">Are you willing to work remotely / hybrid?</div>
-                        <div class="mt-4 text-slate-400">Yes. Fully open to onsite, hybrid, or remote work. Fast learner and comfortable with clear KPIs and target-driven environments.</div>
-                    </div>
-                    <div class="glass p-8 rounded-3xl">
-                        <div class="font-semibold text-xl">Japanese companies? International teams?</div>
-                        <div class="mt-4 text-slate-400">Japanese A2 level allows me to handle daily conversation, self-introduction, and basic professional interaction. Combined with technical English (B2), I'm ready for multicultural teams.</div>
-                    </div>
+    <section id="faq" class="py-20 lg:py-28 section bg-black">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 max-w-3xl">
+            <h2 class="heading text-4xl lg:text-5xl font-semibold text-center mb-16">Common Questions</h2>
+            
+            <div class="space-y-8">
+                <div class="glass p-8 lg:p-10 rounded-3xl">
+                    <h4 class="font-semibold text-xl">Fresh graduate — why choose me?</h4>
+                    <p class="mt-4 text-slate-400">Because I already have tangible proof: successful Android 13 exploitation, deployed real-world systems, and mentoring experience. I deliver results, not just theory.</p>
+                </div>
+                <div class="glass p-8 lg:p-10 rounded-3xl">
+                    <h4 class="font-semibold text-xl">Can you actually build production systems?</h4>
+                    <p class="mt-4 text-slate-400">Yes. QR attendance systems, automated cloud backups, data analysis pipelines, network monitoring, and live websites — all completed and delivered.</p>
+                </div>
+                <div class="glass p-8 lg:p-10 rounded-3xl">
+                    <h4 class="font-semibold text-xl">Work style and availability?</h4>
+                    <p class="mt-4 text-slate-400">Fully flexible: onsite, hybrid, or remote. Fast learner, comfortable with KPIs and target-driven environments.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FINAL CTA -->
-    <section id="contact" class="py-32 bg-gradient-to-b from-black to-zinc-950 border-t border-slate-800">
-        <div class="max-w-screen-2xl mx-auto px-8 text-center">
-            <div class="max-w-2xl mx-auto">
-                <h2 class="heading-font text-6xl font-semibold">Ready to build more secure,<br>intelligent systems together?</h2>
-                <p class="mt-8 text-xl text-slate-400">Whether it's a full-time role, freelance project, or collaboration — I'm open to opportunities where I can contribute real technical value.</p>
-                
-                <div class="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
-                    <a href="mailto:academicconsultant66@gmail.com" 
-                       class="px-10 py-6 bg-white text-black rounded-3xl font-semibold text-lg hover:bg-cyan-400 hover:text-black transition-all flex items-center justify-center gap-x-3">
-                        <i class="fas fa-envelope"></i>
-                        Send me an email
-                    </a>
-                    <a href="https://wa.me/62855853601150" target="_blank"
-                       class="px-10 py-6 border border-white/30 hover:border-white rounded-3xl font-medium text-lg transition-all">
-                        Message on WhatsApp
-                    </a>
-                </div>
-                
-                <div class="mt-16 text-xs text-slate-500 font-mono">
-                    SALMAN ALHIDAMKARA • TEGALBULEUD, SUKABUMI • +62 855-5360-1150
-                </div>
+    <section id="contact" class="py-28 lg:py-36 bg-gradient-to-b from-black to-zinc-950 border-t border-slate-800">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="heading text-5xl lg:text-6xl font-semibold max-w-3xl mx-auto">Ready to strengthen your systems with real technical depth?</h2>
+            <p class="mt-8 text-xl text-slate-400 max-w-xl mx-auto">Open to full-time roles, freelance projects, or meaningful collaborations in cybersecurity, data, and AI.</p>
+            
+            <div class="mt-14 flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="mailto:academicconsultant66@gmail.com" 
+                   class="px-12 py-6 bg-white text-zinc-950 font-semibold rounded-3xl text-lg hover:bg-cyan-400 transition-all flex items-center justify-center gap-3">
+                    <i class="fas fa-envelope"></i>
+                    Email Me
+                </a>
+                <a href="https://wa.me/62885553601150" target="_blank"
+                   class="px-12 py-6 border border-slate-400 hover:border-white rounded-3xl text-lg transition-all">
+                    Message on WhatsApp
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-black py-12 border-t border-slate-900">
-        <div class="max-w-screen-2xl mx-auto px-8 text-center text-xs text-slate-600">
-            © 2026 Salman Alhidamkara. Built with precision and a touch of neon.
-        </div>
+    <footer class="py-12 text-center text-xs text-slate-600 border-t border-slate-900">
+        © 2026 Salman Alhidamkara • Built with precision and neon
     </footer>
 
     <script>
-        // Simple smooth scroll
+        // Mobile menu toggle (basic)
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            alert("Mobile menu would open here.\n\nIn production: implement full sidebar or dropdown.");
+        });
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href') !== '#') {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
-        
-        // Tailwind script already loaded via CDN
     </script>
 </body>
-                        </html>
+</html>
