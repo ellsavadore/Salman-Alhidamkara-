@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Salman Alhidamkara — Cybersecurity & AI Engineer</title>
 
-<!-- FONT FIX (lebih stabil) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- FONT FIX (ANTI RUSAK DI HP) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg: #0a0a0a;
-  --card: #111;
-  --border: #222;
-  --green: #00ff88;
-  --text: #eaeaea;
-  --muted: #888;
-}
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ROOT */
+:root {
+  --bg: #0b0b0b;
+  --card: #151515;
+  --border: #262626;
+  --green: #00ff88;
+  --white: #eaeaea;
+  --muted: #888;
+
+  --title: 'Space Grotesk', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+/* BODY */
 body {
   background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
+  color: var(--white);
+  font-family: var(--body);
   line-height: 1.6;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 20px;
 }
 
 /* NAV */
@@ -37,20 +53,22 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 14px 20px;
+  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
-  background: rgba(10,10,10,0.9);
   border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-family: var(--mono);
+  color: var(--green);
   font-size: 12px;
 }
 
-.nav-logo {
-  color: var(--green);
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.nav-status {
+.status {
+  font-size: 12px;
   color: var(--muted);
 }
 
@@ -59,196 +77,189 @@ nav {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 100px 20px 60px;
+  padding-top: 80px;
 }
 
-.hero-inner {
-  max-width: 900px;
-  margin: auto;
-}
-
-.hero-tag {
-  font-size: 12px;
-  color: var(--green);
-  font-family: 'JetBrains Mono', monospace;
-  margin-bottom: 16px;
-}
-
-/* FIX FONT BESAR (biar kebaca di HP) */
 .hero h1 {
-  font-size: clamp(32px, 8vw, 72px);
+  font-family: var(--title);
+  font-size: clamp(36px, 10vw, 80px);
   line-height: 1.1;
-  font-weight: 700;
 }
 
 .hero h1 span {
   color: var(--green);
 }
 
-.hero-sub {
+.hero p {
   margin-top: 20px;
-  color: var(--muted);
   font-size: 16px;
-  max-width: 600px;
+  color: var(--muted);
+  max-width: 500px;
 }
 
 /* BUTTON */
-.buttons {
-  margin-top: 30px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
 .btn {
-  padding: 12px 20px;
-  text-decoration: none;
-  font-size: 13px;
-  border-radius: 6px;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.btn-primary {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 24px;
   background: var(--green);
   color: black;
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 12px;
 }
 
 .btn-outline {
   border: 1px solid var(--border);
   color: white;
-}
-
-/* METRICS */
-.metrics {
-  margin-top: 40px;
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.metric {
-  font-size: 14px;
-}
-
-.metric strong {
-  color: var(--green);
-  font-size: 22px;
-  display: block;
+  background: transparent;
+  margin-left: 10px;
 }
 
 /* SECTION */
 section {
-  padding: 60px 20px;
+  padding: 80px 0;
   border-top: 1px solid var(--border);
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-}
-
 h2 {
-  font-size: 28px;
+  font-family: var(--title);
+  font-size: 32px;
   margin-bottom: 20px;
 }
 
-p {
-  color: var(--muted);
-}
-
-/* CARD GRID */
+/* GRID */
 .grid {
   display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  margin-top: 20px;
+  gap: 20px;
 }
 
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* CARD */
 .card {
   background: var(--card);
   padding: 20px;
   border: 1px solid var(--border);
 }
 
-.card h3 {
-  color: var(--green);
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
 /* FOOTER */
 footer {
-  padding: 40px 20px;
+  padding: 40px 0;
   text-align: center;
   color: var(--muted);
-  border-top: 1px solid var(--border);
   font-size: 12px;
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">SALMAN ALHIDAMKARA</div>
-  <div class="nav-status">AVAILABLE FOR HIRE</div>
+  <div class="logo">SALMAN ALHIDAMKARA</div>
+  <div class="status">AVAILABLE FOR HIRE</div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-inner">
-
-    <div class="hero-tag">
-      // Cybersecurity × Data Science × AI — Indonesia
-    </div>
-
+  <div class="container">
     <h1>
-      MOST FRESH<br>
+      MOST FRESH <br>
       <span>GRADS APPLY.</span><br>
       FEW EXPLOIT.
     </h1>
 
-    <p class="hero-sub">
-      I'm the engineer who <strong>cracked Android 13</strong> for a thesis — while others copied Stack Overflow.
+    <p>
+      I'm the engineer who cracked Android 13 for a thesis — while everyone else copied Stack Overflow.
+      9 certifications. 3 languages. Zero fluff.
     </p>
 
-    <div class="buttons">
-      <a href="mailto:academiconsultant66@gmail.com" class="btn btn-primary">Hire Me</a>
-      <a href="https://github.com/" class="btn btn-outline">GitHub</a>
-    </div>
-
-    <div class="metrics">
-      <div class="metric"><strong>9</strong>Certifications</div>
-      <div class="metric"><strong>3</strong>Languages</div>
-      <div class="metric"><strong>80%+</strong>ML Accuracy</div>
-    </div>
-
+    <a href="#" class="btn">Hire Me</a>
+    <a href="#" class="btn btn-outline">GitHub</a>
   </div>
 </section>
 
+<!-- PROBLEM -->
 <section>
   <div class="container">
     <h2>The Problem</h2>
-    <p>Most candidates look good on CV — but fail in real execution.</p>
 
-    <div class="grid">
+    <div class="grid grid-3">
       <div class="card">
         <h3>Fake Skills</h3>
-        <p>Certifications without real projects.</p>
+        <p>Many candidates memorize, not build.</p>
       </div>
 
       <div class="card">
-        <h3>Too Narrow</h3>
-        <p>Only know one domain.</p>
+        <h3>Too Specialized</h3>
+        <p>No one connects security + AI + data.</p>
       </div>
 
       <div class="card">
         <h3>Communication</h3>
-        <p>Language becomes bottleneck.</p>
+        <p>Language barrier slows teams.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SKILLS -->
+<section>
+  <div class="container">
+    <h2>Stack</h2>
+
+    <div class="grid grid-3">
+      <div class="card">Python</div>
+      <div class="card">Cybersecurity</div>
+      <div class="card">Machine Learning</div>
+      <div class="card">Metasploit</div>
+      <div class="card">Cloud</div>
+      <div class="card">Networking</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section>
+  <div class="container">
+    <h2>Stats</h2>
+
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>9</h3>
+        <p>Certifications</p>
+      </div>
+
+      <div class="card">
+        <h3>3</h3>
+        <p>Languages</p>
+      </div>
+
+      <div class="card">
+        <h3>11</h3>
+        <p>Projects</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="container">
+    <h2>Let’s Work</h2>
+    <p>Available for remote, freelance, or full-time.</p>
+
+    <a href="mailto:academiconsultant66@gmail.com" class="btn">
+      Contact Me
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   © 2024 Salman Alhidamkara — Sukabumi, Indonesia
 </footer>
