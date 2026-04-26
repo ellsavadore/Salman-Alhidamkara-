@@ -1,268 +1,480 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salman Alhidamkara | Cyber Security + AI Fresh Graduate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --primary: #0ea5e9;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+        }
 
-<title>Salman Alhidamkara — Cybersecurity & AI Engineer</title>
+        .section-header {
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #0ea5e9;
+            bottom: -8px;
+            left: 0;
+        }
 
-<!-- FONT FIX (ANTI RUSAK DI HP) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
 
-<style>
-
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* ROOT */
-:root {
-  --bg: #0b0b0b;
-  --card: #151515;
-  --border: #262626;
-  --green: #00ff88;
-  --white: #eaeaea;
-  --muted: #888;
-
-  --title: 'Space Grotesk', sans-serif;
-  --body: 'Inter', sans-serif;
-  --mono: 'JetBrains Mono', monospace;
-}
-
-/* BODY */
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: var(--body);
-  line-height: 1.6;
-}
-
-/* CONTAINER */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 0 20px;
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 16px 20px;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(10px);
-}
-
-.logo {
-  font-family: var(--mono);
-  color: var(--green);
-  font-size: 12px;
-}
-
-.status {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: 80px;
-}
-
-.hero h1 {
-  font-family: var(--title);
-  font-size: clamp(36px, 10vw, 80px);
-  line-height: 1.1;
-}
-
-.hero h1 span {
-  color: var(--green);
-}
-
-.hero p {
-  margin-top: 20px;
-  font-size: 16px;
-  color: var(--muted);
-  max-width: 500px;
-}
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 24px;
-  background: var(--green);
-  color: black;
-  text-decoration: none;
-  font-family: var(--mono);
-  font-size: 12px;
-}
-
-.btn-outline {
-  border: 1px solid var(--border);
-  color: white;
-  background: transparent;
-  margin-left: 10px;
-}
-
-/* SECTION */
-section {
-  padding: 80px 0;
-  border-top: 1px solid var(--border);
-}
-
-h2 {
-  font-family: var(--title);
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  gap: 20px;
-}
-
-.grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-/* CARD */
-.card {
-  background: var(--card);
-  padding: 20px;
-  border: 1px solid var(--border);
-}
-
-/* FOOTER */
-footer {
-  padding: 40px 0;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-</style>
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: -1;
+            background-image: 
+                linear-gradient(#0ea5e9 1px, transparent 1px),
+                linear-gradient(90deg, #0ea5e9 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+    </style>
 </head>
+<body class="bg-slate-950 text-slate-200 overflow-x-hidden">
+    <!-- Matrix subtle background -->
+    <div class="matrix-bg"></div>
 
-<body>
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 bg-slate-950/80 backdrop-blur-lg border-b border-slate-800 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-sky-500 rounded-xl flex items-center justify-center font-bold text-white text-2xl">S</div>
+                <div>
+                    <span class="font-bold text-2xl tracking-tighter heading-font">SALMAN</span>
+                    <span class="text-sky-400 text-sm block -mt-1">ALHIDAMKARA</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#home" class="hover:text-sky-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-sky-400 transition-colors">About</a>
+                <a href="#projects" class="hover:text-sky-400 transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
+            </div>
+            <a href="mailto:academicconsultant66@gmail.com" 
+               class="px-6 py-3 bg-sky-500 hover:bg-sky-600 transition-all rounded-2xl font-semibold flex items-center gap-2 text-sm">
+                <i class="fas fa-paper-plane"></i>
+                Hire Me
+            </a>
+        </div>
+    </nav>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">SALMAN ALHIDAMKARA</div>
-  <div class="status">AVAILABLE FOR HIRE</div>
-</nav>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-slate-900 border border-slate-700 px-4 py-2 rounded-3xl text-sm">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    Available for opportunities • Fresh Graduate 2024
+                </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <h1>
-      MOST FRESH <br>
-      <span>GRADS APPLY.</span><br>
-      FEW EXPLOIT.
-    </h1>
+                <h1 class="text-6xl md:text-7xl font-bold leading-none tracking-tighter heading-font">
+                    I BROKE<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-violet-400">ANDROID 13</span>
+                </h1>
 
-    <p>
-      I'm the engineer who cracked Android 13 for a thesis — while everyone else copied Stack Overflow.
-      9 certifications. 3 languages. Zero fluff.
-    </p>
+                <p class="text-2xl text-slate-400 max-w-lg">
+                    Cyber Security + Data Science + AI specialist.<br>
+                    9 professional certifications. Real exploits. Production projects.
+                </p>
 
-    <a href="#" class="btn">Hire Me</a>
-    <a href="#" class="btn btn-outline">GitHub</a>
-  </div>
-</section>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" 
+                       class="px-8 py-4 bg-white text-slate-950 font-semibold rounded-3xl flex items-center gap-3 hover:scale-105 transition-all">
+                        <i class="fas fa-rocket"></i>
+                        Let's Work Together
+                    </a>
+                    <a href="https://github.com/ellsavore/Salman-Alhidamkara" target="_blank"
+                       class="px-8 py-4 border border-slate-600 hover:border-slate-400 font-medium rounded-3xl flex items-center gap-3 transition-all">
+                        <i class="fab fa-github"></i>
+                        View GitHub
+                    </a>
+                </div>
 
-<!-- PROBLEM -->
-<section>
-  <div class="container">
-    <h2>The Problem</h2>
+                <div class="flex items-center gap-8 text-sm pt-8 border-t border-slate-800">
+                    <div>
+                        <div class="text-emerald-400 font-mono text-3xl font-bold">9</div>
+                        <div class="text-slate-400">Certifications</div>
+                    </div>
+                    <div>
+                        <div class="text-emerald-400 font-mono text-3xl font-bold">80%+</div>
+                        <div class="text-slate-400">ML Accuracy</div>
+                    </div>
+                    <div>
+                        <div class="text-emerald-400 font-mono text-3xl font-bold">A2</div>
+                        <div class="text-slate-400">Japanese Level</div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>Fake Skills</h3>
-        <p>Many candidates memorize, not build.</p>
-      </div>
+            <!-- Profile Image -->
+            <div class="relative flex justify-center">
+                <div class="absolute inset-0 bg-gradient-to-br from-sky-500/20 to-violet-500/20 rounded-[4rem] -rotate-6 scale-95"></div>
+                <img src="https://i.imgur.com/placeholder.jpg" alt="Salman Alhidamkara" 
+                     class="w-full max-w-md rounded-3xl shadow-2xl border border-slate-700 object-cover relative z-10">
+                <!-- Replace with real photo if available -->
+                <div class="absolute -bottom-4 -right-4 bg-slate-900 border border-slate-700 rounded-2xl p-4 text-center shadow-xl">
+                    <div class="text-emerald-400 text-2xl font-bold">CompTIA</div>
+                    <div class="text-xs text-slate-400">Security+ Ready</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-slate-500">
+            <div>SCROLL TO DISCOVER</div>
+            <i class="fas fa-chevron-down animate-bounce"></i>
+        </div>
+    </section>
 
-      <div class="card">
-        <h3>Too Specialized</h3>
-        <p>No one connects security + AI + data.</p>
-      </div>
+    <!-- PAIN SECTION -->
+    <section class="py-24 bg-slate-900">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-4 py-2 bg-red-500/10 text-red-400 text-sm font-medium rounded-full">The Harsh Reality</span>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-slate-800/50 border border-slate-700 rounded-3xl p-10 card-hover">
+                    <div class="text-6xl mb-6">😩</div>
+                    <h3 class="text-2xl font-semibold mb-4">Hiring the wrong fresh grad</h3>
+                    <p class="text-slate-400">Someone who only knows theory and can't handle real security threats or data projects.</p>
+                </div>
+                <div class="bg-slate-800/50 border border-slate-700 rounded-3xl p-10 card-hover">
+                    <div class="text-6xl mb-6">⏳</div>
+                    <h3 class="text-2xl font-semibold mb-4">Wasting months on training</h3>
+                    <p class="text-slate-400">Only to discover they lack practical experience with tools like Metasploit or production systems.</p>
+                </div>
+                <div class="bg-slate-800/50 border border-slate-700 rounded-3xl p-10 card-hover">
+                    <div class="text-6xl mb-6">🔍</div>
+                    <h3 class="text-2xl font-semibold mb-4">Missing the rare combo</h3>
+                    <p class="text-slate-400">Cyber Security + Data Science + AI + Japanese language skills.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16 text-3xl font-medium text-slate-300">
+                You don't have to settle anymore.
+            </div>
+        </div>
+    </section>
 
-      <div class="card">
-        <h3>Communication</h3>
-        <p>Language barrier slows teams.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- MECHANISM + ABOUT -->
+    <section id="about" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <div class="sticky top-28">
+                        <span class="text-sky-400 text-sm font-mono tracking-widest">HOW I WORK</span>
+                        <h2 class="text-5xl font-bold heading-font leading-none mt-4 mb-6">
+                            Real Skills.<br>Not Just Theory.
+                        </h2>
+                        <p class="text-lg text-slate-400">
+                            I don't just study cybersecurity — I <span class="text-red-400 font-medium">break Android 13</span> with Metasploit. 
+                            I build systems that are used in the real world.
+                        </p>
+                        <div class="mt-10 flex items-center gap-4">
+                            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+                            <a href="https://repository.nusaputra.ac.id/id/eprint/1320/" target="_blank"
+                               class="text-sky-400 hover:text-sky-300 flex items-center gap-2 text-sm">
+                                Read my Android 13 research <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 space-y-8">
+                    <div class="bg-slate-900 border border-slate-700 rounded-3xl p-10">
+                        <div class="flex gap-6">
+                            <div class="text-7xl text-sky-400">🛡️</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold">Cyber Security Research</h3>
+                                <p class="mt-3 text-slate-400">
+                                    Successfully identified and exploited security vulnerabilities on Android 13 using Metasploit, Kali Linux, and Nmap. 
+                                    Published research available.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="bg-slate-900 border border-slate-700 rounded-3xl p-8">
+                            <h4 class="font-semibold mb-4 flex items-center gap-2">
+                                <i class="fas fa-certificate text-amber-400"></i>
+                                9 Professional Certifications
+                            </h4>
+                            <ul class="space-y-2 text-sm text-slate-400">
+                                <li class="flex items-center gap-2">• CompTIA Security+ (SY0-701)</li>
+                                <li class="flex items-center gap-2">• MikroTik MTCNA</li>
+                                <li class="flex items-center gap-2">• IT Specialist AI & Python</li>
+                                <li class="flex items-center gap-2">• Certified Ethical Hacking (Prep)</li>
+                                <li class="flex items-center gap-2">• Japanese A2 (JF Standard)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-slate-900 border border-slate-700 rounded-3xl p-8">
+                            <h4 class="font-semibold mb-4">What Makes Me Different</h4>
+                            <ul class="space-y-4 text-sm">
+                                <li class="flex gap-3">
+                                    <span class="text-emerald-400 mt-1">✓</span>
+                                    <span>Mentoring 3+ final-year students on security theses</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="text-emerald-400 mt-1">✓</span>
+                                    <span>Built & delivered live village website</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <span class="text-emerald-400 mt-1">✓</span>
+                                    <span>Automated systems with Python & cloud integration</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- SKILLS -->
-<section>
-  <div class="container">
-    <h2>Stack</h2>
+    <!-- BENEFITS -->
+    <section class="py-24 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold heading-font">What You Get When You Hire Me</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-slate-800 border border-slate-700 rounded-3xl p-8 card-hover">
+                    <div class="text-4xl mb-6">🚀</div>
+                    <h3 class="text-2xl font-semibold mb-3">Immediate Impact</h3>
+                    <p class="text-slate-400">Live projects already delivered: Village website, QR attendance system, sales data analysis with visualizations, ML models at 80%+ accuracy.</p>
+                </div>
+                
+                <div class="bg-slate-800 border border-slate-700 rounded-3xl p-8 card-hover">
+                    <div class="text-4xl mb-6">🔒</div>
+                    <h3 class="text-2xl font-semibold mb-3">Real Security Expertise</h3>
+                    <p class="text-slate-400">Hands-on experience exploiting Android 13 vulnerabilities. I understand threats from the attacker's perspective.</p>
+                </div>
+                
+                <div class="bg-slate-800 border border-slate-700 rounded-3xl p-8 card-hover">
+                    <div class="text-4xl mb-6">📊</div>
+                    <h3 class="text-2xl font-semibold mb-3">Data & AI Ready</h3>
+                    <p class="text-slate-400">Python, pandas, scikit-learn, matplotlib — used in real sales analysis and classification projects.</p>
+                </div>
+                
+                <div class="bg-slate-800 border border-slate-700 rounded-3xl p-8 card-hover">
+                    <div class="text-4xl mb-6">🌐</div>
+                    <h3 class="text-2xl font-semibold mb-3">Network + Cloud Foundations</h3>
+                    <p class="text-slate-400">MikroTik certified, Zabbix monitoring, automated cloud backups, and router configurations for small offices/warnet.</p>
+                </div>
+                
+                <div class="bg-slate-800 border border-slate-700 rounded-3xl p-8 card-hover md:col-span-2">
+                    <div class="text-4xl mb-6">🇯🇵</div>
+                    <h3 class="text-2xl font-semibold mb-3">International Readiness</h3>
+                    <p class="text-slate-400">Japanese Level A2 + TOEFL B2. Perfect for MNCs or Japanese-speaking teams. Fast learner, open to onsite/hybrid/remote.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="grid grid-3">
-      <div class="card">Python</div>
-      <div class="card">Cybersecurity</div>
-      <div class="card">Machine Learning</div>
-      <div class="card">Metasploit</div>
-      <div class="card">Cloud</div>
-      <div class="card">Networking</div>
-    </div>
-  </div>
-</section>
+    <!-- PROJECTS -->
+    <section id="projects" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-sky-400 font-mono">PORTFOLIO</span>
+                    <h2 class="text-5xl font-bold heading-font">Selected Work</h2>
+                </div>
+                <a href="https://github.com/ellsavore/Salman-Alhidamkara" target="_blank" 
+                   class="text-sky-400 hover:text-white flex items-center gap-2 text-sm font-medium">
+                    All projects on GitHub <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project cards -->
+                <div class="bg-slate-900 border border-slate-700 rounded-3xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center">
+                        <span class="text-6xl">📱</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-semibold text-xl">Android 13 Security Exploit</h3>
+                        <p class="text-slate-400 text-sm mt-2 line-clamp-3">Research thesis: Identified and exploited real vulnerabilities using Metasploit.</p>
+                        <div class="mt-6 text-xs text-slate-500">2024 • Published</div>
+                    </div>
+                </div>
 
-<!-- STATS -->
-<section>
-  <div class="container">
-    <h2>Stats</h2>
+                <div class="bg-slate-900 border border-slate-700 rounded-3xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 flex items-center justify-center">
+                        <span class="text-6xl">🏘️</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-semibold text-xl">Website Profil Desa Caringin</h3>
+                        <p class="text-slate-400 text-sm mt-2 line-clamp-3">Full village profile website built from scratch and handed over live to the community.</p>
+                        <div class="mt-6 text-xs text-slate-500">2024 • HTML/CSS/JS</div>
+                    </div>
+                </div>
 
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>9</h3>
-        <p>Certifications</p>
-      </div>
+                <div class="bg-slate-900 border border-slate-700 rounded-3xl overflow-hidden card-hover">
+                    <div class="h-48 bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 flex items-center justify-center">
+                        <span class="text-6xl">📊</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-semibold text-xl">Sales Data Analysis + ML</h3>
+                        <p class="text-slate-400 text-sm mt-2 line-clamp-3">Python analysis with visualizations and classification models achieving 80%+ accuracy.</p>
+                        <div class="mt-6 text-xs text-slate-500">2024 • pandas • scikit-learn</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="card">
-        <h3>3</h3>
-        <p>Languages</p>
-      </div>
+    <!-- SOCIAL PROOF -->
+    <section class="py-24 bg-slate-900 border-t border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="italic text-xl text-slate-300">
+                “Salman successfully guided me through my final-year thesis on system security until the defense. His practical knowledge of Metasploit is impressive.”
+            </div>
+            <div class="mt-8 text-sm text-slate-400">— Final-year student mentored (2024–Present)</div>
+            
+            <div class="mt-16 grid grid-cols-3 gap-8 text-center text-sm">
+                <div>
+                    <div class="text-emerald-400 font-mono text-4xl font-bold">3+</div>
+                    <div class="text-slate-400 mt-1">Students Mentored</div>
+                </div>
+                <div>
+                    <div class="text-emerald-400 font-mono text-4xl font-bold">2024</div>
+                    <div class="text-slate-400 mt-1">Projects Delivered</div>
+                </div>
+                <div>
+                    <div class="text-emerald-400 font-mono text-4xl font-bold">Live</div>
+                    <div class="text-slate-400 mt-1">Village Website</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="card">
-        <h3>11</h3>
-        <p>Projects</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- FAQ -->
+    <section class="py-24">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-4xl font-bold heading-font text-center mb-16">Frequently Asked Questions</h2>
+            
+            <div class="space-y-8">
+                <div class="border border-slate-700 rounded-2xl p-8">
+                    <h3 class="font-semibold text-lg mb-3">Is he really job-ready as a fresh graduate?</h3>
+                    <p class="text-slate-400">Yes. Most fresh grads have only theory. I have real Android exploits, delivered production websites, automated systems, and I'm currently mentoring others.</p>
+                </div>
+                
+                <div class="border border-slate-700 rounded-2xl p-8">
+                    <h3 class="font-semibold text-lg mb-3">Can you work with Japanese or MNC teams?</h3>
+                    <p class="text-slate-400">Absolutely. Japanese Level A2 (JF Standard) + professional certifications + fast learning ability make me ready for international environments.</p>
+                </div>
+                
+                <div class="border border-slate-700 rounded-2xl p-8">
+                    <h3 class="font-semibold text-lg mb-3">What technologies do you know?</h3>
+                    <p class="text-slate-400">Metasploit, Python (data science & ML), MikroTik, cloud basics, HTML/CSS/JS, Zabbix monitoring, and more. Always learning fast.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- CTA -->
-<section>
-  <div class="container">
-    <h2>Let’s Work</h2>
-    <p>Available for remote, freelance, or full-time.</p>
+    <!-- FINAL CTA -->
+    <section id="contact" class="py-32 bg-gradient-to-b from-slate-900 to-black">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-sky-500/10 rounded-3xl mb-8">
+                <span class="text-5xl">🚀</span>
+            </div>
+            
+            <h2 class="text-6xl font-bold heading-font tracking-tighter mb-6">
+                Ready to hire a rare talent?
+            </h2>
+            
+            <p class="text-2xl text-slate-400 max-w-lg mx-auto mb-12">
+                Don't hire another average fresh graduate.<br>
+                Hire the one who already knows how to break — and protect — systems.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="mailto:academicconsultant66@gmail.com" 
+                   class="group px-10 py-6 bg-white text-slate-950 font-bold text-xl rounded-3xl flex items-center justify-center gap-4 hover:bg-amber-300 transition-all w-full sm:w-auto">
+                    Send Email Now
+                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+                
+                <a href="tel:+6285536601150" 
+                   class="px-10 py-6 border-2 border-slate-600 hover:border-white font-medium text-xl rounded-3xl flex items-center gap-3 transition-all">
+                    <i class="fas fa-phone"></i>
+                    +62 855-3660-1150
+                </a>
+            </div>
+            
+            <div class="mt-16 text-xs text-slate-500 space-x-8">
+                <a href="https://github.com/ellsavore/Salman-Alhidamkara" target="_blank" class="hover:text-slate-300">GitHub</a>
+                <span>•</span>
+                <span>Tegalbuleud, Sukabumi, West Java</span>
+                <span>•</span>
+                <span>Open to relocation & remote</span>
+            </div>
+        </div>
+    </section>
 
-    <a href="mailto:academiconsultant66@gmail.com" class="btn">
-      Contact Me
-    </a>
-  </div>
-</section>
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 text-center text-slate-500 text-sm">
+            © 2026 Salman Alhidamkara • Built as a high-converting portfolio landing page<br>
+            <span class="text-xs">Sarjana Teknik Informatika • Universitas Nusa Putra</span>
+        </div>
+    </footer>
 
-<!-- FOOTER -->
-<footer>
-  © 2024 Salman Alhidamkara — Sukabumi, Indonesia
-</footer>
-
+    <script>
+        // Tailwind script already loaded via CDN
+        console.log('%cSalman Alhidamkara Portfolio Landing Page Loaded', 'color: #0ea5e9; font-weight: bold');
+        
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
