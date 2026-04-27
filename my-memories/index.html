@@ -1,1 +1,1348 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Memories — Kenangan yang Tak Pernah Pudar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    /* ============================================
+       CSS VARIABLES & RESET
+    ============================================ */
+    :root {
+      --beige: #faf5ef;
+      --cream: #f7f0e6;
+      --warm-white: #fffcf8;
+      --blush: #f5ddd6;
+      --rose: #e8a5a0;
+      --dusty-rose: #c97f7a;
+      --pink-soft: #fce4ec;
+      --mauve: #b76e79;
+      --brown-warm: #8b5e52;
+      --text-dark: #3d2b1f;
+      --text-mid: #6b4c3b;
+      --text-light: #a07060;
+      --gold: #c9a96e;
+      --shadow: rgba(139, 94, 82, 0.12);
+      --shadow-deep: rgba(61, 43, 31, 0.18);
+      --font-display: 'Playfair Display', serif;
+      --font-script: 'Dancing Script', cursive;
+      --font-body: 'Lora', serif;
+      --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    [data-theme="dark"] {
+      --beige: #1a1310;
+      --cream: #221a15;
+      --warm-white: #2a1f18;
+      --blush: #3d2520;
+      --rose: #7a3f3a;
+      --dusty-rose: #9e5a55;
+      --pink-soft: #2d1a1a;
+      --mauve: #c4848f;
+      --brown-warm: #d4a090;
+      --text-dark: #f5ede5;
+      --text-mid: #d4b8a8;
+      --text-light: #a88878;
+      --gold: #c9a96e;
+      --shadow: rgba(0,0,0,0.3);
+      --shadow-deep: rgba(0,0,0,0.5);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--beige);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      transition: background 0.5s ease, color 0.5s ease;
+      cursor: default;
+    }
+
+    /* ============================================
+       CUSTOM CURSOR
+    ============================================ */
+    .cursor {
+      width: 12px; height: 12px;
+      background: var(--dusty-rose);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+      mix-blend-mode: multiply;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--dusty-rose);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.35s ease, width 0.3s, height 0.3s, opacity 0.3s;
+      opacity: 0.5;
+    }
+
+    /* ============================================
+       ENTRY SCREEN (Klik untuk masuk)
+    ============================================ */
+    #entry-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: var(--cream);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    #entry-screen.hide {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.05);
+    }
+    .entry-content {
+      text-align: center;
+      padding: 2rem;
+    }
+    .entry-title {
+      font-family: var(--font-script);
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      color: var(--mauve);
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      animation: breathe 3s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    .entry-sub {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--text-light);
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      margin: 1.2rem 0 2.5rem;
+      letter-spacing: 0.08em;
+    }
+    .entry-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2.5rem;
+      border: 1.5px solid var(--dusty-rose);
+      background: transparent;
+      color: var(--dusty-rose);
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: var(--transition);
+      border-radius: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .entry-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--dusty-rose);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+      z-index: -1;
+    }
+    .entry-btn:hover::before { transform: scaleX(1); }
+    .entry-btn:hover { color: white; }
+    .entry-petals {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      width: 8px; height: 12px;
+      background: var(--blush);
+      border-radius: 50% 0 50% 0;
+      opacity: 0.4;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 0.4; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ============================================
+       NAVBAR / CONTROLS
+    ============================================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      background: rgba(250, 245, 239, 0.85);
+      border-bottom: 1px solid rgba(197, 127, 122, 0.15);
+      transition: background 0.5s ease, border-color 0.5s;
+    }
+    [data-theme="dark"] #navbar {
+      background: rgba(26, 19, 16, 0.9);
+    }
+    .nav-brand {
+      font-family: var(--font-script);
+      font-size: 1.5rem;
+      color: var(--mauve);
+      text-decoration: none;
+    }
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .ctrl-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-mid);
+      transition: color 0.3s, transform 0.3s;
+      padding: 0.4rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+    }
+    .ctrl-btn:hover { color: var(--mauve); transform: scale(1.15); }
+    .ctrl-btn svg { width: 20px; height: 20px; fill: currentColor; }
+    .volume-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 70px;
+      height: 3px;
+      background: var(--blush);
+      border-radius: 2px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--dusty-rose);
+      cursor: pointer;
+    }
+
+    /* ============================================
+       HERO / OPENING
+    ============================================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem 4rem;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 60%, rgba(248, 210, 200, 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(252, 228, 236, 0.4) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 100%, rgba(201, 169, 110, 0.1) 0%, transparent 50%);
+    }
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c97f7a' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.8;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.5s forwards;
+    }
+    .hero-title {
+      font-family: var(--font-script);
+      font-size: clamp(4rem, 12vw, 9rem);
+      color: var(--mauve);
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.8s forwards;
+    }
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--text-mid);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 1.1s forwards;
+    }
+    #typing-text {
+      font-family: var(--font-script);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--dusty-rose);
+      min-height: 2em;
+      opacity: 0;
+      animation: fadeUp 1s ease 1.5s forwards;
+    }
+    .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: var(--dusty-rose);
+      vertical-align: text-bottom;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-light);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 1s ease 2s forwards;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--dusty-rose), transparent);
+      animation: scrollDown 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================
+       SECTION COMMON
+    ============================================ */
+    section { padding: 6rem 2rem; }
+    .section-label {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 0.78rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--mauve);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem auto 3rem;
+      max-width: 300px;
+    }
+    .div-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--rose), transparent);
+    }
+    .div-flower { color: var(--rose); font-size: 0.9rem; }
+
+    /* ============================================
+       REVEAL ANIMATION
+    ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ============================================
+       GALLERY SECTION
+    ============================================ */
+    #gallery { background: var(--warm-white); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .photo-card {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      background: white;
+      padding: 12px 12px 50px;
+      transform: rotate(var(--rot, 0deg));
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+    .photo-card:hover {
+      transform: rotate(0deg) scale(1.03) translateY(-6px);
+      box-shadow: 0 16px 40px var(--shadow-deep);
+      z-index: 10;
+    }
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.4s ease;
+    }
+    .photo-card:hover img { filter: brightness(1.03) saturate(1.05); }
+    .photo-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 10px 14px 12px;
+      background: white;
+      font-family: var(--font-script);
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(197,127,122,0.6) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 60px;
+    }
+    .photo-card:hover .photo-overlay { opacity: 1; }
+    .photo-overlay-text {
+      color: white;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0 1rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+
+    /* ============================================
+       QUOTE STRIP
+    ============================================ */
+    #quote-strip {
+      padding: 5rem 2rem;
+      background: var(--blush);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    [data-theme="dark"] #quote-strip { background: var(--pink-soft); }
+    #quote-strip::before {
+      content: '"';
+      position: absolute;
+      top: -1rem; left: 3%;
+      font-family: var(--font-display);
+      font-size: 18rem;
+      color: var(--rose);
+      opacity: 0.12;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .strip-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      color: var(--brown-warm);
+      max-width: 680px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+    .strip-attr {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-light);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       SPECIAL MESSAGE / LETTER
+    ============================================ */
+    #letter {
+      background: var(--cream);
+      padding: 7rem 2rem;
+    }
+    .letter-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      background: white;
+      padding: clamp(2rem, 5vw, 4rem);
+      box-shadow: 0 8px 40px var(--shadow), inset 0 0 0 1px rgba(197,127,122,0.1);
+      border-radius: 2px;
+      position: relative;
+    }
+    [data-theme="dark"] .letter-wrap { background: var(--warm-white); }
+    .letter-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--blush), var(--dusty-rose), var(--gold));
+    }
+    .letter-date {
+      font-family: var(--font-script);
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .letter-body {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
+      line-height: 1.9;
+      color: var(--text-mid);
+      font-style: italic;
+    }
+    .letter-body p { margin-bottom: 1.4em; }
+    .letter-sign {
+      font-family: var(--font-script);
+      font-size: 2rem;
+      color: var(--mauve);
+      margin-top: 2rem;
+    }
+
+    /* ============================================
+       TIMELINE STRIP
+    ============================================ */
+    #timeline {
+      padding: 6rem 2rem;
+      background: var(--warm-white);
+    }
+    .timeline-track {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline-track::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--rose), transparent);
+    }
+    .t-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 1.5rem;
+    }
+    .t-item::before {
+      content: '✿';
+      position: absolute;
+      left: -0.7rem;
+      top: 0.2rem;
+      color: var(--dusty-rose);
+      font-size: 0.85rem;
+    }
+    .t-date {
+      font-family: var(--font-script);
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .t-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .t-desc {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       CLOSING / FOOTER
+    ============================================ */
+    #closing {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .closing-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 80%, rgba(232,165,160,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 20%, rgba(252,228,236,0.3) 0%, transparent 50%);
+    }
+    .closing-content { position: relative; z-index: 2; }
+    .closing-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      color: var(--text-mid);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .closing-script {
+      font-family: var(--font-script);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--mauve);
+      margin-bottom: 1.5rem;
+    }
+    .closing-note {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-light);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background: var(--beige);
+      border-top: 1px solid rgba(197,127,122,0.1);
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    /* ============================================
+       MUSIC STATUS TOAST
+    ============================================ */
+    #music-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--warm-white);
+      border: 1px solid var(--blush);
+      border-radius: 50px;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      box-shadow: 0 4px 16px var(--shadow);
+      z-index: 200;
+      transform: translateY(100px);
+      transition: transform 0.5s ease;
+    }
+    #music-toast.show { transform: translateY(0); }
+    #music-toast.hide { transform: translateY(100px); }
+    .toast-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--dusty-rose);
+      animation: pulse-dot 1.2s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.6; }
+    }
+
+    /* ============================================
+       RAIN TOGGLE
+    ============================================ */
+    #rain-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    #rain-canvas.active { opacity: 0.35; }
+
+    /* ============================================
+       LIGHTBOX
+    ============================================ */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(30, 18, 14, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      padding: 2rem;
+    }
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lb-inner {
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+    #lb-img {
+      max-height: 70vh;
+      max-width: 100%;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      object-fit: contain;
+    }
+    #lb-caption {
+      font-family: var(--font-script);
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+    #lb-close {
+      position: absolute;
+      top: 1.5rem; right: 2rem;
+      background: none; border: none;
+      color: white; font-size: 1.5rem;
+      cursor: pointer; opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    #lb-close:hover { opacity: 1; }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 640px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .photo-card { padding: 8px 8px 42px; }
+      input[type=range] { width: 50px; }
+    }
+    @media (max-width: 400px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- Rain Canvas -->
+<canvas id="rain-canvas"></canvas>
+
+<!-- Audio -->
+<audio id="bg-music" loop preload="auto">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg"/>
+  <!-- Replace with: A Thousand Years - Christina Perri (local file: music/a-thousand-years.mp3) -->
+</audio>
+
+<!-- Music Toast -->
+<div id="music-toast">
+  <div class="toast-dot"></div>
+  <span id="toast-text">♪ A Thousand Years</span>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lb-close" onclick="closeLightbox()">✕</button>
+  <div class="lb-inner">
+    <img id="lb-img" src="" alt=""/>
+    <p id="lb-caption"></p>
+  </div>
+</div>
+
+<!-- ==========================================
+     ENTRY SCREEN
+========================================== -->
+<div id="entry-screen">
+  <div class="entry-petals" id="petals-container"></div>
+  <div class="entry-content">
+    <p style="font-family:var(--font-body);font-style:italic;font-size:0.78rem;letter-spacing:0.3em;color:var(--text-light);text-transform:uppercase;margin-bottom:1rem;">a journey through time</p>
+    <div class="entry-title">My Memories</div>
+    <p class="entry-sub">Setiap foto menyimpan seribu kata yang tak terucap...</p>
+    <button class="entry-btn" onclick="enterSite()">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+      Buka Kenangan
+    </button>
+    <p style="margin-top:2rem;font-family:var(--font-body);font-style:italic;font-size:0.72rem;color:var(--text-light);">✦ Musik akan mulai otomatis ✦</p>
+  </div>
+</div>
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+<nav id="navbar">
+  <a href="#hero" class="nav-brand">My Memories</a>
+  <div class="nav-controls">
+    <!-- Dark Mode -->
+    <button class="ctrl-btn" id="theme-btn" title="Dark/Light Mode" onclick="toggleTheme()">
+      <svg viewBox="0 0 24 24" id="theme-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <!-- Rain Toggle -->
+    <button class="ctrl-btn" id="rain-btn" title="Ambient Rain" onclick="toggleRain()">
+      <svg viewBox="0 0 24 24"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9M16 14v6M8 14v6M12 16v6"/></svg>
+    </button>
+    <!-- Music Controls -->
+    <button class="ctrl-btn" id="play-btn" title="Play/Pause" onclick="toggleMusic()">
+      <svg viewBox="0 0 24 24" id="play-icon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </button>
+    <div class="volume-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-light)"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      <input type="range" id="volume" min="0" max="1" step="0.05" value="0.6" oninput="setVolume(this.value)"/>
+    </div>
+  </div>
+</nav>
+
+<!-- ==========================================
+     HERO
+========================================== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ a personal album ✦</p>
+    <h1 class="hero-title">My Memories</h1>
+    <p class="hero-tagline">Karena setiap momen yang berlalu<br/>meninggalkan jejak di hati yang takkan terhapus waktu.</p>
+    <div id="typing-text"><span id="typed"></span><span class="cursor-blink"></span></div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ==========================================
+     GALLERY
+========================================== -->
+<section id="gallery">
+  <p class="section-label reveal">✦ Kenangan Berharga ✦</p>
+  <h2 class="section-title reveal">Galeri Kenangan</h2>
+  <div class="section-divider reveal">
+    <div class="div-line"></div>
+    <span class="div-flower">✿</span>
+    <div class="div-line"></div>
+  </div>
+
+  <div class="gallery-grid">
+
+    <div class="photo-card reveal reveal-delay-1" style="--rot:-1.5deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&q=80" alt="Kenangan 1"
+           data-caption="Bersamamu, waktu berjalan lebih lambat dan semua terasa lebih berwarna."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Waktu Paling Indah</p></div>
+      <div class="photo-caption">"Bersamamu, semuanya jadi lebih berarti..."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-2" style="--rot:1.2deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&q=80" alt="Kenangan 2"
+           data-caption="Persahabatan sejati tak butuh kata-kata, cukup kehadiran yang selalu ada."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Sahabat Sejati</p></div>
+      <div class="photo-caption">"Kamu selalu ada di setiap bab hidupku."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-3" style="--rot:-0.8deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1496275068113-fff8c90750d1?w=500&q=80" alt="Kenangan 3"
+           data-caption="Dalam keheningan malam, kusimpan namamu bersama bintang-bintang yang paling terang."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Malam yang Damai</p></div>
+      <div class="photo-caption">"Seperti bintang, kamu selalu bersinar untukku."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-4" style="--rot:2deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=500&q=80" alt="Kenangan 4"
+           data-caption="Setiap foto bersamamu menyimpan sejuta tawa yang tak pernah basi."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Tawa yang Abadi</p></div>
+      <div class="photo-caption">"Tawa kita adalah soundtrack hidupku."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-5" style="--rot:-1.8deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1518398046578-8cca57782e17?w=500&q=80" alt="Kenangan 5"
+           data-caption="Musim berganti, tapi rasa ini tetap sama seperti hari pertama."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Rindu yang Abadi</p></div>
+      <div class="photo-caption">"Rinduku padamu tak pernah kehabisan musim."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-1" style="--rot:0.9deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=500&q=80" alt="Kenangan 6"
+           data-caption="Kita membangun rumah di dalam kenangan, dan aku selalu pulang ke sana."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Rumah di Hati</p></div>
+      <div class="photo-caption">"Kamu adalah rumah yang selalu kurindukan."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-2" style="--rot:-2.1deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&q=80" alt="Kenangan 7"
+           data-caption="Petualangan terbaik adalah yang kita jalani bersama orang tersayang."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Petualangan Kita</p></div>
+      <div class="photo-caption">"Di mana pun kita pergi, itu selalu terasa seperti surga."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-3" style="--rot:1.5deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500&q=80" alt="Kenangan 8"
+           data-caption="Senyummu adalah obat terbaik yang pernah kutemukan di dunia ini."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Senyum yang Menyembuhkan</p></div>
+      <div class="photo-caption">"Satu senyummu cukup untuk mengubah hariku."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-4" style="--rot:-0.5deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=500&q=80" alt="Kenangan 9"
+           data-caption="Seperti pohon yang berakar kuat, persahabatan kita tumbuh semakin dalam."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Ikatan yang Kuat</p></div>
+      <div class="photo-caption">"Kamu adalah tempat aku tumbuh paling baik."</div>
+    </div>
+
+    <div class="photo-card reveal reveal-delay-5" style="--rot:1.8deg" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1476900164809-ff19b8ae5968?w=500&q=80" alt="Kenangan 10"
+           data-caption="Di ujung setiap perjalanan panjang, kamu selalu menjadi tujuan pulangku."/>
+      <div class="photo-overlay"><p class="photo-overlay-text">Perjalanan Pulang</p></div>
+      <div class="photo-caption">"Kamu adalah alasan aku ingin pulang."</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================
+     QUOTE STRIP
+========================================== -->
+<div id="quote-strip">
+  <p class="strip-quote reveal">
+    "Kenangan bukan tentang apa yang kita ingat,<br/>
+    melainkan tentang bagaimana hati kita merasakannya<br/>
+    setiap kali kita kembali ke sana."
+  </p>
+  <p class="strip-attr reveal">— My Memories, Selalu</p>
+</div>
+
+<!-- ==========================================
+     SPECIAL MESSAGE / LETTER
+========================================== -->
+<section id="letter">
+  <p class="section-label reveal">✦ Dari Hati ke Hati ✦</p>
+  <h2 class="section-title reveal">Surat untuk Kenangan</h2>
+  <div class="section-divider reveal">
+    <div class="div-line"></div>
+    <span class="div-flower">✿</span>
+    <div class="div-line"></div>
+  </div>
+
+  <div class="letter-wrap reveal">
+    <p class="letter-date">Suatu hari yang tak terlupakan...</p>
+    <div class="letter-body">
+      <p>Kepada semua momen yang pernah hadir dalam hidupku,</p>
+      <p>
+        Kamu tahu? Ada hari-hari di mana aku duduk sendiri, menatap langit-langit kamar, 
+        dan tiba-tiba senyum itu muncul sendiri. Bukan karena ada yang lucu. Tapi karena 
+        aku teringat kamu. Teringat kita. Teringat semua momen kecil yang dulu kita anggap 
+        biasa, tapi sekarang terasa luar biasa berharganya.
+      </p>
+      <p>
+        Aku teringat tertawa sampai perut sakit di pinggir jalan. Aku teringat diam bersama 
+        tanpa perlu berkata apa-apa, karena diam kita pun sudah bercerita begitu banyak. 
+        Aku teringat saat hujan turun dan kita berteduh di tempat yang sama, memandang 
+        butir-butir air itu seperti sedang menonton film terbaik dalam hidup.
+      </p>
+      <p>
+        Waktu memang terus berjalan. Orang-orang datang dan pergi. Tapi ada yang tidak 
+        berubah — perasaan hangat yang selalu muncul setiap kali aku membuka album kenangan 
+        ini. Setiap foto, setiap tawa yang terekam, setiap mata yang berbinar di balik lensa — 
+        semuanya masih hidup di sini, di dadaku yang paling dalam.
+      </p>
+      <p>
+        Terima kasih sudah menjadi bagian dari cerita hidupku. Terima kasih sudah mengajarkanku 
+        bahwa kebahagiaan sejati bukan tentang seberapa besar momen itu, melainkan seberapa 
+        tulus hati yang hadir di dalamnya.
+      </p>
+      <p>Aku mencintai setiap kenangan ini, selamanya.</p>
+    </div>
+    <p class="letter-sign">Dengan sepenuh hati ♡</p>
+  </div>
+</section>
+
+<!-- ==========================================
+     TIMELINE
+========================================== -->
+<section id="timeline">
+  <p class="section-label reveal">✦ Jejak Waktu ✦</p>
+  <h2 class="section-title reveal">Perjalanan Kita</h2>
+  <div class="section-divider reveal">
+    <div class="div-line"></div>
+    <span class="div-flower">✿</span>
+    <div class="div-line"></div>
+  </div>
+  <div class="timeline-track">
+    <div class="t-item reveal">
+      <p class="t-date">Awal Segalanya</p>
+      <p class="t-title">Pertemuan Pertama</p>
+      <p class="t-desc">Siapa sangka satu pertemuan biasa bisa mengubah seluruh arah hidupku? Kamu hadir tanpa tanda-tanda, tapi meninggalkan bekas yang abadi.</p>
+    </div>
+    <div class="t-item reveal reveal-delay-1">
+      <p class="t-date">Hari-hari Penuh Tawa</p>
+      <p class="t-title">Petualangan Kecil yang Tak Terlupakan</p>
+      <p class="t-desc">Dari warung kopi di sudut kota sampai pantai yang tak punya nama — setiap perjalanan bersamamu terasa seperti dongeng.</p>
+    </div>
+    <div class="t-item reveal reveal-delay-2">
+      <p class="t-date">Momen Berharga</p>
+      <p class="t-title">Ketika Waktu Terasa Berhenti</p>
+      <p class="t-desc">Ada momen di mana aku ingin membekukan segalanya. Biarkan dunia berhenti, dan kita tetap di sana, dalam cahaya itu, selamanya.</p>
+    </div>
+    <div class="t-item reveal reveal-delay-3">
+      <p class="t-date">Sekarang & Selamanya</p>
+      <p class="t-title">Kenangan yang Terus Hidup</p>
+      <p class="t-desc">Kamu mungkin jauh, waktu terus berlari — tapi di sini, di album ini, semua masih abadi seperti hari pertama.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     CLOSING
+========================================== -->
+<section id="closing">
+  <div class="closing-bg"></div>
+  <div class="closing-content">
+    <p class="section-label reveal">✦ Sampai Jumpa di Kenangan Selanjutnya ✦</p>
+    <div class="closing-script reveal">Terima Kasih</div>
+    <p class="closing-quote reveal">
+      "Hidup ini singkat. Tapi kenangan yang kita buat bersama 
+      orang-orang yang kita cintai — itu adalah keabadian."
+    </p>
+    <p class="closing-note reveal">✦ My Memories — Always & Forever ✦</p>
+  </div>
+</section>
+
+<footer>
+  <p>Made with ♡ | My Memories — <em>Karena setiap kenangan layak untuk diingat</em></p>
+</footer>
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+<script>
+  /* ============================================
+     ENTRY SCREEN
+  ============================================ */
+  // Create falling petals
+  const petalsContainer = document.getElementById('petals-container');
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.classList.add('petal');
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (4 + Math.random() * 8) + 's';
+    p.style.animationDelay = (Math.random() * 5) + 's';
+    p.style.width = (6 + Math.random() * 8) + 'px';
+    p.style.height = (9 + Math.random() * 10) + 'px';
+    p.style.opacity = 0.2 + Math.random() * 0.4;
+    petalsContainer.appendChild(p);
+  }
+
+  function enterSite() {
+    document.getElementById('entry-screen').classList.add('hide');
+    setTimeout(() => {
+      document.getElementById('entry-screen').style.display = 'none';
+      startMusic();
+      showToast();
+    }, 1300);
+  }
+
+  /* ============================================
+     MUSIC
+  ============================================ */
+  const audio = document.getElementById('bg-music');
+  const playIcon = document.getElementById('play-icon');
+  let isPlaying = false;
+
+  audio.volume = 0.6;
+
+  function startMusic() {
+    audio.play().then(() => {
+      isPlaying = true;
+      updatePlayIcon();
+    }).catch(() => {});
+  }
+
+  function toggleMusic() {
+    if (isPlaying) {
+      audio.pause();
+      isPlaying = false;
+    } else {
+      audio.play();
+      isPlaying = true;
+      showToast();
+    }
+    updatePlayIcon();
+  }
+
+  function setVolume(v) {
+    audio.volume = parseFloat(v);
+  }
+
+  function updatePlayIcon() {
+    if (isPlaying) {
+      playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+    } else {
+      playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+    }
+  }
+
+  /* Music toast */
+  function showToast() {
+    const toast = document.getElementById('music-toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+
+  /* ============================================
+     DARK MODE
+  ============================================ */
+  const themeIcon = document.getElementById('theme-icon');
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    themeIcon.innerHTML = isDark
+      ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'
+      : '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  }
+
+  /* ============================================
+     RAIN EFFECT
+  ============================================ */
+  const canvas = document.getElementById('rain-canvas');
+  const ctx = canvas.getContext('2d');
+  let rainActive = false;
+  let animId;
+  let drops = [];
+
+  function initRain() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    drops = [];
+    for (let i = 0; i < 120; i++) {
+      drops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        length: 10 + Math.random() * 20,
+        speed: 3 + Math.random() * 5,
+        opacity: 0.2 + Math.random() * 0.5
+      });
+    }
+  }
+
+  function drawRain() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drops.forEach(d => {
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - 1, d.y + d.length);
+      ctx.strokeStyle = `rgba(197,127,122,${d.opacity})`;
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+      d.y += d.speed;
+      if (d.y > canvas.height) {
+        d.y = -d.length;
+        d.x = Math.random() * canvas.width;
+      }
+    });
+    animId = requestAnimationFrame(drawRain);
+  }
+
+  function toggleRain() {
+    rainActive = !rainActive;
+    if (rainActive) {
+      initRain();
+      canvas.classList.add('active');
+      drawRain();
+    } else {
+      canvas.classList.remove('active');
+      cancelAnimationFrame(animId);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+
+  window.addEventListener('resize', () => {
+    if (rainActive) initRain();
+  });
+
+  /* ============================================
+     TYPING EFFECT
+  ============================================ */
+  const phrases = [
+    "Setiap kenangan adalah hadiah yang tak ternilai...",
+    "Waktu berlalu, tapi cinta kita abadi...",
+    "Bersyukur pernah hadir dalam hidupmu...",
+    "Terima kasih untuk semua momen indah itu...",
+    "Kamu adalah bagian terbaik dari hidupku..."
+  ];
+  let phraseIdx = 0, charIdx = 0, deleting = false;
+  const typed = document.getElementById('typed');
+
+  function typeWriter() {
+    const current = phrases[phraseIdx];
+    if (!deleting) {
+      typed.textContent = current.substring(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        deleting = true;
+        setTimeout(typeWriter, 2200);
+        return;
+      }
+    } else {
+      typed.textContent = current.substring(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        deleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+      }
+    }
+    setTimeout(typeWriter, deleting ? 40 : 70);
+  }
+  setTimeout(typeWriter, 2500);
+
+  /* ============================================
+     SCROLL REVEAL
+  ============================================ */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ============================================
+     CUSTOM CURSOR
+  ============================================ */
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  (function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  })();
+
+  document.querySelectorAll('button, a, .photo-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(2)';
+      ring.style.transform = 'translate(-50%,-50%) scale(1.5)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.transform = 'translate(-50%,-50%) scale(1)';
+    });
+  });
+
+  /* ============================================
+     LIGHTBOX
+  ============================================ */
+  function openLightbox(card) {
+    const img = card.querySelector('img');
+    const caption = img.getAttribute('data-caption') || card.querySelector('.photo-caption').textContent;
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lb-caption').textContent = caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  /* ============================================
+     NAVBAR SCROLL STYLE
+  ============================================ */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 4px 24px rgba(61,43,31,0.08)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>
 
