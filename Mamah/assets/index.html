@@ -1,212 +1,580 @@
+```html
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUXYNK - Luxury Omnichannel Sales Suite</title>
-    
-    <!-- Tailwind CSS Play CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        display: ['"Playfair Display"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        gold: {
-                            50: '#FFFBEB',
-                            100: '#FEF3C7',
-                            200: '#FDE68A',
-                            300: '#FCD34D',
-                            400: '#FBBF24',
-                            500: '#D4AF37',
-                            600: '#B8941F',
-                            700: '#997A18',
-                            800: '#7A6112',
-                            900: '#5C490D',
-                        }
-                    }
-                }
-            }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LUXYNK — Luxury Omnichannel Sales Suite</title>
+
+<!-- Tailwind Play CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Alpine.js -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          gold: {
+            50:  '#FBF6E9',
+            100: '#F4E9C8',
+            200: '#E9D28A',
+            300: '#D9B65B',
+            400: '#C99A3A',
+            500: '#B8872A',
+            600: '#96691F',
+            700: '#6F4D17',
+          },
+          ink: {
+            950: '#07070A',
+            900: '#0C0C10',
+            800: '#141418',
+            700: '#1C1C22',
+            600: '#26262D',
+          }
+        },
+        boxShadow: {
+          'gold-glow': '0 0 30px -5px rgba(217,182,91,0.35), 0 0 60px -15px rgba(217,182,91,0.25)',
+          'soft': '0 10px 40px -10px rgba(0,0,0,0.25)',
         }
-    </script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-        }
-        
-        /* Smooth transitions */
-        [x-cloak] { 
-            display: none !important; 
-        }
-        
-        .fade-enter {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Background gradient animation */
-        .hero-gradient {
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 25%, #2d2416 50%, #1a1a1a 75%, #0f0f0f 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        /* Parallax effect */
-        .parallax-slow {
-            transition: transform 0.3s ease-out;
-        }
-        
-        /* Button hover effects */
-        .btn-luxury {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-luxury::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        
-        .btn-luxury:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .btn-luxury:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-        }
-        
-        .btn-luxury:active {
-            transform: translateY(-1px) scale(0.98);
-        }
-        
-        /* Product card hover */
-        .product-card {
-            transition: all 0.4s ease;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .product-card img {
-            transition: transform 0.6s ease;
-        }
-        
-        .product-card:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* Lightbox */
-        .lightbox {
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.3s ease;
-        }
-        
-        /* Countdown timer */
-        .countdown-digit {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-        
-        /* Scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #D4AF37;
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #B8941F;
-        }
-        
-        /* Filter button active state */
-        .filter-btn {
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn.active {
-            color: #D4AF37;
-        }
-        
-        .filter-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
-            box-shadow: 0 0 8px #D4AF37;
-        }
-        
-        /* Gold shimmer effect */
-        .gold-shimmer {
-            background: linear-gradient(90deg, #D4AF37 0%, #FCD34D 50%, #D4AF37 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #07070A;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #0C0C10; }
+  ::-webkit-scrollbar-thumb { background: #26262D; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #D9B65B; }
+
+  /* Animated luxury gradient background */
+  .lux-bg {
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 10%, rgba(217,182,91,0.12), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 80% 90%, rgba(201,154,58,0.10), transparent 60%),
+      radial-gradient(ellipse 80% 70% at 50% 50%, rgba(20,20,24,1), rgba(7,7,10,1) 80%);
+  }
+
+  .lux-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(217,182,91,0.15), transparent 50%);
+    animation: pulse-bg 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes pulse-bg {
+    0%,100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  /* Float animation */
+  .float { animation: float 6s ease-in-out infinite; }
+  @keyframes float {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* Shimmer gold border */
+  .gold-ring {
+    background: conic-gradient(from 0deg, #6F4D17, #E9D28A, #D9B65B, #FBF6E9, #C99A3A, #6F4D17);
+    animation: spin-slow 8s linear infinite;
+  }
+  @keyframes spin-slow {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Glass effect */
+  .glass {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .glass-light {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px);
+  }
+
+  /* Button hover glow */
+  .btn-lux {
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-lux:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 30px -5px rgba(217,182,91,0.4), 0 10px 40px -10px rgba(0,0,0,0.5);
+    border-color: rgba(217,182,91,0.5);
+  }
+  .btn-lux:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Fade in + scale */
+  [x-cloak] { display: none !important; }
+  .fade-enter {
+    animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px) scale(0.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Product card */
+  .product-card {
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.4), 0 0 20px -5px rgba(217,182,91,0.2);
+  }
+  .product-card .zoom-img {
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .product-card:hover .zoom-img {
+    transform: scale(1.08);
+  }
+
+  /* Gold text gradient */
+  .gold-text {
+    background: linear-gradient(135deg, #FBF6E9 0%, #E9D28A 30%, #D9B65B 55%, #C99A3A 80%, #FBF6E9 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 6s ease-in-out infinite;
+  }
+  @keyframes shimmer {
+    0%,100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Tab pill indicator */
+  .tab-pill {
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Countdown */
+  .count-digit {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* Sidebar link */
+  .side-link {
+    transition: all 0.3s ease;
+  }
+  .side-link:hover {
+    background: rgba(217,182,91,0.08);
+    color: #E9D28A;
+  }
+  .side-link.active {
+    background: linear-gradient(135deg, rgba(217,182,91,0.15), rgba(217,182,91,0.05));
+    color: #E9D28A;
+    border-left: 2px solid #D9B65B;
+  }
+
+  /* Filter btn */
+  .filter-btn {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .filter-btn.active {
+    color: #D9B65B;
+  }
+  .filter-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #D9B65B, transparent);
+    box-shadow: 0 0 10px #D9B65B;
+  }
+
+  /* Noise overlay */
+  .noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    z-index: 100;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.8'/></svg>");
+  }
+
+  /* Input styling */
+  .lux-input {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s ease;
+  }
+  .lux-input:focus {
+    outline: none;
+    border-color: rgba(217,182,91,0.5);
+    box-shadow: 0 0 0 3px rgba(217,182,91,0.12);
+    background: rgba(255,255,255,0.05);
+  }
+  .lux-input-light {
+    background: rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+  .lux-input-light:focus {
+    outline: none;
+    border-color: #C99A3A;
+    box-shadow: 0 0 0 3px rgba(217,182,91,0.15);
+    background: white;
+  }
+
+  /* Lightbox */
+  .lightbox-enter {
+    animation: lbIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes lbIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Parallax orb */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+</style>
+</head>
+
+<body x-data="luxynkApp()" x-init="init()" x-cloak class="min-h-screen overflow-x-hidden">
+
+<div class="noise"></div>
+
+<!-- ============ TOP NAV ============ -->
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+     :class="scrolled ? 'glass shadow-soft' : 'bg-transparent'">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3 cursor-pointer" @click="switchTab('bio')">
+      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-gold-200 to-gold-500 flex items-center justify-center shadow-gold-glow">
+        <span class="font-display font-bold text-ink-950">L</span>
+      </div>
+      <span class="font-display text-xl tracking-wider gold-text font-semibold">LUXYNK</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="hidden md:flex items-center gap-1 glass rounded-full p-1">
+      <template x-for="tab in tabs" :key="tab.id">
+        <button @click="switchTab(tab.id)"
+                class="tab-pill px-5 py-2 text-sm font-medium rounded-full relative"
+                :class="currentTab === tab.id ? 'text-ink-950' : 'text-white/70 hover:text-white'">
+          <span x-show="currentTab === tab.id"
+                class="absolute inset-0 bg-gradient-to-r from-gold-200 to-gold-400 rounded-full"></span>
+          <span class="relative z-10 flex items-center gap-2">
+            <i :class="tab.icon"></i>
+            <span x-text="tab.label"></span>
+          </span>
+        </button>
+      </template>
+    </div>
+
+    <!-- Mobile toggle -->
+    <button @click="mobileMenu = !mobileMenu" class="md:hidden text-white/80 text-xl">
+      <i class="fa-solid" :class="mobileMenu ? 'fa-xmark' : 'fa-bars'"></i>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div x-show="mobileMenu" x-transition class="md:hidden glass border-t border-white/5">
+    <div class="px-6 py-4 flex flex-col gap-2">
+      <template x-for="tab in tabs" :key="tab.id">
+        <button @click="switchTab(tab.id); mobileMenu=false"
+                class="text-left px-4 py-3 rounded-xl transition"
+                :class="currentTab === tab.id ? 'bg-gold-500/20 text-gold-200' : 'text-white/80 hover:bg-white/5'">
+          <i :class="tab.icon" class="mr-2"></i>
+          <span x-text="tab.label"></span>
+        </button>
+      </template>
+    </div>
+  </div>
+</nav>
+
+<!-- ========================================== -->
+<!-- ============ 1. BIO PAGE ================= -->
+<!-- ========================================== -->
+<section x-show="currentTab === 'bio'"
+         x-transition:enter="transition duration-700 ease-out"
+         x-transition:enter-start="opacity-0 scale-[0.98]"
+         x-transition:enter-end="opacity-100 scale-100"
+         class="lux-bg relative min-h-screen pt-28 pb-20 px-6 overflow-hidden">
+
+  <!-- Floating orbs (parallax-ish) -->
+  <div class="orb bg-gold-400 w-96 h-96 top-20 -left-20 float"></div>
+  <div class="orb bg-gold-600 w-80 h-80 bottom-20 -right-20 float" style="animation-delay:-3s"></div>
+
+  <div class="relative max-w-2xl mx-auto text-center">
+
+    <!-- Small tag -->
+    <div class="fade-enter inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-8 text-xs tracking-[0.3em] text-gold-200">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold-300 animate-pulse"></span>
+      EXCLUSIVE COLLECTION · 2025
+    </div>
+
+    <!-- Logo -->
+    <div class="fade-enter relative w-36 h-36 mx-auto mb-10" style="animation-delay:0.1s">
+      <!-- Outer glow -->
+      <div class="absolute inset-0 rounded-full bg-gold-400 blur-3xl opacity-30 animate-pulse"></div>
+      <!-- Rotating gold ring -->
+      <div class="absolute -inset-1 rounded-full gold-ring opacity-60"></div>
+      <!-- Logo content -->
+      <div class="relative w-full h-full rounded-full bg-gradient-to-br from-ink-800 to-ink-950 flex items-center justify-center overflow-hidden border border-white/10 float">
+        <template x-if="settings.logoUrl">
+          <img :src="settings.logoUrl" class="w-full h-full object-cover" alt="logo">
+        </template>
+        <template x-if="!settings.logoUrl">
+          <span class="font-display text-6xl gold-text font-bold">L</span>
+        </template>
+      </div>
+    </div>
+
+    <!-- Store name -->
+    <h1 class="fade-enter font-display text-5xl md:text-7xl font-bold mb-4 tracking-tight" style="animation-delay:0.2s">
+      <span class="gold-text" x-text="settings.storeName"></span>
+    </h1>
+
+    <!-- Tagline -->
+    <p class="fade-enter text-white/60 text-lg md:text-xl font-light mb-3 max-w-lg mx-auto leading-relaxed" style="animation-delay:0.3s"
+       x-text="settings.tagline"></p>
+
+    <div class="fade-enter flex items-center justify-center gap-3 text-xs tracking-[0.25em] text-white/40 mb-10" style="animation-delay:0.35s">
+      <span class="h-px w-8 bg-white/20"></span>
+      <span>CRAFTED FOR THE FEW</span>
+      <span class="h-px w-8 bg-white/20"></span>
+    </div>
+
+    <!-- Countdown -->
+    <div class="fade-enter glass rounded-2xl px-6 py-5 mb-10 inline-block" style="animation-delay:0.4s">
+      <p class="text-[10px] tracking-[0.35em] text-gold-200 mb-3">⏳ EXCLUSIVE PROMO ENDS IN</p>
+      <div class="flex items-center justify-center gap-4 md:gap-6">
+        <template x-for="(unit, idx) in [{v: countdown.d, l: 'Days'}, {v: countdown.h, l: 'Hours'}, {v: countdown.m, l: 'Min'}, {v: countdown.s, l: 'Sec'}]" :key="idx">
+          <div class="text-center">
+            <div class="count-digit font-display text-3xl md:text-4xl font-bold gold-text min-w-[2.5rem]"
+                 x-text="String(unit.v).padStart(2,'0')"></div>
+            <div class="text-[9px] tracking-[0.2em] text-white/40 mt-1 uppercase" x-text="unit.l"></div>
+          </div>
+          <div x-show="idx < 3" class="text-gold-300/40 text-2xl font-light">·</div>
+        </template>
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="fade-enter flex flex-col gap-3 max-w-md mx-auto" style="animation-delay:0.5s">
+
+      <a :href="'https://wa.me/' + settings.whatsapp" target="_blank"
+         @click="trackClick('whatsapp')"
+         class="btn-lux glass rounded-xl py-4 px-6 flex items-center gap-4 group">
+        <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+          <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i>
+        </div>
+        <div class="flex-1 text-left">
+          <div class="font-medium text-white">WhatsApp</div>
+          <div class="text-xs text-white/50">Chat with our stylist</div>
+        </div>
+        <i class="fa-solid fa-arrow-right text-white/30 group-hover:text-gold-300 group-hover:translate-x-1 transition-all"></i>
+      </a>
+
+      <button @click="switchTab('catalog')"
+              class="btn-lux rounded-xl py-4 px-6 flex items-center gap-4 group bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 text-ink-950 font-semibold">
+        <div class="w-10 h-10 rounded-lg bg-ink-950/10 flex items-center justify-center">
+          <i class="fa-solid fa-bag-shopping text-ink-950"></i>
+        </div>
+        <div class="flex-1 text-left">
+          <div>View Catalog</div>
+          <div class="text-xs text-ink-950/60 font-normal">Discover the collection</div>
+        </div>
+        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+      </button>
+
+      <a :href="settings.shopee" target="_blank"
+         @click="trackClick('shopee')"
+         class="btn-lux glass rounded-xl py-4 px-6 flex items-center gap-4 group">
+        <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center">
+          <i class="fa-solid fa-bag-shopping text-orange-400"></i>
+        </div>
+        <div class="flex-1 text-left">
+          <div class="font-medium text-white">Shopee</div>
+          <div class="text-xs text-white/50">Secure online purchase</div>
+        </div>
+        <i class="fa-solid fa-arrow-right text-white/30 group-hover:text-gold-300 group-hover:translate-x-1 transition-all"></i>
+      </a>
+
+      <a :href="settings.tiktok" target="_blank"
+         @click="trackClick('tiktok')"
+         class="btn-lux glass rounded-xl py-4 px-6 flex items-center gap-4 group">
+        <div class="w-10 h-10 rounded-lg bg-pink-500/10 flex items-center justify-center">
+          <i class="fa-brands fa-tiktok text-pink-300"></i>
+        </div>
+        <div class="flex-1 text-left">
+          <div class="font-medium text-white">TikTok Shop</div>
+          <div class="text-xs text-white/50">Live & exclusive drops</div>
+        </div>
+        <i class="fa-solid fa-arrow-right text-white/30 group-hover:text-gold-300 group-hover:translate-x-1 transition-all"></i>
+      </a>
+
+      <a :href="'https://wa.me/' + settings.whatsapp + '?text=' + encodeURIComponent('Hi, I want the Exclusive Promo 🔥')"
+         target="_blank"
+         @click="trackClick('promo')"
+         class="btn-lux rounded-xl py-4 px-6 flex items-center gap-4 group border border-gold-400/30 bg-gradient-to-r from-gold-500/10 to-transparent">
+        <div class="w-10 h-10 rounded-lg bg-gold-400/10 flex items-center justify-center">
+          <i class="fa-solid fa-crown text-gold-300"></i>
+        </div>
+        <div class="flex-1 text-left">
+          <div class="font-medium gold-text">Exclusive Promo</div>
+          <div class="text-xs text-white/50">Members only · 40% off</div>
+        </div>
+        <i class="fa-solid fa-sparkles text-gold-300 group-hover:rotate-12 transition-transform"></i>
+      </a>
+    </div>
+
+    <!-- Socials footer -->
+    <div class="fade-enter mt-14 flex items-center justify-center gap-6 text-white/40" style="animation-delay:0.6s">
+      <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-instagram text-lg"></i></a>
+      <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-tiktok text-lg"></i></a>
+      <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-facebook text-lg"></i></a>
+      <a href="#" class="hover:text-gold-300 transition"><i class="fa-brands fa-youtube text-lg"></i></a>
+    </div>
+
+    <p class="fade-enter mt-8 text-[10px] tracking-[0.3em] text-white/30" style="animation-delay:0.7s">
+      © 2025 LUXYNK · ALL RIGHTS RESERVED
+    </p>
+  </div>
+</section>
+
+
+<!-- ========================================== -->
+<!-- ============ 2. CATALOG ================== -->
+<!-- ========================================== -->
+<section x-show="currentTab === 'catalog'"
+         x-transition:enter="transition duration-700 ease-out"
+         x-transition:enter-start="opacity-0 scale-[0.98]"
+         x-transition:enter-end="opacity-100 scale-100"
+         class="lux-bg relative min-h-screen pt-28 pb-20 px-6">
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-14 fade-enter">
+      <div class="inline-flex items-center gap-2 text-xs tracking-[0.3em] text-gold-300 mb-4">
+        <span class="h-px w-8 bg-gold-400/50"></span>
+        THE COLLECTION
+        <span class="h-px w-8 bg-gold-400/50"></span>
+      </div>
+      <h2 class="font-display text-5xl md:text-6xl font-bold mb-4">
+        <span class="gold-text">Timeless</span>
+        <span class="text-white italic font-light">pieces</span>
+      </h2>
+      <p class="text-white/50 max-w-lg mx-auto">Hand-picked luxury curated for those who understand quiet power.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex items-center justify-center flex-wrap gap-8 mb-12 fade-enter" style="animation-delay:0.15s">
+      <template x-for="cat in categories" :key="cat">
+        <button @click="activeCategory = cat"
+                class="filter-btn text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white"
+                :class="{ 'active': activeCategory === cat }"
+                x-text="cat"></button>
+      </template>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
+      <template x-for="(p, idx) in filteredProducts" :key="p.id">
+        <div class="product-card glass rounded-2xl overflow-hidden fade-enter"
+             :style="`animation-delay:${0.05 * idx}s`">
+
+          <!-- Image -->
+          <div class="relative aspect-[4/5] overflow-hidden bg-ink-800 cursor-pointer"
+               @click="openLightbox(p)">
+            <img :src="p.image" :alt="p.name"
+                 class="zoom-img w-full h-full object-cover"
+                 loading="lazy">
+
+            <!-- Badge -->
+            <template x-if="p.badge">
+              <div class="absolute top-3 left-3">
+                <span class="text-[9px] tracking-[0.2em] px-3 py-1 rounded-full font-semibold uppercase"
+                      :class="p.badge === 'Best Seller' ? 'bg-gradient-to-r from-gold-300 to-gold-500 text-ink-950' : 'bg-ink-950/80 text-white border border-white/10'"
+                      x-text="p.badge"></span>
+              </div>
+            </template>
+
+            <!-- Quick view icon -->
+            <div class="absolute top-3 right-3 w-9 h-9 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+              <i class="fa-solid fa-magnifying-glass-plus text-white/70 text-xs"></i>
+            </div>
+
+            <!-- Gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent pointer-events-none"></div>
+          </div>
+
+          <!-- Info -->
+          <div class="p-4 md:p-5">
+            <div class="text-[10px] tracking-[0.2em] text-gold-300 mb-1 uppercase" x-text="p.category"></div>
+            <h3 class="font-display text-lg md:text-xl text-white mb-1 leading-tight" x-text="p.name"></h3>
+            <p class="text-white/60 text-sm mb-4">
+              <span class="gold-text font-semibold">$<span x-text="p.price"></span></span>
+            </p>
+
+            <a :href="'https://wa.me/' + settings.whatsapp + '?text=' + encodeURIComponent('Hi, I am interested in ' + p.name + ' ($' + p.price + ')')"
+               target="_blank"
+               @click.stop="trackClick('whatsapp')"
+               class="btn-lux w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium border border-white/10 hover:border-gold-400/50 text-white">
+              <i class="fa-brands fa-whatsapp text-green-400"></i>
+              Buy via WhatsApp
+            </a>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- Empty state -->
+    <div x-show="filteredProducts.length === 0" class="text-center py-20">
+      <i class="fa-solid fa-bag-shopping text-4xl text-white/20 mb-4"></i>
+      <p class="text-white/50">No products in this category yet.</p>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div x-show="lightbox.open"
+       x-transition.opacity
+       @click.self="lightbox.open = false"
+       @keydown.escape.window="lightbox.open = false"
+       class="fixed inset-0 z-[60] bg-ink-950/95 backdrop-blur-xl flex items-center justify-center p-6">
+    <div class="lightbox-enter max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center">
+      <div class="rounded-2xl overflow-hidden aspect-[4/5] bg-ink-800">
+        <img :src="lightbox.product?.image" class="w-full h-full object-cover">
+    </div>
