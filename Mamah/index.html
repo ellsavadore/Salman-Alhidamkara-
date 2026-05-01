@@ -478,6 +478,27 @@
     height: 100%; background: var(--gold);
     width: 0; transition: width 0.1s linear;
   }
+
+  /* ─── PLACEHOLDER PHOTO ─── */
+  .photo-placeholder {
+    position: absolute; inset: -5%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px;
+  }
+  .placeholder-icon {
+    width: 80px; height: 80px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.4;
+  }
+  .placeholder-icon svg { width: 32px; height: 32px; fill: var(--gold); }
+  .placeholder-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; letter-spacing: 0.3em;
+    color: var(--gold-dim); text-transform: uppercase;
+  }
+
   /* ─── FILM GRAIN ─── */
   .grain-overlay {
     position: fixed; inset: 0;
@@ -703,6 +724,14 @@ function buildPhotoScenes() {
     div.className = 'scene photo-scene';
     div.id = `scene-photo-${i}`;
     div.innerHTML = `
+      <div class="photo-bg" id="bg-${i}" style="background-image:url('${slide.image}')">
+      </div>
+      <div class="photo-placeholder">
+        <div class="placeholder-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        </div>
+        <div class="placeholder-label">photo${i+1}.jpg</div>
+      </div>
       <div class="photo-overlay"></div>
       <div class="photo-content">
         <div class="scene-number">— ${String(i+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')} —</div>
