@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Untuk Mamah Tercinta 💛</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4AF37;
+    --gold-light: #F0D060;
+    --gold-glow: rgba(212,175,55,0.18);
+    --bg-deep: #07070A;
+    --bg-mid: #0D0D12;
+    --bg-light: #13131A;
+    --white: #F5F0E8;
+    --white-dim: rgba(245,240,232,0.7);
+    --white-faint: rgba(245,240,232,0.35);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html, body {
+    width:100%; height:100%;
+    background: var(--bg-deep);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── LOADING SCREEN ─── */
+  #loading {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--bg-deep);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 2rem;
+  }
+  .loading-emblem {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease 0.3s forwards;
+  }
+  .loading-bar-wrap {
+    width: min(260px, 70vw);
+    height: 1px;
+    background: rgba(212,175,55,0.15);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.8s forwards;
+  }
+  .loading-bar {
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    width: 0%;
+    transition: width 0.05s linear;
+  }
+  .loading-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    opacity: 0.6;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1s forwards;
+  }
+
+  /* ─── SCREENS ─── */
+  .screen {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 1.4s ease;
+    overflow: hidden;
+  }
+  .screen.active {
+    opacity: 1; pointer-events: all;
+  }
+
+  /* ─── PARTICLES CANVAS ─── */
+  #particles-canvas {
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 1;
+  }
+
+  /* ─── INTRO SCREEN ─── */
+  #intro {
+    background: radial-gradient(ellipse at 50% 60%, #1a1408 0%, var(--bg-deep) 70%);
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+  }
+  .intro-ornament {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 0 auto 2rem;
+    opacity: 0;
+    animation: none;
+  }
+  .intro-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0;
+    margin-bottom: 1.5rem;
+  }
+  .intro-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 8vw, 5rem);
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.15;
+    color: var(--white);
+    opacity: 0;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 80px rgba(212,175,55,0.15);
+  }
+  .intro-title span {
+    color: var(--gold);
+    text-shadow: 0 0 40px rgba(212,175,55,0.5);
+  }
+  .intro-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 3.5vw, 1.4rem);
+    font-style: italic;
+    color: var(--white-dim);
+    opacity: 0;
+    margin-bottom: 3.5rem;
+    line-height: 1.7;
+  }
+  .btn-start {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    padding: 1rem 2.4rem;
+    border: 1px solid rgba(212,175,55,0.45);
+    background: rgba(212,175,55,0.07);
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    font-style: italic;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-start::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(212,175,55,0.12), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .btn-start:hover { 
+    border-color: var(--gold); 
+    box-shadow: 0 0 40px rgba(212,175,55,0.2), inset 0 0 30px rgba(212,175,55,0.05);
+    transform: translateY(-2px);
+  }
+  .btn-start:hover::before { opacity: 1; }
+  .btn-start:active { transform: scale(0.97); }
+
+  .intro-visible .intro-ornament { animation: fadeInDown 1s ease 0.2s forwards; }
+  .intro-visible .intro-sub { animation: fadeInUp 1s ease 0.6s forwards; }
+  .intro-visible .intro-title { animation: fadeInUp 1.2s ease 1s forwards; }
+  .intro-visible .intro-tagline { animation: fadeInUp 1.2s ease 1.5s forwards; }
+  .intro-visible .btn-start { animation: fadeInUp 1s ease 2s forwards; }
+
+  /* ─── STORY SCREEN ─── */
+  #story {
+    background: var(--bg-deep);
+    z-index: 8;
+    padding: 0;
+  }
+
+  .slide-container {
+    position: relative; width:100%; height:100%;
+    overflow: hidden;
+  }
+
+  .slide {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 1.6s ease, transform 1.6s ease;
+    pointer-events: none;
+    padding-bottom: clamp(3rem, 10vh, 6rem);
+    padding-left: 1.5rem; padding-right: 1.5rem;
+  }
+  .slide.current {
+    opacity: 1; transform: scale(1);
+    pointer-events: all;
+    z-index: 2;
+  }
+  .slide.prev {
+    opacity: 0; transform: scale(0.97);
+    z-index: 1;
+  }
+
+  .slide-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transform: scale(1.08);
+    transition: transform 8s ease;
+    filter: brightness(0.45) saturate(0.8);
+  }
+  .slide.current .slide-bg {
+    transform: scale(1.0);
+  }
+
+  .slide-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(5,5,8,0.97) 0%,
+      rgba(5,5,8,0.6) 40%,
+      rgba(5,5,8,0.1) 75%,
+      transparent 100%
+    );
+    z-index: 1;
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: rgba(212,175,55,0.45);
+    z-index: 3;
+  }
+
+  .slide-content {
+    position: relative; z-index: 3;
+    text-align: center;
+    max-width: 680px;
+    width: 100%;
+  }
+
+  .slide-line {
+    width: 30px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 1.4rem;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.4s, width 0.8s ease 0.4s;
+  }
+  .slide.current .slide-line { opacity: 0.6; width: 50px; }
+
+  .slide-caption {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 4.5vw, 1.85rem);
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--white);
+    text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.2s ease 0.6s, transform 1.2s ease 0.6s;
+  }
+  .slide.current .slide-caption {
+    opacity: 1; transform: translateY(0);
+  }
+
+  .slide-caption em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* Progress dots */
+  .progress-dots {
+    position: fixed;
+    right: 1.2rem; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column;
+    gap: 0.5rem; z-index: 20;
+  }
+  .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: rgba(212,175,55,0.25);
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+  .dot.active {
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(212,175,55,0.6);
+    transform: scale(1.5);
+  }
+
+  /* Nav buttons */
+  .nav-btn {
+    position: fixed;
+    bottom: 1.4rem;
+    z-index: 20;
+    background: rgba(212,175,55,0.08);
+    border: 1px solid rgba(212,175,55,0.25);
+    color: var(--gold);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+  .nav-btn:hover {
+    background: rgba(212,175,55,0.18);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(212,175,55,0.2);
+  }
+  #btn-prev { left: calc(50% - 60px); }
+  #btn-next { right: calc(50% - 60px); }
+  .nav-btn:disabled { opacity: 0.2; pointer-events: none; }
+
+  /* Slide photo placeholders with cinematic colors */
+  .slide-placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  /* ─── ENDING SCREEN ─── */
+  #ending {
+    background: radial-gradient(ellipse at 50% 50%, #140e02 0%, var(--bg-deep) 65%);
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .ending-heart {
+    font-size: clamp(3rem, 12vw, 5rem);
+    display: block;
+    opacity: 0;
+    animation: none;
+    filter: drop-shadow(0 0 30px rgba(212,175,55,0.6));
+    margin-bottom: 2rem;
+  }
+  .ending-from {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0;
+    margin-bottom: 1.2rem;
+  }
+  .ending-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.2;
+    opacity: 0;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 60px rgba(212,175,55,0.12);
+  }
+  .ending-title span { color: var(--gold); }
+  .ending-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3.5vw, 1.35rem);
+    color: var(--white-dim);
+    opacity: 0;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .btn-again {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(212,175,55,0.3);
+    background: transparent;
+    color: rgba(212,175,55,0.6);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
+  .btn-again:hover { 
+    color: var(--gold); 
+    border-color: var(--gold);
+    box-shadow: 0 0 25px rgba(212,175,55,0.15);
+  }
+
+  .ending-visible .ending-heart { animation: heartPulse 0.8s ease 0.2s forwards, pulse 2.5s ease 1.5s infinite; }
+  .ending-visible .ending-from { animation: fadeInUp 1s ease 0.6s forwards; }
+  .ending-visible .ending-title { animation: fadeInUp 1.2s ease 1s forwards; }
+  .ending-visible .ending-sub { animation: fadeInUp 1.2s ease 1.5s forwards; }
+  .ending-visible .btn-again { animation: fadeInUp 1s ease 2.2s forwards; }
+
+  /* ─── MUSIC BUTTON ─── */
+  #music-btn {
+    position: fixed;
+    top: 1.2rem; left: 1.2rem;
+    z-index: 100;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,175,55,0.3);
+    background: rgba(7,7,10,0.7);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  #music-btn.visible { opacity: 1; pointer-events: all; }
+  #music-btn:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(212,175,55,0.25);
+  }
+  .music-waves {
+    display: flex; gap: 2px; align-items: flex-end; height: 12px;
+  }
+  .music-waves span {
+    width: 2px; background: var(--gold); border-radius: 2px;
+    animation: wave 1s ease-in-out infinite;
+  }
+  .music-waves span:nth-child(1) { height: 4px; animation-delay: 0s; }
+  .music-waves span:nth-child(2) { height: 8px; animation-delay: 0.15s; }
+  .music-waves span:nth-child(3) { height: 12px; animation-delay: 0.3s; }
+  .music-waves span:nth-child(4) { height: 6px; animation-delay: 0.45s; }
+  .music-waves.muted span { animation: none; opacity: 0.3; }
+  #music-btn .mute-icon { display: none; font-size: 1rem; }
+  #music-btn.muted .music-waves { display: none; }
+  #music-btn.muted .mute-icon { display: block; }
+
+  /* ─── KEYFRAMES ─── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes wave {
+    0%, 100% { transform: scaleY(0.5); }
+    50% { transform: scaleY(1.1); }
+  }
+  @keyframes heartPulse {
+    0% { opacity: 0; transform: scale(0.3); }
+    60% { opacity: 1; transform: scale(1.15); }
+    80% { transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 25px rgba(212,175,55,0.5)); }
+    50% { transform: scale(1.06); filter: drop-shadow(0 0 45px rgba(212,175,55,0.8)); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); opacity: 0.4; }
+    50% { transform: translateY(-15px); opacity: 0.8; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* ─── SWIPE HINT ─── */
+  .swipe-hint {
+    position: fixed;
+    bottom: 5.5rem; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: rgba(212,175,55,0.35);
+    z-index: 20;
+    text-transform: uppercase;
+    pointer-events: none;
+    animation: fadeInUp 1s ease 1s forwards, fadePulse 3s ease 2s infinite;
+    opacity: 0;
+  }
+  @keyframes fadePulse {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 0.65; }
+  }
+
+  /* ─── PHOTO PLACEHOLDER GRADIENTS ─── */
+  .ph-1 { background: linear-gradient(135deg, #1a0f05 0%, #2d1a08 40%, #0d0a04 100%); }
+  .ph-2 { background: linear-gradient(135deg, #05100d 0%, #0c1f18 40%, #030a07 100%); }
+  .ph-3 { background: linear-gradient(135deg, #08080f 0%, #131226 40%, #050508 100%); }
+  .ph-4 { background: linear-gradient(135deg, #12080a 0%, #220d0f 40%, #080305 100%); }
+  .ph-5 { background: linear-gradient(135deg, #0f0d04 0%, #1c1808 40%, #080703 100%); }
+  .ph-6 { background: linear-gradient(135deg, #050d14 0%, #0c1d2c 40%, #030709 100%); }
+  .ph-7 { background: linear-gradient(135deg, #10060a 0%, #1e0b14 40%, #080306 100%); }
+  .ph-8 { background: linear-gradient(135deg, #050d0d 0%, #0b1d1a 40%, #030808 100%); }
+  .ph-9 { background: linear-gradient(135deg, #120a04 0%, #231408 40%, #090604 100%); }
+  .ph-10 { background: linear-gradient(135deg, #080812 0%, #131320 40%, #050508 100%); }
+  .ph-11 { background: linear-gradient(135deg, #130a00 0%, #261500 40%, #0a0700 100%); }
+
+  /* Photo upload prompt */
+  .photo-prompt {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+    gap: 0.8rem;
+    opacity: 0.35;
+    position: relative; z-index: 1;
+  }
+  .photo-icon {
+    font-size: 2.5rem;
+    opacity: 0.4;
+  }
+  .photo-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* Cinematic letterbox */
+  .letterbox-top, .letterbox-bottom {
+    position: fixed; left: 0; right: 0; z-index: 15;
+    height: 0;
+    background: var(--bg-deep);
+    transition: height 1.2s cubic-bezier(0.77,0,0.18,1);
+    pointer-events: none;
+  }
+  .letterbox-top { top: 0; }
+  .letterbox-bottom { bottom: 0; }
+  .letterbox-active .letterbox-top,
+  .letterbox-active .letterbox-bottom { height: 0; }
+
+  /* Gold divider line */
+  .gold-line {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 1.2rem auto;
+    opacity: 0.5;
+  }
+
+  /* Touch ripple feedback */
+  .ripple {
+    position: fixed; pointer-events: none; z-index: 999;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,55,0.25), transparent 70%);
+    transform: scale(0);
+    animation: rippleAnim 0.6s ease forwards;
+  }
+  @keyframes rippleAnim {
+    to { transform: scale(8); opacity: 0; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 480px) {
+    .progress-dots { right: 0.7rem; }
+    .nav-btn { width: 42px; height: 42px; font-size: 1rem; }
+    #btn-prev { left: calc(50% - 52px); }
+    #btn-next { right: calc(50% - 52px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Loading -->
+<div id="loading">
+  <div class="loading-emblem">Sebuah Persembahan Cinta</div>
+  <div class="loading-bar-wrap">
+    <div class="loading-bar" id="loading-bar"></div>
+  </div>
+  <div class="loading-pct" id="loading-pct">0%</div>
+</div>
+
+<!-- Particles -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Music Button -->
+<div id="music-btn" title="Toggle Music">
+  <div class="music-waves">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <span class="mute-icon">♪</span>
+</div>
+
+<!-- ═══ INTRO SCREEN ═══ -->
+<div class="screen" id="intro">
+  <div class="intro-ornament"></div>
+  <div class="intro-sub">Sebuah Persembahan Cinta</div>
+  <h1 class="intro-title">Untuk <span>Mamah</span><br>Tercinta…</h1>
+  <p class="intro-tagline">
+    47 Tahun Cinta Yang<br>Tak Pernah Habis
+  </p>
+  <button class="btn-start" id="btn-start">
+    <span>Mulai Perjalanan</span>
+    <span>❤️</span>
+  </button>
+</div>
+
+<!-- ═══ STORY SCREEN ═══ -->
+<div class="screen" id="story">
+  <div class="slide-container" id="slide-container">
+
+    <!-- Slides will be generated by JS -->
+
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-dots" id="progress-dots"></div>
+
+  <!-- Nav -->
+  <button class="nav-btn" id="btn-prev" disabled>←</button>
+  <button class="nav-btn" id="btn-next">→</button>
+
+  <!-- Swipe hint -->
+  <div class="swipe-hint">Geser atau ketuk ❯</div>
+</div>
+
+<!-- ═══ ENDING SCREEN ═══ -->
+<div class="screen" id="ending">
+  <span class="ending-heart">💛</span>
+  <div class="ending-from">Dengan Sepenuh Jiwa</div>
+  <h2 class="ending-title">Aku Sayang <span>Mamah</span>,<br>Selalu.</h2>
+  <p class="ending-sub">
+    Selamat ulang tahun yang ke-47.<br>
+    Semoga mamah selalu sehat, bahagia,<br>
+    dan diberkahi cinta yang tak terbatas.
+  </p>
+  <div class="gold-line"></div>
+  <button class="btn-again" id="btn-again">↺ Putar Kembali</button>
+</div>
+
+<script>
+// ═══════════════════════════════════
+// SLIDE DATA
+// ═══════════════════════════════════
+const slides = [
+  {
+    ph: 'ph-1',
+    caption: `Mamah… dari kecil sampai sekarang,\ncinta mamah tidak pernah berubah.`
+  },
+  {
+    ph: 'ph-2',
+    caption: `Di setiap langkahku,\nselalu ada doa mamah yang menguatkan.`
+  },
+  {
+    ph: 'ph-3',
+    caption: `Mungkin aku tidak selalu mengerti,\ntapi mamah selalu mengerti aku.`
+  },
+  {
+    ph: 'ph-4',
+    caption: `Cinta mamah itu… tidak bersyarat,\ntidak pernah lelah, tidak pernah hilang.`
+  },
+  {
+    ph: 'ph-5',
+    caption: `Kalau dunia terasa berat,\npelukan mamah selalu jadi tempat pulang.`
+  },
+  {
+    ph: 'ph-6',
+    caption: `Aku mungkin tidak sering bilang,\ntapi aku sangat mencintai mamah.`
+  },
+  {
+    ph: 'ph-7',
+    caption: `Terima kasih untuk semua pengorbanan,\nyang bahkan tidak pernah aku sadari.`
+  },
+  {
+    ph: 'ph-8',
+    caption: `Mamah adalah alasan aku tetap kuat,\ndi saat semuanya terasa runtuh.`
+  },
+  {
+    ph: 'ph-9',
+    caption: `47 tahun bukan sekadar usia,\ntapi perjalanan penuh cinta.`
+  },
+  {
+    ph: 'ph-10',
+    caption: `Aku bangga punya mamah\nseperti mamah.`
+  },
+  {
+    ph: 'ph-11',
+    caption: `Selamat ulang tahun mamah ❤️\nSemoga selalu sehat, bahagia, dan panjang umur.`
+  }
+];
+
+// ═══════════════════════════════════
+// BUILD SLIDES
+// ═══════════════════════════════════
+const container = document.getElementById('slide-container');
+const dotsWrap = document.getElementById('progress-dots');
+
+slides.forEach((s, i) => {
+  const slide = document.createElement('div');
+  slide.className = 'slide';
+  slide.dataset.index = i;
+
+  // Background layer
+  const bg = document.createElement('div');
+  bg.className = `slide-bg ${s.ph}`;
+  // If user wants to add real photos, they can set data-src on slide-bg
+  // For now the gradient gives a cinematic base
+
+  const grad = document.createElement('div');
+  grad.className = 'slide-gradient';
+
+  const numEl = document.createElement('div');
+  numEl.className = 'slide-number';
+  numEl.textContent = `${String(i+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+
+  const content = document.createElement('div');
+  content.className = 'slide-content';
+
+  const line = document.createElement('div');
+  line.className = 'slide-line';
+
+  const cap = document.createElement('p');
+  cap.className = 'slide-caption';
+  cap.innerHTML = s.caption.split('\n').join('<br>');
+
+  content.appendChild(line);
+  content.appendChild(cap);
+  slide.appendChild(bg);
+  slide.appendChild(grad);
+  slide.appendChild(numEl);
+  slide.appendChild(content);
+  container.appendChild(slide);
+
+  // Dot
+  const dot = document.createElement('div');
+  dot.className = 'dot';
+  dot.dataset.index = i;
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsWrap.appendChild(dot);
+});
+
+// ═══════════════════════════════════
+// PARTICLES
+// ═══════════════════════════════════
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let raf;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function createParticle() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height + canvas.height,
+    size: Math.random() * 1.5 + 0.3,
+    speed: Math.random() * 0.35 + 0.1,
+    opacity: Math.random() * 0.5 + 0.1,
+    drift: (Math.random() - 0.5) * 0.3,
+    twinkle: Math.random() * Math.PI * 2,
+    twinkleSpeed: Math.random() * 0.02 + 0.005
+  };
+}
+
+for (let i = 0; i < 80; i++) {
+  const p = createParticle();
+  p.y = Math.random() * canvas.height;
+  particles.push(p);
+}
+
+function animParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.y -= p.speed;
+    p.x += p.drift;
+    p.twinkle += p.twinkleSpeed;
+    const alpha = p.opacity * (0.6 + 0.4 * Math.sin(p.twinkle));
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(212, 175, 55, ${alpha})`;
+    ctx.fill();
+    if (p.y < -5) {
+      Object.assign(p, createParticle());
+    }
+  });
+  raf = requestAnimationFrame(animParticles);
+}
+animParticles();
+
+// ═══════════════════════════════════
+// AUDIO — Generative Piano Tones
+// ═══════════════════════════════════
+let audioCtx, gainNode, musicPlaying = false, musicStarted = false;
+
+function createAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  gainNode = audioCtx.createGain();
+  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+  gainNode.connect(audioCtx.destination);
+}
+
+// Pentatonic scale frequencies for emotional piano-like melody
+const melody = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25, 784.00, 880.00];
+const progression = [0, 2, 4, 7, 9, 7, 4, 2, 0, 2, 4, 5, 7, 9, 7, 5];
+
+let noteIndex = 0;
+let musicTimeout;
+
+function playNote(freq, when, dur, vol = 0.08) {
+  if (!audioCtx) return;
+  const osc = audioCtx.createOscillator();
+  const env = audioCtx.createGain();
+  const filter = audioCtx.createBiquadFilter();
+  
+  filter.type = 'lowpass';
+  filter.frequency.setValueAtTime(1200, when);
+  
+  osc.type = 'triangle';
+  osc.frequency.setValueAtTime(freq, when);
+  
+  env.gain.setValueAtTime(0, when);
+  env.gain.linearRampToValueAtTime(vol, when + 0.02);
+  env.gain.setTargetAtTime(vol * 0.4, when + 0.05, 0.3);
+  env.gain.setTargetAtTime(0, when + dur * 0.6, dur * 0.3);
+  
+  osc.connect(filter);
+  filter.connect(env);
+  env.connect(gainNode);
+  
+  osc.start(when);
+  osc.stop(when + dur + 0.5);
+}
+
+function playChord(freqs, when, dur) {
+  freqs.forEach((f, i) => {
+    setTimeout(() => playNote(f, when, dur, 0.04), i * 30);
+  });
+}
+
+function scheduleMusic() {
+  if (!musicPlaying || !audioCtx) return;
+  
+  const now = audioCtx.currentTime;
+  const tempo = 1.8; // seconds per beat
+  
+  // Melody
+  for (let i = 0; i < 8; i++) {
+    const idx = progression[(noteIndex + i) % progression.length];
+    const freq = melody[idx % melody.length];
+    playNote(freq, now + i * tempo * 0.5, tempo * 0.45, 0.07);
+    
+    // Harmony (octave below)
+    if (i % 2 === 0) {
+      playNote(freq / 2, now + i * tempo * 0.5, tempo * 0.8, 0.04);
+    }
+  }
+  
+  // Bass chords
+  const bassFreqs = [130.81, 164.81, 196.00, 130.81];
+  bassFreqs.forEach((f, i) => {
+    playChord([f, f * 1.25, f * 1.5], now + i * tempo, tempo * 0.7);
+  });
+  
+  noteIndex = (noteIndex + 8) % progression.length;
+  musicTimeout = setTimeout(scheduleMusic, 4 * tempo * 1000 * 0.5);
+}
+
+function startMusic() {
+  createAudio();
+  if (musicStarted) return;
+  musicStarted = true;
+  musicPlaying = true;
+  
+  gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+  gainNode.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 3);
+  
+  scheduleMusic();
+}
+
+function toggleMusic() {
+  if (!audioCtx) return;
+  const btn = document.getElementById('music-btn');
+  if (musicPlaying) {
+    musicPlaying = false;
+    clearTimeout(musicTimeout);
+    gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.8);
+    btn.classList.add('muted');
+  } else {
+    musicPlaying = true;
+    gainNode.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 0.8);
+    scheduleMusic();
+    btn.classList.remove('muted');
+  }
+}
+
+// ═══════════════════════════════════
+// LOADING SEQUENCE
+// ═══════════════════════════════════
+let pct = 0;
+const bar = document.getElementById('loading-bar');
+const pctEl = document.getElementById('loading-pct');
+const loadingEl = document.getElementById('loading');
+
+function tick() {
+  if (pct < 100) {
+    pct += Math.random() * 3 + 1;
+    if (pct > 100) pct = 100;
+    bar.style.width = pct + '%';
+    pctEl.textContent = Math.floor(pct) + '%';
+    setTimeout(tick, 40 + Math.random() * 60);
+  } else {
+    setTimeout(showIntro, 600);
+  }
+}
+setTimeout(tick, 1500);
+
+function showIntro() {
+  loadingEl.style.opacity = '0';
+  loadingEl.style.transition = 'opacity 1.2s ease';
+  setTimeout(() => {
+    loadingEl.style.display = 'none';
+    const intro = document.getElementById('intro');
+    intro.classList.add('active', 'intro-visible');
+  }, 1200);
+}
+
+// ═══════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════
+let currentScreen = 'intro'; // 'intro' | 'story' | 'ending'
+let currentSlide = 0;
+
+function showScreen(id, cb) {
+  // Fade out current active screens
+  document.querySelectorAll('.screen.active').forEach(s => {
+    s.style.opacity = '0';
+    s.style.transition = 'opacity 1.4s ease';
+    setTimeout(() => {
+      s.classList.remove('active');
+      s.style.opacity = '';
+      s.style.transition = '';
+    }, 1400);
+  });
+  
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    el.classList.add('active');
+    if (cb) cb();
+  }, 800);
+}
+
+// Start button
+document.getElementById('btn-start').addEventListener('click', () => {
+  startMusic();
+  document.getElementById('music-btn').classList.add('visible');
+  currentScreen = 'story';
+  showScreen('story', () => {
+    currentSlide = 0;
+    activateSlide(0);
+  });
+});
+
+// Music button
+document.getElementById('music-btn').addEventListener('click', toggleMusic);
+
+// ═══════════════════════════════════
+// SLIDE NAVIGATION
+// ═══════════════════════════════════
+function activateSlide(index) {
+  const allSlides = document.querySelectorAll('.slide');
+  allSlides.forEach((s, i) => {
+    s.classList.remove('current', 'prev');
+    if (i === index) s.classList.add('current');
+    else if (i < index) s.classList.add('prev');
+  });
+  
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  
+  document.getElementById('btn-prev').disabled = index === 0;
+  document.getElementById('btn-next').disabled = false;
+  
+  currentSlide = index;
+}
+
+function goToSlide(index) {
+  if (index < 0) return;
+  if (index >= slides.length) {
+    showEnding();
+    return;
+  }
+  activateSlide(index);
+}
+
+function showEnding() {
+  currentScreen = 'ending';
+  
+  // Fade out music gently
+  if (gainNode && audioCtx) {
+    gainNode.gain.linearRampToValueAtTime(0.25, audioCtx.currentTime + 3);
+  }
+  
+  showScreen('ending', () => {
+    document.querySelector('#ending').classList.add('ending-visible');
+  });
+}
+
+document.getElementById('btn-next').addEventListener('click', () => {
+  goToSlide(currentSlide + 1);
+});
+document.getElementById('btn-prev').addEventListener('click', () => {
+  goToSlide(currentSlide - 1);
+});
+
+// Again button
+document.getElementById('btn-again').addEventListener('click', () => {
+  location.reload();
+});
+
+// ═══════════════════════════════════
+// TOUCH / SWIPE
+// ═══════════════════════════════════
+let touchStartX = 0, touchStartY = 0, touchStartTime = 0;
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+  touchStartTime = Date.now();
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  if (currentScreen !== 'story') return;
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  const dt = Date.now() - touchStartTime;
+  
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40 && dt < 400) {
+    if (dx < 0) goToSlide(currentSlide + 1);
+    else goToSlide(currentSlide - 1);
+  }
+}, { passive: true });
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (currentScreen !== 'story') return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goToSlide(currentSlide + 1);
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goToSlide(currentSlide - 1);
+});
+
+// Touch ripple feedback
+document.addEventListener('click', e => {
+  if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+  const ripple = document.createElement('div');
+  ripple.className = 'ripple';
+  ripple.style.cssText = `left:${e.clientX-20}px;top:${e.clientY-20}px;width:40px;height:40px;`;
+  document.body.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 700);
+});
+
+// ═══════════════════════════════════
+// ADD CINEMATIC PHOTO LAYER
+// ═══════════════════════════════════
+// Each slide gets animated light leaks for depth
+function addCinematicLayer(slide, index) {
+  const colors = [
+    'rgba(212,175,55,0.06)', 'rgba(100,160,120,0.05)',
+    'rgba(140,100,160,0.05)', 'rgba(180,80,80,0.06)',
+    'rgba(200,160,60,0.07)', 'rgba(80,120,180,0.05)',
+    'rgba(160,80,100,0.06)', 'rgba(60,160,140,0.05)',
+    'rgba(200,140,40,0.07)', 'rgba(100,100,180,0.05)',
+    'rgba(220,160,50,0.08)'
+  ];
+  
+  const leak = document.createElement('div');
+  const c = colors[index % colors.length];
+  leak.style.cssText = `
+    position:absolute;
+    inset:0;
+    background: radial-gradient(ellipse at ${30+Math.random()*40}% ${20+Math.random()*40}%, ${c} 0%, transparent 60%);
+    z-index:1;
+    pointer-events:none;
+  `;
+  slide.insertBefore(leak, slide.querySelector('.slide-gradient'));
+  
+  // Add grain texture overlay
+  const grain = document.createElement('div');
+  grain.style.cssText = `
+    position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  `;
+  slide.appendChild(grain);
+}
+
+document.querySelectorAll('.slide').forEach((slide, i) => addCinematicLayer(slide, i));
+
+// ═══════════════════════════════════
+// PHOTO UPLOAD SUPPORT
+// ═══════════════════════════════════
+// Users can click on a slide background to add their own photo
+document.querySelectorAll('.slide').forEach((slide, i) => {
+  const bg = slide.querySelector('.slide-bg');
+  
+  // Add subtle photo placeholder icon
+  const prompt = document.createElement('div');
+  prompt.className = 'photo-prompt';
+  prompt.innerHTML = `
+    <span class="photo-icon">📷</span>
+    <span class="photo-label">Foto ${i+1}</span>
+  `;
+  bg.appendChild(prompt);
+  
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = 'image/*';
+  input.style.display = 'none';
+  slide.appendChild(input);
+  
+  bg.style.cursor = 'pointer';
+  bg.addEventListener('click', (e) => {
+    if (currentScreen === 'story') {
+      e.stopPropagation();
+      input.click();
+    }
+  });
+  
+  input.addEventListener('change', function() {
+    if (!this.files[0]) return;
+    const url = URL.createObjectURL(this.files[0]);
+    bg.style.backgroundImage = `url('${url}')`;
+    bg.style.backgroundSize = 'cover';
+    bg.style.backgroundPosition = 'center';
+    prompt.style.display = 'none';
+  });
+});
+
+// ═══════════════════════════════════
+// PARALLAX (subtle)
+// ═══════════════════════════════════
+document.addEventListener('mousemove', e => {
+  if (currentScreen !== 'story') return;
+  const x = (e.clientX / window.innerWidth - 0.5) * 8;
+  const y = (e.clientY / window.innerHeight - 0.5) * 5;
+  const activeBg = document.querySelector('.slide.current .slide-bg');
+  if (activeBg) {
+    activeBg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+  }
+});
+
+// ═══════════════════════════════════
+// ENDING SCREEN — floating particles upgrade
+// ═══════════════════════════════════
+function addEndingHearts() {
+  const ending = document.getElementById('ending');
+  for (let i = 0; i < 12; i++) {
+    const heart = document.createElement('span');
+    heart.textContent = Math.random() > 0.5 ? '✦' : '·';
+    heart.style.cssText = `
+      position:absolute;
+      left: ${5+Math.random()*90}%;
+      top: ${Math.random()*100}%;
+      font-size: ${0.3+Math.random()*0.7}rem;
+      color: rgba(212,175,55,${0.1+Math.random()*0.3});
+      animation: float ${4+Math.random()*4}s ease-in-out ${Math.random()*3}s infinite;
+      pointer-events:none;
+    `;
+    ending.appendChild(heart);
+  }
+}
+addEndingHearts();
+
+console.log('💛 Dibuat dengan cinta, untuk mamah tercinta.');
+</script>
+</body>
+</html>
